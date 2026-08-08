@@ -1,0 +1,1285 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Pippit AI — Create More Content in Less Time</title>
+  <meta
+    name="description"
+    content="Explore AI-powered tools for creating videos, product content, social media creatives and marketing assets faster."
+  />
+
+  <meta property="og:title" content="Create More Content With AI" />
+  <meta
+    property="og:description"
+    content="Discover an easier way to create engaging marketing content with AI."
+  />
+  <meta property="og:type" content="website" />
+
+  <style>
+    :root {
+      --bg: #f7f7f2;
+      --surface: #ffffff;
+      --dark: #111512;
+      --muted: #68706a;
+      --green: #16865a;
+      --green-dark: #0e6945;
+      --gold: #c6a15b;
+      --border: #e5e8e3;
+      --shadow: 0 20px 60px rgba(17, 21, 18, .08);
+      --radius: 24px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system,
+        BlinkMacSystemFont, "Segoe UI", sans-serif;
+      color: var(--dark);
+      background: var(--bg);
+      line-height: 1.6;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    .container {
+      width: min(1120px, calc(100% - 40px));
+      margin: auto;
+    }
+
+    /* NAV */
+
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      backdrop-filter: blur(18px);
+      background: rgba(247, 247, 242, .86);
+      border-bottom: 1px solid rgba(229, 232, 227, .8);
+    }
+
+    .nav-inner {
+      height: 74px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-weight: 800;
+      font-size: 20px;
+      letter-spacing: -.5px;
+    }
+
+    .brand-mark {
+      width: 36px;
+      height: 36px;
+      display: grid;
+      place-items: center;
+      border-radius: 11px;
+      color: white;
+      background: linear-gradient(135deg, var(--green), #32a875);
+      box-shadow: 0 8px 22px rgba(22, 134, 90, .22);
+    }
+
+    .nav-cta {
+      padding: 11px 19px;
+      border-radius: 999px;
+      background: var(--dark);
+      color: white;
+      font-size: 14px;
+      font-weight: 700;
+      transition: .25s ease;
+    }
+
+    .nav-cta:hover {
+      transform: translateY(-2px);
+      background: var(--green);
+    }
+
+    /* HERO */
+
+    .hero {
+      padding: 85px 0 70px;
+      overflow: hidden;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      align-items: center;
+      gap: 70px;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 7px 12px;
+      border: 1px solid #dce3dc;
+      border-radius: 999px;
+      background: rgba(255,255,255,.7);
+      color: var(--green-dark);
+      font-size: 13px;
+      font-weight: 700;
+      margin-bottom: 22px;
+    }
+
+    .eyebrow span {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: var(--green);
+      box-shadow: 0 0 0 5px rgba(22,134,90,.10);
+    }
+
+    h1 {
+      font-size: clamp(44px, 6vw, 76px);
+      line-height: .98;
+      letter-spacing: -4px;
+      max-width: 720px;
+    }
+
+    h1 em {
+      font-style: normal;
+      color: var(--green);
+    }
+
+    .hero-copy {
+      margin-top: 24px;
+      max-width: 610px;
+      color: var(--muted);
+      font-size: 19px;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 13px;
+      margin-top: 31px;
+    }
+
+    .btn {
+      display: inline-flex;
+      justify-content: center;
+      align-items: center;
+      gap: 9px;
+      min-height: 54px;
+      padding: 0 25px;
+      border-radius: 14px;
+      font-weight: 800;
+      font-size: 15px;
+      transition: .25s ease;
+    }
+
+    .btn-primary {
+      background: var(--green);
+      color: white;
+      box-shadow: 0 14px 30px rgba(22,134,90,.22);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-3px);
+      background: var(--green-dark);
+      box-shadow: 0 18px 35px rgba(22,134,90,.30);
+    }
+
+    .btn-secondary {
+      background: white;
+      border: 1px solid var(--border);
+    }
+
+    .btn-secondary:hover {
+      transform: translateY(-3px);
+      box-shadow: var(--shadow);
+    }
+
+    .micro-trust {
+      margin-top: 17px;
+      color: #7b827d;
+      font-size: 12px;
+    }
+
+    /* PRODUCT MOCKUP */
+
+    .visual {
+      position: relative;
+    }
+
+    .glow {
+      position: absolute;
+      inset: 10% -10% -10% 5%;
+      background: radial-gradient(circle, rgba(22,134,90,.22), transparent 65%);
+      filter: blur(30px);
+      pointer-events: none;
+    }
+
+    .dashboard {
+      position: relative;
+      padding: 12px;
+      border: 1px solid #dfe4df;
+      border-radius: 25px;
+      background: rgba(255,255,255,.78);
+      box-shadow: 0 35px 90px rgba(17,21,18,.13);
+      transform: rotate(1.5deg);
+    }
+
+    .dash-top {
+      height: 42px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      padding: 0 10px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: #cbd0cc;
+    }
+
+    .dash-body {
+      padding: 18px;
+      display: grid;
+      grid-template-columns: 82px 1fr;
+      gap: 16px;
+    }
+
+    .sidebar {
+      display: grid;
+      gap: 9px;
+    }
+
+    .side-item {
+      height: 35px;
+      border-radius: 9px;
+      background: #f0f2ef;
+    }
+
+    .side-item.active {
+      background: rgba(22,134,90,.14);
+      border: 1px solid rgba(22,134,90,.15);
+    }
+
+    .workspace {
+      display: grid;
+      gap: 13px;
+    }
+
+    .workspace-header {
+      height: 52px;
+      border-radius: 13px;
+      background: linear-gradient(120deg, #eef5f0, #fafaf7);
+    }
+
+    .preview {
+      min-height: 225px;
+      display: grid;
+      place-items: center;
+      border-radius: 17px;
+      background:
+        linear-gradient(145deg, rgba(22,134,90,.8), rgba(14,105,69,.85)),
+        #167c56;
+      color: white;
+      text-align: center;
+      padding: 25px;
+    }
+
+    .preview h3 {
+      font-size: 28px;
+      letter-spacing: -1px;
+    }
+
+    .preview p {
+      margin-top: 7px;
+      opacity: .82;
+      font-size: 12px;
+    }
+
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(3,1fr);
+      gap: 10px;
+    }
+
+    .mini-card {
+      height: 78px;
+      border-radius: 12px;
+      background: #eef0ed;
+    }
+
+    /* TRUST STRIP */
+
+    .trust-strip {
+      padding: 18px 0;
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      background: #fff;
+    }
+
+    .trust-items {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 30px;
+      color: #747b76;
+      font-size: 13px;
+      font-weight: 700;
+    }
+
+    /* SECTIONS */
+
+    section {
+      padding: 95px 0;
+    }
+
+    .section-heading {
+      max-width: 720px;
+      margin-bottom: 45px;
+    }
+
+    .section-heading.center {
+      margin-left: auto;
+      margin-right: auto;
+      text-align: center;
+    }
+
+    .section-label {
+      color: var(--green);
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      font-size: 12px;
+      font-weight: 900;
+      margin-bottom: 12px;
+    }
+
+    h2 {
+      font-size: clamp(34px, 5vw, 54px);
+      line-height: 1.05;
+      letter-spacing: -2.5px;
+    }
+
+    .section-description {
+      margin-top: 16px;
+      color: var(--muted);
+      font-size: 17px;
+    }
+
+    /* PROBLEM */
+
+    .problem-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 15px;
+    }
+
+    .card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 28px;
+      transition: .25s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+      box-shadow: var(--shadow);
+    }
+
+    .icon {
+      width: 45px;
+      height: 45px;
+      display: grid;
+      place-items: center;
+      border-radius: 13px;
+      background: #eef7f2;
+      font-size: 20px;
+      margin-bottom: 22px;
+    }
+
+    .card h3 {
+      font-size: 19px;
+      letter-spacing: -.4px;
+      margin-bottom: 8px;
+    }
+
+    .card p {
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    /* WORKFLOW */
+
+    .workflow {
+      background: var(--dark);
+      color: white;
+    }
+
+    .workflow .section-description {
+      color: #aab1ac;
+    }
+
+    .steps {
+      display: grid;
+      grid-template-columns: repeat(3,1fr);
+      gap: 18px;
+    }
+
+    .step {
+      position: relative;
+      padding: 32px;
+      border: 1px solid #2a302c;
+      border-radius: var(--radius);
+      background: #171b18;
+    }
+
+    .number {
+      font-size: 12px;
+      font-weight: 900;
+      color: #77c8a3;
+      letter-spacing: 2px;
+      margin-bottom: 35px;
+    }
+
+    .step h3 {
+      font-size: 24px;
+      margin-bottom: 10px;
+    }
+
+    .step p {
+      color: #aab1ac;
+      font-size: 14px;
+    }
+
+    /* FEATURES */
+
+    .features {
+      display: grid;
+      grid-template-columns: repeat(3,1fr);
+      gap: 15px;
+    }
+
+    .feature {
+      min-height: 210px;
+    }
+
+    /* TRANSFORMATION */
+
+    .comparison {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 18px;
+    }
+
+    .compare-box {
+      padding: 35px;
+      border-radius: var(--radius);
+      border: 1px solid var(--border);
+      background: white;
+    }
+
+    .compare-box h3 {
+      font-size: 23px;
+      margin-bottom: 23px;
+    }
+
+    .compare-box ul {
+      list-style: none;
+      display: grid;
+      gap: 14px;
+    }
+
+    .compare-box li {
+      display: flex;
+      gap: 10px;
+      color: var(--muted);
+    }
+
+    .compare-box li strong {
+      color: var(--dark);
+    }
+
+    /* USE CASES */
+
+    .usecases {
+      display: grid;
+      grid-template-columns: repeat(3,1fr);
+      gap: 15px;
+    }
+
+    /* CTA */
+
+    .cta-section {
+      padding-top: 35px;
+    }
+
+    .cta-box {
+      position: relative;
+      overflow: hidden;
+      padding: 75px 45px;
+      border-radius: 32px;
+      background: var(--dark);
+      color: white;
+      text-align: center;
+    }
+
+    .cta-box::before {
+      content: "";
+      position: absolute;
+      width: 450px;
+      height: 450px;
+      border-radius: 50%;
+      background: rgba(22,134,90,.25);
+      filter: blur(80px);
+      left: 50%;
+      top: -250px;
+      transform: translateX(-50%);
+    }
+
+    .cta-box > * {
+      position: relative;
+    }
+
+    .cta-box h2 {
+      max-width: 750px;
+      margin: auto;
+    }
+
+    .cta-box p {
+      max-width: 620px;
+      margin: 18px auto 28px;
+      color: #aab1ac;
+    }
+
+    /* FAQ */
+
+    .faq {
+      max-width: 800px;
+      margin: auto;
+    }
+
+    details {
+      background: white;
+      border: 1px solid var(--border);
+      border-radius: 15px;
+      margin-bottom: 10px;
+      overflow: hidden;
+    }
+
+    summary {
+      cursor: pointer;
+      padding: 20px 23px;
+      font-weight: 800;
+      list-style: none;
+      display: flex;
+      justify-content: space-between;
+      gap: 20px;
+    }
+
+    summary::after {
+      content: "+";
+      color: var(--green);
+      font-size: 20px;
+    }
+
+    details[open] summary::after {
+      content: "−";
+    }
+
+    details p {
+      padding: 0 23px 22px;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    /* FOOTER */
+
+    footer {
+      padding: 45px 0 95px;
+      border-top: 1px solid var(--border);
+      color: #777e79;
+      font-size: 12px;
+    }
+
+    .footer-inner {
+      display: flex;
+      justify-content: space-between;
+      gap: 30px;
+      align-items: flex-start;
+    }
+
+    .disclosure {
+      max-width: 680px;
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 18px;
+    }
+
+    .footer-links a:hover {
+      color: var(--dark);
+    }
+
+    /* MOBILE STICKY CTA */
+
+    .mobile-cta {
+      display: none;
+    }
+
+    /* RESPONSIVE */
+
+    @media (max-width: 900px) {
+      .hero-grid {
+        grid-template-columns: 1fr;
+        gap: 45px;
+      }
+
+      .problem-grid,
+      .features,
+      .usecases {
+        grid-template-columns: repeat(2,1fr);
+      }
+
+      .steps {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 650px) {
+      .container {
+        width: min(100% - 28px, 1120px);
+      }
+
+      nav {
+        position: relative;
+      }
+
+      .nav-cta {
+        padding: 9px 14px;
+        font-size: 12px;
+      }
+
+      .hero {
+        padding: 55px 0 45px;
+      }
+
+      h1 {
+        font-size: 48px;
+        letter-spacing: -3px;
+      }
+
+      .hero-copy {
+        font-size: 16px;
+      }
+
+      .hero-actions {
+        display: grid;
+      }
+
+      .btn {
+        width: 100%;
+      }
+
+      .dashboard {
+        transform: none;
+      }
+
+      section {
+        padding: 70px 0;
+      }
+
+      .problem-grid,
+      .features,
+      .usecases,
+      .comparison {
+        grid-template-columns: 1fr;
+      }
+
+      .cards {
+        grid-template-columns: repeat(3,1fr);
+      }
+
+      .cta-box {
+        padding: 55px 24px;
+      }
+
+      .footer-inner {
+        flex-direction: column;
+      }
+
+      .mobile-cta {
+        display: block;
+        position: fixed;
+        left: 12px;
+        right: 12px;
+        bottom: 12px;
+        z-index: 9999;
+      }
+
+      .mobile-cta a {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 55px;
+        border-radius: 15px;
+        background: var(--green);
+        color: white;
+        font-weight: 900;
+        box-shadow: 0 12px 35px rgba(0,0,0,.2);
+      }
+
+      footer {
+        padding-bottom: 105px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- AFFILIATE DESTINATION -->
+  <script>
+    const AFFILIATE_LINK =
+      "https://afflat3c2.com/trk/lnk/3BF8B185-C400-46C9-BA86-8558C9994629/?o=32195&c=918277&a=800075&k=A52CA674E8A292465D658EC2B30B8927&l=37968";
+
+    function goToPippit() {
+      window.location.href = AFFILIATE_LINK;
+    }
+  </script>
+
+  <!-- NAVIGATION -->
+  <nav>
+    <div class="container nav-inner">
+      <a href="#" class="brand" aria-label="AI Content">
+        <span class="brand-mark">✦</span>
+        <span>AI Content Lab</span>
+      </a>
+
+      <a href="javascript:goToPippit()" class="nav-cta">
+        Explore AI →
+      </a>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <header class="hero">
+    <div class="container hero-grid">
+
+      <div>
+        <div class="eyebrow">
+          <span></span>
+          AI-powered content creation
+        </div>
+
+        <h1>
+          Create more content.
+          <em>Spend less time creating it.</em>
+        </h1>
+
+        <p class="hero-copy">
+          Turn ideas, products and images into engaging marketing content
+          with AI-powered creation tools designed for today's creators,
+          marketers and businesses.
+        </p>
+
+        <div class="hero-actions">
+          <a href="javascript:goToPippit()" class="btn btn-primary">
+            Try Pippit AI →
+          </a>
+
+          <a href="#how-it-works" class="btn btn-secondary">
+            See how it works
+          </a>
+        </div>
+
+        <p class="micro-trust">
+          Independent recommendation • Affiliate link
+        </p>
+      </div>
+
+      <!-- VISUAL MOCKUP -->
+      <div class="visual">
+        <div class="glow"></div>
+
+        <div class="dashboard">
+          <div class="dash-top">
+            <span class="dot"></span>
+            <span class="dot"></span>
+            <span class="dot"></span>
+          </div>
+
+          <div class="dash-body">
+            <div class="sidebar">
+              <div class="side-item active"></div>
+              <div class="side-item"></div>
+              <div class="side-item"></div>
+              <div class="side-item"></div>
+              <div class="side-item"></div>
+            </div>
+
+            <div class="workspace">
+              <div class="workspace-header"></div>
+
+              <div class="preview">
+                <div>
+                  <h3>Idea → Content</h3>
+                  <p>AI-assisted creative workflow</p>
+                </div>
+              </div>
+
+              <div class="cards">
+                <div class="mini-card"></div>
+                <div class="mini-card"></div>
+                <div class="mini-card"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </header>
+
+  <!-- TRUST STRIP -->
+  <div class="trust-strip">
+    <div class="container trust-items">
+      <span>⚡ Faster workflows</span>
+      <span>🎬 Video creation</span>
+      <span>🛍️ Product content</span>
+      <span>📱 Social creatives</span>
+      <span>✨ AI-powered tools</span>
+    </div>
+  </div>
+
+  <!-- PROBLEM -->
+  <section>
+    <div class="container">
+
+      <div class="section-heading">
+        <div class="section-label">The problem</div>
+
+        <h2>
+          Creating content shouldn't take all day.
+        </h2>
+
+        <p class="section-description">
+          Planning, designing, editing and adapting content can quickly
+          become the bottleneck in your marketing workflow.
+        </p>
+      </div>
+
+      <div class="problem-grid">
+
+        <div class="card">
+          <div class="icon">⏱</div>
+          <h3>Too Much Time</h3>
+          <p>
+            Repetitive production tasks can consume valuable creative time.
+          </p>
+        </div>
+
+        <div class="card">
+          <div class="icon">🧩</div>
+          <h3>Too Many Tools</h3>
+          <p>
+            Switching between different tools can make a simple project feel complicated.
+          </p>
+        </div>
+
+        <div class="card">
+          <div class="icon">📆</div>
+          <h3>Constant Demand</h3>
+          <p>
+            Modern marketing requires a steady flow of fresh content.
+          </p>
+        </div>
+
+        <div class="card">
+          <div class="icon">🎨</div>
+          <h3>Editing Skills</h3>
+          <p>
+            Not everyone wants to spend weeks learning advanced editing software.
+          </p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- WORKFLOW -->
+  <section class="workflow" id="how-it-works">
+    <div class="container">
+
+      <div class="section-heading">
+        <div class="section-label">The workflow</div>
+
+        <h2>
+          From idea to content in a simpler workflow.
+        </h2>
+
+        <p class="section-description">
+          Use AI-assisted tools to reduce repetitive work and spend more
+          time focusing on the creative direction.
+        </p>
+      </div>
+
+      <div class="steps">
+
+        <div class="step">
+          <div class="number">01 / START</div>
+          <h3>Bring your idea</h3>
+          <p>
+            Start with a concept, product, image or marketing idea.
+          </p>
+        </div>
+
+        <div class="step">
+          <div class="number">02 / CREATE</div>
+          <h3>Let AI assist</h3>
+          <p>
+            Generate content and explore different creative directions.
+          </p>
+        </div>
+
+        <div class="step">
+          <div class="number">03 / REFINE</div>
+          <h3>Customize & publish</h3>
+          <p>
+            Refine your content and prepare the final creative for your channels.
+          </p>
+        </div>
+
+      </div>
+
+      <div style="text-align:center;margin-top:35px;">
+        <a href="javascript:goToPippit()" class="btn btn-primary">
+          Explore Pippit AI →
+        </a>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- FEATURES -->
+  <section>
+    <div class="container">
+
+      <div class="section-heading center">
+        <div class="section-label">Capabilities</div>
+
+        <h2>
+          One workflow. Multiple content possibilities.
+        </h2>
+
+        <p class="section-description">
+          Explore AI-assisted tools for different parts of your marketing content workflow.
+        </p>
+      </div>
+
+      <div class="features">
+
+        <div class="card feature">
+          <div class="icon">🎬</div>
+          <h3>AI Video Creation</h3>
+          <p>
+            Create engaging video content for marketing and social platforms.
+          </p>
+        </div>
+
+        <div class="card feature">
+          <div class="icon">🛍️</div>
+          <h3>Product Content</h3>
+          <p>
+            Turn product information and visuals into promotional content.
+          </p>
+        </div>
+
+        <div class="card feature">
+          <div class="icon">🧑‍💼</div>
+          <h3>AI Avatars</h3>
+          <p>
+            Explore presenter-style content using AI-powered avatar tools.
+          </p>
+        </div>
+
+        <div class="card feature">
+          <div class="icon">🖼️</div>
+          <h3>AI Visuals</h3>
+          <p>
+            Create and enhance visual assets for your content workflow.
+          </p>
+        </div>
+
+        <div class="card feature">
+          <div class="icon">📱</div>
+          <h3>Social Content</h3>
+          <p>
+            Develop content designed for today's social-media formats.
+          </p>
+        </div>
+
+        <div class="card feature">
+          <div class="icon">📢</div>
+          <h3>Marketing Creatives</h3>
+          <p>
+            Experiment with different creative approaches for campaigns.
+          </p>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- COMPARISON -->
+  <section>
+    <div class="container">
+
+      <div class="section-heading center">
+        <div class="section-label">A different approach</div>
+
+        <h2>
+          Turn a content bottleneck into a workflow.
+        </h2>
+      </div>
+
+      <div class="comparison">
+
+        <div class="compare-box">
+          <h3>Traditional workflow</h3>
+
+          <ul>
+            <li>✕ <strong>Idea</strong> → search for assets</li>
+            <li>✕ <strong>Film/design</strong> → edit</li>
+            <li>✕ <strong>Resize</strong> → caption</li>
+            <li>✕ <strong>Export</strong> → repeat</li>
+          </ul>
+        </div>
+
+        <div class="compare-box">
+          <h3>AI-assisted workflow</h3>
+
+          <ul>
+            <li>✓ <strong>Idea/product</strong> → AI creation</li>
+            <li>✓ <strong>Generate</strong> → customize</li>
+            <li>✓ <strong>Adapt</strong> → export</li>
+            <li>✓ <strong>Repeat</strong> with new concepts</li>
+          </ul>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- USE CASES -->
+  <section>
+    <div class="container">
+
+      <div class="section-heading">
+        <div class="section-label">Made for creators</div>
+
+        <h2>
+          Useful across different content workflows.
+        </h2>
+      </div>
+
+      <div class="usecases">
+
+        <div class="card">
+          <div class="icon">🛒</div>
+          <h3>E-commerce</h3>
+          <p>Create promotional product content and creative variations.</p>
+        </div>
+
+        <div class="card">
+          <div class="icon">📣</div>
+          <h3>Affiliate Marketing</h3>
+          <p>Build visual content around products and offers.</p>
+        </div>
+
+        <div class="card">
+          <div class="icon">📲</div>
+          <h3>Social Media</h3>
+          <p>Create a consistent stream of content for social platforms.</p>
+        </div>
+
+        <div class="card">
+          <div class="icon">🏪</div>
+          <h3>Small Businesses</h3>
+          <p>Create marketing assets without building a large creative team.</p>
+        </div>
+
+        <div class="card">
+          <div class="icon">💼</div>
+          <h3>Agencies</h3>
+          <p>Speed up repetitive content-production tasks across projects.</p>
+        </div>
+
+        <div class="card">
+          <div class="icon">💡</div>
+          <h3>Creators</h3>
+          <p>Turn ideas into polished content concepts more efficiently.</p>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta-section">
+    <div class="container">
+
+      <div class="cta-box">
+
+        <h2>
+          Your next piece of content could start with one idea.
+        </h2>
+
+        <p>
+          Explore AI-powered tools designed to simplify the content
+          creation process and help you move from idea to creative faster.
+        </p>
+
+        <a href="javascript:goToPippit()" class="btn btn-primary">
+          Try Pippit AI →
+        </a>
+
+        <div class="micro-trust">
+          Independent recommendation • Affiliate link
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section>
+    <div class="container">
+
+      <div class="section-heading center">
+        <div class="section-label">FAQ</div>
+        <h2>Questions before you try it?</h2>
+      </div>
+
+      <div class="faq">
+
+        <details>
+          <summary>What is Pippit AI?</summary>
+          <p>
+            Pippit is an AI-powered content creation platform designed to
+            help creators, marketers and businesses produce different
+            types of marketing content.
+          </p>
+        </details>
+
+        <details>
+          <summary>Who can use an AI content platform?</summary>
+          <p>
+            Creators, marketers, e-commerce sellers, small businesses,
+            agencies and entrepreneurs may find AI-assisted content
+            workflows useful.
+          </p>
+        </details>
+
+        <details>
+          <summary>Do I need advanced editing skills?</summary>
+          <p>
+            AI-assisted tools are designed to simplify parts of the
+            content-production process, although the exact workflow and
+            features available can vary.
+          </p>
+        </details>
+
+        <details>
+          <summary>What can I create?</summary>
+          <p>
+            Depending on the available tools and plan, the platform can
+            support different forms of video, visual, product and
+            marketing content.
+          </p>
+        </details>
+
+        <details>
+          <summary>Is Pippit free?</summary>
+          <p>
+            Pricing, plans and available features can change. Check the
+            current Pippit website for the latest information before
+            signing up.
+          </p>
+        </details>
+
+        <details>
+          <summary>Is this the official Pippit website?</summary>
+          <p>
+            No. This is an independent informational and promotional page.
+            If you choose to continue, you will be redirected through an
+            affiliate link.
+          </p>
+        </details>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="container footer-inner">
+
+      <div class="disclosure">
+        <strong>Affiliate Disclosure</strong><br><br>
+
+        This page contains affiliate links. If you click a link and
+        complete a qualifying action or purchase, we may receive a
+        commission at no additional cost to you.
+        <br><br>
+
+        This is an independent promotional page and is not the official
+        Pippit website. Product names and trademarks belong to their
+        respective owners. Features, pricing and availability may change.
+      </div>
+
+      <div class="footer-links">
+        <a href="#">Privacy</a>
+        <a href="#">Terms</a>
+      </div>
+
+    </div>
+  </footer>
+
+  <!-- MOBILE CTA -->
+  <div class="mobile-cta">
+    <a href="javascript:goToPippit()">
+      Try Pippit AI →
+    </a>
+  </div>
+
+</body>
+</html>
