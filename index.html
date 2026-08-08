@@ -3,64 +3,48 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Luminar Neo — AI Photo Editing for Creators & Photographers</title>
-    <meta name="description" content="Explore Luminar Neo, an AI-powered photo editor designed to help photographers and creators enhance, retouch, remove distractions and transform images with a faster creative workflow.">
+    <title>Pippit AI — Create More Content With AI</title>
+    <meta name="description" content="Explore Pippit AI for AI-assisted video, image, product and marketing content creation. Discover tools designed to simplify modern content workflows.">
+    <link rel="canonical" href="https://example.com/">
     
-    <!-- Open Graph -->
-    <meta property="og:title" content="Luminar Neo — Premium AI Photo Editing">
-    <meta property="og:description" content="Turn good photos into great ones. Spend less time fighting the edit and more time shaping the image with AI-assisted creative control.">
+    <!-- Open Graph Metadata -->
+    <meta property="og:title" content="Pippit AI — Create More Content With AI">
+    <meta property="og:description" content="Explore Pippit AI for AI-assisted video, image, product and marketing content creation. Discover tools designed to simplify modern content workflows.">
     <meta property="og:type" content="website">
     
-    <!-- Google Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600&family=Playfair+Display:wght@400;500;600&display=swap" rel="stylesheet">
+    <!-- Twitter Card Metadata -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Pippit AI — Create More Content With AI">
+    <meta name="twitter:description" content="Explore Pippit AI for AI-assisted video, image, product and marketing content creation. Discover tools designed to simplify modern content workflows.">
 
     <style>
         :root {
-            --bg: #0b0b0a;
-            --surface: #121211;
-            --surface-2: #1a1a18;
-            --text: #f4f0e8;
-            --muted: #aaa69d;
-            --accent: #d6b46a;
-            --accent-hover: #e8c67c;
-            --border: rgba(255, 255, 255, 0.10);
+            --bg: #F7F7F2;
+            --primary: #111512;
+            --accent: #16865A;
+            --accent-hover: #126d48;
+            --secondary-accent: #C6A15B;
+            --surface: #FFFFFF;
+            --muted: #68706A;
+            --border: #E2E2D8;
+            --shadow: 0 10px 30px -10px rgba(17, 21, 18, 0.08);
             --radius: 12px;
-            --nav-height: 72px;
-            
-            --font-sans: 'DM Sans', system-ui, -apple-system, sans-serif;
-            --font-serif: 'Playfair Display', Georgia, serif;
-            
-            --transition: 0.3s cubic-bezier(0.25, 1, 0.5, 1);
+            --transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
         }
 
-        /* Reset & Base */
         * {
             box-sizing: border-box;
             margin: 0;
             padding: 0;
         }
 
-        html {
-            scroll-behavior: smooth;
-            scroll-padding-top: calc(var(--nav-height) + 20px); 
-        }
-
         body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
             background-color: var(--bg);
-            color: var(--text);
-            font-family: var(--font-sans);
+            color: var(--primary);
             line-height: 1.6;
-            overflow-x: hidden;
             -webkit-font-smoothing: antialiased;
-            -moz-osx-font-smoothing: grayscale;
-        }
-
-        img {
-            max-width: 100%;
-            height: auto;
-            display: block;
+            overflow-x: hidden;
         }
 
         a {
@@ -68,136 +52,49 @@
             text-decoration: none;
         }
 
-        button {
-            font-family: inherit;
-            border: none;
-            background: none;
-            cursor: pointer;
+        ul {
+            list-style: none;
         }
 
-        /* Typography */
-        h1, h2, h3, h4 {
-            font-family: var(--font-serif);
-            font-weight: 500;
-            line-height: 1.2;
-            color: var(--text);
-        }
-
-        h1 { font-size: clamp(36px, 6vw, 84px); letter-spacing: -0.02em; }
-        h2 { font-size: clamp(30px, 5vw, 64px); }
-        h3 { font-size: clamp(24px, 3vw, 40px); }
-        
-        .eyebrow {
-            font-family: var(--font-sans);
-            font-size: 13px;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            color: var(--accent);
-            font-weight: 600;
-            display: block;
-            margin-bottom: 1rem;
-        }
-
-        .text-muted { color: var(--muted); }
-        .text-center { text-align: center; }
-
-        /* Layout */
         .container {
             width: 100%;
-            max-width: 1280px;
+            max-width: 1200px;
             margin: 0 auto;
             padding: 0 24px;
         }
 
-        .section {
-            padding: 120px 0;
-            position: relative;
-        }
-
-        @media (max-width: 768px) {
-            .section { padding: 80px 0; }
-        }
-
-        /* Buttons */
-        .btn {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            padding: 16px 36px;
-            font-size: 15px;
-            font-weight: 500;
-            border-radius: 4px;
-            transition: var(--transition);
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-        }
-
-        .btn-primary {
-            background-color: var(--accent);
-            color: #000;
-            border: 1px solid var(--accent);
-        }
-
-        .btn-primary:hover {
-            background-color: var(--accent-hover);
-            transform: translateY(-2px);
-            box-shadow: 0 10px 20px rgba(214, 180, 106, 0.15);
-        }
-
-        .btn-secondary {
-            background-color: transparent;
-            color: var(--text);
-            border: 1px solid var(--border);
-        }
-
-        .btn-secondary:hover {
-            background-color: rgba(255, 255, 255, 0.05);
-            border-color: var(--text);
-        }
-
-        .btn-full { width: 100%; }
-
-        /* Announcement Bar */
-        .utility-bar {
-            background-color: var(--surface-2);
-            text-align: center;
-            padding: 8px 24px;
-            font-size: 13px;
-            color: var(--muted);
-            border-bottom: 1px solid var(--border);
-        }
-
         /* Navigation */
-        .header {
-            position: sticky;
+        header {
+            position: fixed;
             top: 0;
             left: 0;
             right: 0;
-            z-index: 100;
-            background: rgba(11, 11, 10, 0.85);
-            backdrop-filter: blur(16px);
-            -webkit-backdrop-filter: blur(16px);
-            border-bottom: 1px solid transparent;
-            transition: border-color 0.3s;
-        }
-
-        .header.scrolled {
+            background: rgba(247, 247, 242, 0.85);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
             border-bottom: 1px solid var(--border);
+            z-index: 1000;
+            transition: var(--transition);
         }
 
         .nav-container {
             display: flex;
             align-items: center;
             justify-content: space-between;
-            height: var(--nav-height);
+            height: 72px;
         }
 
         .logo {
-            font-family: var(--font-serif);
-            font-size: 22px;
-            font-weight: 600;
-            color: var(--text);
+            font-weight: 700;
+            font-size: 1.25rem;
             letter-spacing: -0.5px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .logo span {
+            color: var(--accent);
         }
 
         .nav-links {
@@ -206,1152 +103,1051 @@
             align-items: center;
         }
 
-        .nav-link {
-            font-size: 14px;
+        .nav-links a {
             color: var(--muted);
-            transition: color 0.3s;
-        }
-
-        .nav-link:hover { color: var(--text); }
-
-        .hamburger {
-            display: none;
-            flex-direction: column;
-            gap: 5px;
-            background: transparent;
-            border: none;
-            cursor: pointer;
-            padding: 8px;
-            z-index: 101; 
-        }
-
-        .hamburger span {
-            display: block;
-            width: 24px;
-            height: 2px;
-            background-color: var(--text);
+            font-size: 0.95rem;
+            font-weight: 500;
             transition: var(--transition);
         }
 
-        /* Mobile Menu */
-        .mobile-menu {
-            position: fixed;
-            top: var(--nav-height);
-            left: 0;
-            width: 100%;
-            height: calc(100vh - var(--nav-height));
-            background-color: var(--bg);
-            padding: 40px 24px;
-            display: flex;
-            flex-direction: column;
-            gap: 24px;
-            transform: translateX(100%);
-            transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-            z-index: 99;
-            overflow-y: auto;
+        .nav-links a:hover {
+            color: var(--primary);
         }
 
-        .mobile-menu.active { transform: translateX(0); }
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            background-color: var(--accent);
+            color: #FFFFFF;
+            font-weight: 600;
+            padding: 12px 24px;
+            border-radius: var(--radius);
+            border: none;
+            cursor: pointer;
+            transition: var(--transition);
+            font-size: 0.95rem;
+            box-shadow: 0 4px 14px rgba(22, 134, 90, 0.2);
+        }
 
-        @media (max-width: 992px) {
-            .nav-links { display: none; }
-            .hamburger { display: flex; }
+        .btn:hover {
+            background-color: var(--accent-hover);
+            transform: translateY(-1px);
+            box-shadow: 0 6px 20px rgba(22, 134, 90, 0.3);
+        }
+
+        .btn-outline {
+            background-color: transparent;
+            color: var(--primary);
+            border: 1px solid var(--border);
+            box-shadow: none;
+        }
+
+        .btn-outline:hover {
+            background-color: var(--surface);
+            border-color: var(--primary);
+            box-shadow: none;
+            transform: translateY(-1px);
         }
 
         /* Hero Section */
         .hero {
-            position: relative;
-            min-height: 90vh;
-            display: flex;
-            align-items: center;
-            padding-top: 60px;
-            overflow: hidden;
-        }
-
-        .hero-bg {
-            position: absolute;
-            inset: 0;
-            z-index: -1;
-            background: radial-gradient(circle at 50% 0%, #2a261f 0%, var(--bg) 60%);
-        }
-
-        .hero-content {
-            max-width: 800px;
-            margin: 0 auto;
+            padding: 160px 0 100px;
             text-align: center;
+            position: relative;
+        }
+
+        .eyebrow {
+            display: inline-block;
+            font-size: 0.75rem;
+            font-weight: 700;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            color: var(--accent);
+            background: rgba(22, 134, 90, 0.08);
+            padding: 6px 12px;
+            border-radius: 20px;
+            margin-bottom: 24px;
+        }
+
+        h1 {
+            font-size: clamp(2.5rem, 5vw, 4.5rem);
+            font-weight: 800;
+            letter-spacing: -1.5px;
+            line-height: 1.1;
+            max-width: 800px;
+            margin: 0 auto 24px;
         }
 
         .hero p {
-            font-size: clamp(16px, 2vw, 22px);
+            font-size: clamp(1.1rem, 2vw, 1.25rem);
             color: var(--muted);
-            margin: 24px auto 48px;
-            max-width: 640px;
+            max-width: 600px;
+            margin: 0 auto 40px;
         }
 
-        .hero-actions {
+        .hero-cta-group {
             display: flex;
             gap: 16px;
             justify-content: center;
+            align-items: center;
+            margin-bottom: 16px;
+            flex-wrap: wrap;
         }
 
-        @media (max-width: 600px) {
-            .hero-actions { flex-direction: column; }
-            .btn { width: 100%; }
+        .hero-disclaimer {
+            font-size: 0.85rem;
+            color: var(--muted);
+            margin-bottom: 60px;
         }
 
-        /* Before/After Slider */
-        .slider-section {
-            padding: 0 24px;
-            margin-top: -60px;
-            position: relative;
-            z-index: 10;
-        }
-
-        .slider-wrapper {
-            max-width: 1100px;
-            margin: 0 auto;
-            position: relative;
-            border-radius: var(--radius);
-            overflow: hidden;
-            aspect-ratio: 16 / 9;
-            box-shadow: 0 30px 60px rgba(0,0,0,0.5);
-            border: 1px solid var(--border);
+        /* Hero Visual / Mockup */
+        .hero-mockup {
             background: var(--surface);
-            touch-action: none; 
+            border: 1px solid var(--border);
+            border-radius: calc(var(--radius) * 1.5);
+            padding: 24px;
+            box-shadow: var(--shadow);
+            max-width: 900px;
+            margin: 0 auto;
+            text-align: left;
         }
 
-        .slider-img {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            background-color: var(--surface-2);
+        .mockup-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            border-bottom: 1px solid var(--border);
+            padding-bottom: 16px;
+            margin-bottom: 20px;
         }
 
-        .slider-before {
-            clip-path: polygon(0 0, 50% 0, 50% 100%, 0 100%);
-            z-index: 2;
+        .mockup-dots {
+            display: flex;
+            gap: 6px;
         }
 
-        .slider-handle {
-            position: absolute;
-            top: 0;
-            bottom: 0;
-            left: 50%;
-            width: 2px;
-            background-color: #fff;
-            z-index: 3;
-            transform: translateX(-50%);
-            cursor: ew-resize;
-        }
-
-        .slider-button {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            width: 48px;
-            height: 48px;
-            background: #fff;
+        .mockup-dot {
+            width: 10px;
+            height: 10px;
             border-radius: 50%;
+            background: var(--border);
+        }
+
+        .mockup-title {
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--muted);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .mockup-grid {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 20px;
+        }
+
+        @media (max-width: 768px) {
+            .mockup-grid {
+                grid-template-columns: 1fr;
+            }
+            .nav-links {
+                display: none;
+            }
+        }
+
+        .mockup-sidebar, .mockup-main {
+            background: var(--bg);
+            border-radius: var(--radius);
+            padding: 16px;
+        }
+
+        .mockup-input-box {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 12px;
+            font-size: 0.9rem;
+            color: var(--muted);
+            margin-bottom: 12px;
+        }
+
+        .mockup-preview-card {
+            background: var(--surface);
+            border-radius: 8px;
+            height: 140px;
+            border: 1px solid var(--border);
             display: flex;
             align-items: center;
             justify-content: center;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.3);
-            pointer-events: none;
+            position: relative;
+            overflow: hidden;
         }
 
-        .slider-button::before,
-        .slider-button::after {
-            content: '';
-            border: solid #000;
-            border-width: 0 2px 2px 0;
-            display: inline-block;
-            padding: 4px;
-        }
-
-        .slider-button::before { transform: rotate(135deg); margin-right: 4px; }
-        .slider-button::after { transform: rotate(-45deg); margin-left: 4px; }
-
-        .slider-label {
+        .mockup-preview-card::after {
+            content: "";
             position: absolute;
-            bottom: 24px;
-            padding: 6px 12px;
-            background: rgba(0,0,0,0.6);
-            backdrop-filter: blur(4px);
-            color: #fff;
-            font-size: 12px;
+            inset: 0;
+            background: linear-gradient(45deg, rgba(22, 134, 90, 0.05), rgba(198, 161, 91, 0.05));
+        }
+
+        /* Sections General */
+        section {
+            padding: 100px 0;
+            border-top: 1px solid var(--border);
+        }
+
+        .section-header {
+            text-align: center;
+            max-width: 700px;
+            margin: 0 auto 60px;
+        }
+
+        .section-header h2 {
+            font-size: clamp(2rem, 3vw, 2.75rem);
+            font-weight: 800;
+            letter-spacing: -1px;
+            margin-bottom: 16px;
+        }
+
+        .section-header p {
+            color: var(--muted);
+            font-size: 1.1rem;
+        }
+
+        /* Problem Section */
+        .problem-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 24px;
+            margin-bottom: 48px;
+        }
+
+        .card {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: 32px 24px;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+
+        .card:hover {
+            transform: translateY(-4px);
+            border-color: rgba(0,0,0,0.15);
+        }
+
+        .card h3 {
+            font-size: 1.2rem;
+            font-weight: 700;
+            margin-bottom: 12px;
+        }
+
+        .card p {
+            color: var(--muted);
+            font-size: 0.95rem;
+        }
+
+        .problem-transition {
+            text-align: center;
             font-weight: 600;
+            font-size: 1.2rem;
+            margin-bottom: 24px;
+        }
+
+        .center-cta {
+            text-align: center;
+        }
+
+        /* Solution / Workflow Section */
+        .workflow-steps {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 24px;
+            position: relative;
+            margin-bottom: 48px;
+        }
+
+        .workflow-step {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: 32px 24px;
+            position: relative;
+        }
+
+        .step-number {
+            font-size: 0.8rem;
+            font-weight: 800;
+            color: var(--accent);
             letter-spacing: 1px;
-            border-radius: 4px;
-            z-index: 4;
-            pointer-events: none;
-        }
-        
-        .label-before { left: 12px; }
-        .label-after { right: 12px; z-index: 1; }
-
-        @media (max-width: 768px) {
-            .slider-wrapper { aspect-ratio: 4 / 5; }
-            .slider-label { bottom: 16px; font-size: 10px; }
+            text-transform: uppercase;
+            margin-bottom: 12px;
+            display: block;
         }
 
-        /* Features Grid */
+        .workflow-step h3 {
+            font-size: 1.15rem;
+            margin-bottom: 8px;
+        }
+
+        .workflow-step p {
+            color: var(--muted);
+            font-size: 0.9rem;
+        }
+
+        /* Feature Showcase Grid */
         .feature-grid {
             display: grid;
-            gap: 120px;
-        }
-
-        .feature-row {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 64px;
-            align-items: center;
-        }
-
-        .feature-row.reverse {
-            grid-template-columns: 1fr 1fr;
-            direction: rtl;
-        }
-        
-        .feature-row.reverse > * { direction: ltr; }
-
-        .feature-content h3 { margin-bottom: 24px; }
-        .feature-content p { color: var(--muted); font-size: 18px; margin-bottom: 32px; }
-
-        .feature-visual {
-            position: relative;
-            border-radius: var(--radius);
-            overflow: hidden;
-            aspect-ratio: 4 / 3;
-            background: var(--surface);
-            border: 1px solid var(--border);
-        }
-
-        .feature-visual img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.7s ease;
-        }
-
-        .feature-visual:hover img {
-            transform: scale(1.03);
-        }
-
-        @media (max-width: 992px) {
-            .feature-grid { gap: 80px; }
-            .feature-row, .feature-row.reverse { grid-template-columns: 1fr; gap: 40px; }
-            .feature-content { text-align: center; }
-            .feature-visual { aspect-ratio: 16 / 9; }
-        }
-
-        /* Generative Section (Full Width) */
-        .gen-section {
-            background: var(--surface);
-            border-top: 1px solid var(--border);
-            border-bottom: 1px solid var(--border);
-        }
-
-        .sequence-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
             gap: 24px;
-            margin-top: 64px;
-        }
-
-        .seq-card {
-            background: var(--bg);
-            border: 1px solid var(--border);
-            border-radius: var(--radius);
-            overflow: hidden;
-        }
-        
-        .seq-visual {
-            aspect-ratio: 1;
-            background: var(--surface-2);
-            position: relative;
-        }
-
-        .seq-content { padding: 32px; }
-        .seq-content h4 { font-family: var(--font-sans); font-size: 18px; margin-bottom: 12px; }
-        .seq-content p { color: var(--muted); font-size: 15px; }
-
-        @media (max-width: 992px) {
-            .sequence-grid { grid-template-columns: 1fr; }
-        }
-
-        /* Comparison Workflow (Beginner vs Advanced) */
-        .workflow-compare {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 40px;
-            margin-top: 64px;
-        }
-
-        .workflow-box {
-            background: var(--surface);
-            padding: 48px;
-            border-radius: var(--radius);
-            border: 1px solid var(--border);
-        }
-
-        .workflow-box h4 {
-            font-family: var(--font-sans);
-            font-size: 14px;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            color: var(--accent);
-            margin-bottom: 32px;
-        }
-
-        .workflow-steps {
-            list-style: none;
-        }
-
-        .workflow-steps li {
-            padding: 16px 0;
-            border-bottom: 1px solid var(--border);
-            color: var(--muted);
-            display: flex;
-            align-items: center;
-            gap: 16px;
-        }
-        .workflow-steps li:last-child { border-bottom: none; }
-        .workflow-steps li::before {
-            content: '';
-            width: 8px;
-            height: 8px;
-            border-radius: 50%;
-            background: var(--text);
-            opacity: 0.3;
         }
 
         @media (max-width: 768px) {
-            .workflow-compare { grid-template-columns: 1fr; }
-            .workflow-box { padding: 32px; }
+            .feature-grid {
+                grid-template-columns: 1fr;
+            }
         }
 
-        /* Use Cases */
-        .use-case-scroll {
+        /* One Idea Many Assets */
+        .transformation-box {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: calc(var(--radius) * 1.5);
+            padding: 48px 24px;
+            text-align: center;
+            box-shadow: var(--shadow);
+        }
+
+        .transformation-flow {
             display: flex;
-            gap: 24px;
-            overflow-x: auto;
-            padding-bottom: 24px;
-            scrollbar-width: none;
-            -ms-overflow-style: none;
-            margin-top: 48px;
-            -webkit-overflow-scrolling: touch; 
+            align-items: center;
+            justify-content: center;
+            gap: 16px;
+            flex-wrap: wrap;
+            margin-top: 32px;
         }
-        
-        .use-case-scroll::-webkit-scrollbar { display: none; }
 
-        .use-case-card {
-            flex: 0 0 300px;
+        .transformation-node {
+            background: var(--bg);
+            border: 1px solid var(--border);
+            padding: 16px 24px;
+            border-radius: var(--radius);
+            font-weight: 600;
+            font-size: 0.95rem;
+        }
+
+        .transformation-node.highlight {
+            background: var(--accent);
+            color: #FFFFFF;
+            border-color: var(--accent);
+        }
+
+        .arrow {
+            color: var(--muted);
+            font-weight: bold;
+        }
+
+        /* Before vs After */
+        .comparison-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 32px;
+        }
+
+        @media (max-width: 768px) {
+            .comparison-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .comparison-col {
             background: var(--surface);
             border: 1px solid var(--border);
             border-radius: var(--radius);
             padding: 32px;
         }
 
-        .use-case-card h4 { font-family: var(--font-sans); font-size: 20px; margin-bottom: 12px; }
-        .use-case-card p { color: var(--muted); font-size: 15px; }
-
-        /* Pricing/Licensing placeholders */
-        .pricing-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 24px;
-            margin-top: 64px;
+        .comparison-col.highlight-col {
+            border-color: var(--accent);
+            box-shadow: var(--shadow);
         }
 
-        .pricing-card {
-            background: var(--surface);
-            border: 1px solid var(--border);
-            border-radius: var(--radius);
-            padding: 40px;
-            text-align: center;
+        .comparison-col h3 {
+            font-size: 1.25rem;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .comparison-list {
             display: flex;
             flex-direction: column;
+            gap: 12px;
         }
 
-        .pricing-card.popular {
-            border-color: var(--accent);
-            position: relative;
-        }
-        
-        .popular-badge {
-            position: absolute;
-            top: -12px;
-            left: 50%;
-            transform: translateX(-50%);
-            background: var(--accent);
-            color: #000;
-            font-size: 11px;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            padding: 4px 12px;
-            border-radius: 20px;
+        .comparison-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            color: var(--muted);
+            font-size: 0.95rem;
         }
 
-        .pricing-card h3 { font-family: var(--font-sans); font-size: 24px; margin-bottom: 16px; }
-        .pricing-card p { color: var(--muted); margin-bottom: 32px; font-size: 15px; flex-grow: 1; }
-
-        @media (max-width: 992px) {
-            .pricing-grid { grid-template-columns: 1fr; max-width: 400px; margin-left: auto; margin-right: auto; }
+        .comparison-col.highlight-col .comparison-item {
+            color: var(--primary);
+            font-weight: 500;
         }
 
-        /* FAQ */
+        /* Interactive Demo */
+        .demo-box {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: calc(var(--radius) * 1.5);
+            padding: 40px;
+            max-width: 800px;
+            margin: 0 auto;
+            box-shadow: var(--shadow);
+        }
+
+        .demo-input-group {
+            display: flex;
+            gap: 12px;
+            margin-bottom: 24px;
+        }
+
+        .demo-input {
+            flex: 1;
+            background: var(--bg);
+            border: 1px solid var(--border);
+            padding: 14px 18px;
+            border-radius: var(--radius);
+            font-size: 1rem;
+            color: var(--primary);
+            outline: none;
+        }
+
+        .demo-results {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 16px;
+            opacity: 0.4;
+            transition: var(--transition);
+        }
+
+        .demo-results.active {
+            opacity: 1;
+        }
+
+        .demo-result-card {
+            background: var(--bg);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 20px;
+            text-align: center;
+            font-size: 0.85rem;
+            font-weight: 600;
+        }
+
+        @media (max-width: 600px) {
+            .demo-results {
+                grid-template-columns: 1fr;
+            }
+            .demo-input-group {
+                flex-direction: column;
+            }
+        }
+
+        /* FAQ Accordion */
         .faq-container {
             max-width: 800px;
-            margin: 64px auto 0;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
         }
 
         .faq-item {
-            border-bottom: 1px solid var(--border);
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            overflow: hidden;
         }
 
         .faq-question {
-            width: 100%;
-            text-align: left;
-            padding: 24px 0;
-            font-size: 18px;
-            font-weight: 500;
-            color: var(--text);
+            padding: 20px 24px;
+            font-weight: 600;
+            font-size: 1.05rem;
+            cursor: pointer;
             display: flex;
             justify-content: space-between;
             align-items: center;
         }
 
-        .faq-icon {
-            position: relative;
-            width: 20px;
-            height: 20px;
-        }
-
-        .faq-icon::before, .faq-icon::after {
-            content: '';
-            position: absolute;
-            background: var(--text);
-            transition: transform 0.3s;
-        }
-        
-        .faq-icon::before { top: 9px; left: 0; width: 20px; height: 2px; }
-        .faq-icon::after { top: 0; left: 9px; width: 2px; height: 20px; }
-
-        .faq-item.active .faq-icon::after { transform: rotate(90deg); opacity: 0; }
-        .faq-item.active .faq-icon::before { transform: rotate(180deg); }
-
         .faq-answer {
-            max-height: 0;
-            overflow: hidden;
-            transition: max-height 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-        }
-
-        .faq-answer-inner {
-            padding-bottom: 24px;
+            padding: 0 24px 20px;
             color: var(--muted);
+            font-size: 0.95rem;
+            display: none;
         }
 
-        /* Trust/CTA Bottom */
-        .bottom-cta {
-            background: linear-gradient(to bottom, var(--bg), var(--surface));
+        .faq-item.open .faq-answer {
+            display: block;
+        }
+
+        /* Final CTA Section */
+        .final-cta {
+            background: var(--primary);
+            color: #FFFFFF;
             text-align: center;
-            border-top: 1px solid var(--border);
+            padding: 120px 0;
+            border-top: none;
         }
 
-        .trust-badges {
-            display: flex;
-            justify-content: center;
-            gap: 32px;
-            margin-top: 48px;
-            flex-wrap: wrap;
+        .final-cta h2 {
+            font-size: clamp(2.5rem, 4vw, 3.5rem);
+            font-weight: 800;
+            letter-spacing: -1px;
+            margin-bottom: 20px;
         }
 
-        .trust-item {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            color: var(--muted);
-            font-size: 14px;
+        .final-cta p {
+            color: #A3A8A3;
+            font-size: 1.15rem;
+            max-width: 600px;
+            margin: 0 auto 40px;
         }
-        
-        .trust-item svg { width: 20px; height: 20px; fill: var(--accent); }
+
+        .final-cta .btn {
+            background: var(--accent);
+        }
+
+        .final-cta .btn:hover {
+            background: #189865;
+        }
 
         /* Footer */
-        .footer {
-            border-top: 1px solid var(--border);
-            padding: 64px 0 32px;
-            background: var(--bg);
+        footer {
+            background: var(--primary);
+            color: #A3A8A3;
+            padding: 60px 0 100px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            font-size: 0.85rem;
         }
 
         .footer-grid {
-            display: grid;
-            grid-template-columns: 2fr 1fr 1fr;
-            gap: 64px;
-            margin-bottom: 64px;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 40px;
+            flex-wrap: wrap;
+            gap: 24px;
         }
 
-        .footer-logo { margin-bottom: 16px; display: inline-block; }
-        .footer-desc { color: var(--muted); font-size: 14px; max-width: 320px; }
-        
-        .footer h5 { font-family: var(--font-sans); font-size: 16px; margin-bottom: 24px; }
-        .footer-links { list-style: none; }
-        .footer-links li { margin-bottom: 12px; }
-        .footer-links a { color: var(--muted); font-size: 14px; transition: color 0.3s; }
-        .footer-links a:hover { color: var(--text); }
+        .footer-brand {
+            color: #FFFFFF;
+            font-weight: 700;
+            font-size: 1.1rem;
+            margin-bottom: 8px;
+        }
 
-        .footer-bottom {
-            border-top: 1px solid var(--border);
-            padding-top: 32px;
+        .footer-links {
+            display: flex;
+            gap: 24px;
+        }
+
+        .footer-links a {
+            color: #A3A8A3;
+            transition: var(--transition);
+        }
+
+        .footer-links a:hover {
+            color: #FFFFFF;
+        }
+
+        .footer-disclosures {
+            border-top: 1px solid rgba(255,255,255,0.1);
+            padding-top: 30px;
             display: flex;
             flex-direction: column;
-            gap: 16px;
-            text-align: center;
+            gap: 12px;
+            color: #7A817C;
+            line-height: 1.5;
         }
 
-        .affiliate-disclosure {
-            font-size: 12px;
-            color: #666;
-            max-width: 800px;
-            margin: 0 auto;
+        /* Mobile Sticky CTA */
+        .mobile-sticky-cta {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: var(--surface);
+            border-top: 1px solid var(--border);
+            padding: 12px 24px;
+            display: none;
+            z-index: 999;
+            box-shadow: 0 -4px 20px rgba(0,0,0,0.05);
         }
 
-        .copyright { font-size: 13px; color: var(--muted); }
+        .mobile-sticky-cta .btn {
+            width: 100%;
+        }
 
         @media (max-width: 768px) {
-            .footer-grid { grid-template-columns: 1fr; gap: 40px; }
-        }
-
-        /* Utilities */
-        .reveal {
-            opacity: 0;
-            transform: translateY(30px);
-            transition: opacity 0.8s ease, transform 0.8s ease;
-        }
-        
-        .reveal.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        /* Fallback Styles */
-        .img-fallback {
-            width: 100%;
-            height: 100%;
-            min-height: 400px;
-            background: linear-gradient(135deg, #121211, #1a1a18);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border-radius: inherit;
-        }
-        .img-fallback::after {
-            content: 'Editorial Visual';
-            color: var(--muted);
-            font-family: var(--font-sans);
-            font-size: 12px;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-        }
-        
-        @media (prefers-reduced-motion: reduce) {
-            *, ::before, ::after {
-                animation-duration: 0.01ms !important;
-                animation-iteration-count: 1 !important;
-                transition-duration: 0.01ms !important;
-                scroll-behavior: auto !important;
+            .mobile-sticky-cta {
+                display: block;
+            }
+            body {
+                padding-bottom: 70px;
             }
         }
     </style>
 </head>
 <body>
 
-    <div class="utility-bar">
-        Designed for creators. <a href="#" onclick="goToOffer(event)" style="color: var(--accent); text-decoration: underline;">Check current official offers</a>
-    </div>
-
-    <header class="header" id="header">
+    <!-- Navigation -->
+    <header>
         <div class="container nav-container">
-            <a href="#" class="logo">Luminar Neo</a>
-            
+            <a href="#" class="logo">Pippit<span>AI</span> Info</a>
             <nav class="nav-links">
-                <a href="#features" class="nav-link">Features</a>
-                <a href="#gen-ai" class="nav-link">AI Tools</a>
-                <a href="#workflow" class="nav-link">Workflow</a>
-                <a href="#pricing" class="nav-link">Plans</a>
-                <a href="#faq" class="nav-link">FAQ</a>
-                <button onclick="goToOffer()" class="btn btn-primary" style="padding: 10px 24px; font-size: 13px;">Explore Neo</button>
+                <a href="#problem">Problems</a>
+                <a href="#workflow">Workflow</a>
+                <a href="#features">Features</a>
+                <a href="#ecommerce">E-Commerce</a>
+                <a href="#faq">FAQ</a>
             </nav>
-
-            <button class="hamburger" id="mobile-menu-btn" aria-label="Toggle Menu">
-                <span></span>
-                <span></span>
-                <span></span>
-            </button>
+            <button class="btn" onclick="goToPippit('navigation')">Try Pippit AI →</button>
         </div>
     </header>
 
-    <div class="mobile-menu" id="mobile-menu">
-        <a href="#features" class="nav-link">Features</a>
-        <a href="#gen-ai" class="nav-link">AI Tools</a>
-        <a href="#workflow" class="nav-link">Workflow</a>
-        <a href="#pricing" class="nav-link">Plans</a>
-        <a href="#faq" class="nav-link">FAQ</a>
-        <button onclick="goToOffer()" class="btn btn-primary btn-full mt-4">Explore Luminar Neo</button>
-    </div>
-
-    <main>
-        <!-- Hero -->
-        <section class="hero">
-            <div class="hero-bg"></div>
-            <div class="container hero-content reveal">
-                <span class="eyebrow">Professional Without The Complexity</span>
-                <h1>Turn Good Photos<br>Into Great Ones.</h1>
-                <p>AI-powered photo editing designed to help you enhance, transform and refine your images without turning every edit into a technical exercise.</p>
-                <div class="hero-actions">
-                    <button onclick="goToOffer()" class="btn btn-primary">Explore Luminar Neo</button>
-                    <a href="#demo" class="btn btn-secondary">See What It Can Do</a>
-                </div>
-            </div>
-        </section>
-
-        <!-- Interactive Before/After -->
-        <section class="slider-section reveal" id="demo">
-            <div class="slider-wrapper" id="slider-container" role="region" aria-label="Image comparison slider" tabindex="0">
-                <!-- After Image (Bottom Layer) -->
-                <img src="https://images.unsplash.com/photo-1469474968028-56623f02e42e?auto=format&fit=crop&w=1200&q=80" alt="Landscape enhanced with AI" class="slider-img" onerror="handleFallback(this)" loading="lazy">
-                <span class="slider-label label-after" style="right: 12px;">EDITED WITH AI</span>
-                
-                <!-- Before Image (Top Layer, Clipped) -->
-                <div class="slider-before" id="slider-before" style="position: absolute; inset: 0;">
-                    <img src="https://images.unsplash.com/photo-1469474968028-56623f02e42e?auto=format&fit=crop&w=1200&q=80" alt="Original landscape" class="slider-img" onerror="handleFallback(this)" loading="eager" style="filter: brightness(0.7) contrast(0.8) grayscale(0.4);">
-                </div>
-                <span class="slider-label label-before" style="left: 12px;">ORIGINAL</span>
-                
-                <!-- Draggable Handle -->
-                <div class="slider-handle" id="slider-handle">
-                    <div class="slider-button"></div>
-                </div>
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <span class="eyebrow">AI-POWERED CONTENT CREATION</span>
+            <h1>Create More Content.<br>Spend Less Time Creating It.</h1>
+            <p>Turn ideas, products, images and prompts into professional marketing content with AI-powered creative tools.</p>
+            
+            <div class="hero-cta-group">
+                <button class="btn" onclick="goToPippit('hero_primary')">TRY PIPPIT AI →</button>
+                <button class="btn btn-outline" onclick="document.getElementById('workflow').scrollIntoView({behavior: 'smooth'})">EXPLORE HOW IT WORKS</button>
             </div>
             
-            <div class="container text-center mt-12" style="max-width: 800px; margin-top: 64px;">
-                <h3 style="font-family: var(--font-sans); font-size: 20px; font-weight: 400; color: var(--muted);">Luminar Neo is a modern photo editor built around AI-assisted tools, giving photographers and creators faster ways to enhance, retouch, remove distractions, transform compositions and refine images.</h3>
-            </div>
-        </section>
+            <div class="hero-disclaimer">Independent recommendation • Affiliate link</div>
 
-        <!-- AI Capabilities Grid -->
-        <section class="section" id="features">
-            <div class="container">
-                <div class="text-center mb-16 reveal">
-                    <span class="eyebrow">Intelligent Editing</span>
-                    <h2>Change More Than Settings.</h2>
+            <!-- Hero Visual / Mockup -->
+            <div class="hero-mockup">
+                <div class="mockup-header">
+                    <div class="mockup-dots">
+                        <div class="mockup-dot"></div>
+                        <div class="mockup-dot"></div>
+                        <div class="mockup-dot"></div>
+                    </div>
+                    <div class="mockup-title">AI CONTENT WORKFLOW</div>
+                </div>
+                <div class="mockup-grid">
+                    <div class="mockup-sidebar">
+                        <div class="mockup-input-box">Prompt: Create social content for summer product line...</div>
+                        <div class="mockup-input-box">Input: Product Image / Asset</div>
+                    </div>
+                    <div class="mockup-main">
+                        <div class="mockup-preview-card">
+                            <span style="font-weight:600; color:var(--muted)">AI Generation Workspace</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Problem Section -->
+    <section id="problem">
+        <div class="container">
+            <div class="section-header">
+                <h2>Content Creation Has Become a Full-Time Job</h2>
+                <p>The modern digital landscape demands constant output, stretching creative teams and solo operators thin.</p>
+            </div>
+
+            <div class="problem-grid">
+                <div class="card">
+                    <h3>Too Much Time</h3>
+                    <p>Planning, designing, editing and adapting content can consume hours of valuable weekly production time.</p>
+                </div>
+                <div class="card">
+                    <h3>Too Many Tools</h3>
+                    <p>Creators often jump between multiple disjointed software suites just to complete a single marketing campaign.</p>
+                </div>
+                <div class="card">
+                    <h3>Constant Content Demand</h3>
+                    <p>Social media and digital channels require fresh, engaging creative ideas continuously to maintain attention.</p>
+                </div>
+                <div class="card">
+                    <h3>Editing Complexity</h3>
+                    <p>Not everyone has months to spend mastering professional, intricate video and design editing software.</p>
+                </div>
+            </div>
+
+            <div class="problem-transition">What if more of that workflow could be assisted by AI?</div>
+            <div class="center-cta">
+                <button class="btn btn-outline" onclick="goToPippit('problem_cta')">SEE WHAT PIPPIT CAN DO →</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Solution / Workflow Section -->
+    <section id="workflow">
+        <div class="container">
+            <div class="section-header">
+                <h2>Meet Your AI-Powered Creative Workflow</h2>
+                <p>Streamline how your ideas transition into fully formed digital assets.</p>
+            </div>
+
+            <div class="workflow-steps">
+                <div class="workflow-step">
+                    <span class="step-number">Step 01</span>
+                    <h3>Start With an Idea</h3>
+                    <p>Use a text prompt, image, media file, product asset, or other supported input to begin your project.</p>
+                </div>
+                <div class="workflow-step">
+                    <span class="step-number">Step 02</span>
+                    <h3>Generate</h3>
+                    <p>Leverage AI-assisted tools to build video, image, and marketing content drafts quickly.</p>
+                </div>
+                <div class="workflow-step">
+                    <span class="step-number">Step 03</span>
+                    <h3>Refine</h3>
+                    <p>Adjust your creative direction, make edits, and customize the resulting output to fit your brand.</p>
+                </div>
+                <div class="workflow-step">
+                    <span class="step-number">Step 04</span>
+                    <h3>Publish</h3>
+                    <p>Prepare your finished creative assets for deployment across your chosen marketing or social channels.</p>
+                </div>
+            </div>
+
+            <div class="center-cta">
+                <button class="btn" onclick="goToPippit('workflow_cta')">EXPLORE PIPPIT AI →</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Feature Showcase -->
+    <section id="features">
+        <div class="container">
+            <div class="section-header">
+                <h2>Built For Modern Content Workflows</h2>
+                <p>Explore the primary creative capabilities designed to assist modern marketers and creators.</p>
+            </div>
+
+            <div class="feature-grid">
+                <div class="card">
+                    <h3>AI Video Creation</h3>
+                    <p>Create marketing and social video concepts using advanced AI-assisted workflows. (Depending on available tools and plan.)</p>
+                </div>
+                <div class="card">
+                    <h3>AI Image Creation</h3>
+                    <p>Generate visual marketing assets and creative designs tailored to your campaign requirements.</p>
+                </div>
+                <div class="card">
+                    <h3>Product Showcase</h3>
+                    <p>Create product-focused visual content designed specifically for e-commerce and digital storefront promotions.</p>
+                </div>
+                <div class="card">
+                    <h3>AI Avatars</h3>
+                    <p>Create presenter-style content using digital avatar capabilities, subject to tool availability.</p>
+                </div>
+                <div class="card">
+                    <h3>Video Translation</h3>
+                    <p>Adapt video content effectively for different global languages and broader audiences.</p>
+                </div>
+                <div class="card">
+                    <h3>Social Content</h3>
+                    <p>Produce visual content structured for rapid social-media publishing workflows across major networks.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- One Idea Many Assets -->
+    <section>
+        <div class="container">
+            <div class="transformation-box">
+                <h2>Start With One Idea. Explore Multiple Creative Directions.</h2>
+                <p style="color: var(--muted); margin-top: 12px; max-width: 600px; margin-left: auto; margin-right: auto;">See how a single input transforms into an array of marketing content formats.</p>
+                
+                <div class="transformation-flow">
+                    <div class="transformation-node highlight">ONE PRODUCT IMAGE</div>
+                    <span class="arrow">↓</span>
+                    <div class="transformation-node">AI CREATIVE WORKFLOW</div>
+                    <span class="arrow">↓</span>
+                    <div class="transformation-node">VIDEO • IMAGE • CREATIVE • SOCIAL • AVATAR</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- E-Commerce Section -->
+    <section id="ecommerce">
+        <div class="container">
+            <div class="section-header">
+                <h2>Turn Product Assets Into Marketing Content</h2>
+                <p>Designed to help e-commerce sellers turn simple product photos into diverse promotional media.</p>
+            </div>
+
+            <div class="transformation-box" style="text-align: left; max-width: 800px; margin: 0 auto;">
+                <h3 style="margin-bottom: 12px;">Example Workflow: Premium Skincare Bottle</h3>
+                <p style="color: var(--muted); margin-bottom: 24px;">Instead of starting every creative element from scratch, use an AI-assisted workflow to transition your core product asset into multiple marketing formats.</p>
+                <div style="display: flex; gap: 12px; flex-wrap: wrap; margin-bottom: 24px;">
+                    <span style="background: var(--bg); padding: 8px 14px; border-radius: 6px; font-size: 0.9rem; border: 1px solid var(--border);">Product Image</span>
+                    <span style="background: var(--bg); padding: 8px 14px; border-radius: 6px; font-size: 0.9rem; border: 1px solid var(--border);">AI Creative Engine</span>
+                    <span style="background: var(--bg); padding: 8px 14px; border-radius: 6px; font-size: 0.9rem; border: 1px solid var(--border);">Product Video</span>
+                    <span style="background: var(--bg); padding: 8px 14px; border-radius: 6px; font-size: 0.9rem; border: 1px solid var(--border);">Social Ad</span>
+                </div>
+                <button class="btn" onclick="goToPippit('ecommerce_cta')">CREATE WITH AI →</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Creator Section -->
+    <section>
+        <div class="container">
+            <div class="section-header">
+                <h2>Built For The Content Economy</h2>
+                <p>Tailored for creators, marketers, agencies, and businesses looking for efficiency.</p>
+            </div>
+
+            <div class="problem-grid">
+                <div class="card">
+                    <h3>Content Creators</h3>
+                    <p>Turn raw ideas into structured social-media content concepts with minimal friction.</p>
+                </div>
+                <div class="card">
+                    <h3>Affiliate Marketers</h3>
+                    <p>Create visual promotional content around specific products and marketing campaigns.</p>
+                </div>
+                <div class="card">
+                    <h3>Social Media Managers</h3>
+                    <p>Produce creative variations for multiple channels without burning out your design team.</p>
+                </div>
+                <div class="card">
+                    <h3>Agencies & Businesses</h3>
+                    <p>Streamline repetitive production tasks to scale content output for multiple clients or brands.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Before vs After -->
+    <section>
+        <div class="container">
+            <div class="section-header">
+                <h2>A Smarter Way to Produce Content</h2>
+                <p>Compare traditional workflows with an AI-assisted creative approach.</p>
+            </div>
+
+            <div class="comparison-grid">
+                <div class="comparison-col">
+                    <h3>Traditional Workflow</h3>
+                    <ul class="comparison-list">
+                        <li class="comparison-item"><span>✕</span> Idea conceptualization</li>
+                        <li class="comparison-item"><span>✕</span> Endless asset searching</li>
+                        <li class="comparison-item"><span>✕</span> Complex manual design</li>
+                        <li class="comparison-item"><span>✕</span> Lengthy recording sessions</li>
+                        <li class="comparison-item"><span>✕</span> Manual timeline editing</li>
+                        <li class="comparison-item"><span>✕</span> Tedious resizing per channel</li>
+                    </ul>
+                </div>
+                <div class="comparison-col highlight-col">
+                    <h3>AI-Assisted Workflow</h3>
+                    <ul class="comparison-list">
+                        <li class="comparison-item"><span>✓</span> Idea or product input</li>
+                        <li class="comparison-item"><span>✓</span> AI creation assistance</li>
+                        <li class="comparison-item"><span>✓</span> Quick customization</li>
+                        <li class="comparison-item"><span>✓</span> Streamlined export & publish</li>
+                    </ul>
+                    <p style="font-size: 0.85rem; color: var(--muted); margin-top: 20px;">Note: AI helps reduce repetitive parts of the production workflow, saving time.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Interactive Demo -->
+    <section>
+        <div class="container">
+            <div class="section-header">
+                <h2>Interactive Concept Preview</h2>
+                <p>Test out a simulated workflow interaction below.</p>
+            </div>
+
+            <div class="demo-box">
+                <div class="demo-input-group">
+                    <input type="text" class="demo-input" id="demoInput" value="Create a premium social-media video for my new product." readonly>
+                    <button class="btn" onclick="runDemo()">GENERATE</button>
                 </div>
                 
-                <div class="feature-grid">
-                    <!-- Feature 1 -->
-                    <div class="feature-row reveal">
-                        <div class="feature-content">
-                            <span class="eyebrow">Landscape</span>
-                            <h3>Give the Scene the Light It Deserved.</h3>
-                            <p>Transform dull skies and balance exposure instantly. Enhance AI and Sky AI evaluate the depth of your image, applying natural-looking adjustments without complex masking.</p>
-                            <button onclick="goToOffer()" class="btn btn-secondary">Discover Landscape Tools</button>
-                        </div>
-                        <div class="feature-visual">
-                            <img src="https://images.unsplash.com/photo-1469474968028-56623f02e42e?auto=format&fit=crop&w=1000&q=80" alt="Enhanced landscape photography" loading="lazy" onerror="handleFallback(this)">
-                        </div>
-                    </div>
+                <div class="demo-results" id="demoResults">
+                    <div class="demo-result-card">🎬 Video Concept Draft</div>
+                    <div class="demo-result-card">🖼️ Product Image Asset</div>
+                    <div class="demo-result-card">📱 Social Creative Variation</div>
+                </div>
 
-                    <!-- Feature 2 -->
-                    <div class="feature-row reverse reveal">
-                        <div class="feature-content">
-                            <span class="eyebrow">Portrait</span>
-                            <h3>Retouch Without Losing the Person.</h3>
-                            <p>Refine skin, eyes, and lighting with precision. Face AI and Skin AI offer controlled adjustments that maintain texture and realism—avoiding the "plastic" look of cheap filters.</p>
-                            <button onclick="goToOffer()" class="btn btn-secondary">Explore Portrait Tools</button>
-                        </div>
-                        <div class="feature-visual">
-                            <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=1000&q=80" alt="Professional portrait retouching" loading="lazy" onerror="handleFallback(this)">
-                        </div>
-                    </div>
+                <p style="text-align: center; font-size: 0.85rem; color: var(--muted); margin-top: 20px;">This interactive preview demonstrates the concept of an AI-assisted creative workflow.</p>
+                <div style="text-align: center; margin-top: 20px;">
+                    <button class="btn btn-outline" onclick="goToPippit('demo_cta')">TRY THE REAL PLATFORM →</button>
                 </div>
             </div>
-        </section>
+        </div>
+    </section>
 
-        <!-- Generative AI -->
-        <section class="section gen-section reveal" id="gen-ai">
-            <div class="container text-center">
-                <span class="eyebrow">Generative Technology</span>
-                <h2>Reimagine the Composition.</h2>
-                <p style="color: var(--muted); max-width: 600px; margin: 24px auto;">Designed to help you experiment with new compositions. Remove distractions, expand the frame, or replace elements—guided by your prompt.</p>
-                
-                <div class="sequence-grid">
-                    <div class="seq-card">
-                        <div class="seq-visual">
-                            <img src="https://images.unsplash.com/photo-1449824913935-59a10b8d2000?auto=format&fit=crop&w=600&q=80" alt="Cityscape before erase" loading="lazy" onerror="handleFallback(this)" style="width: 100%; height: 100%; object-fit: cover;">
-                        </div>
-                        <div class="seq-content text-left">
-                            <h4>GenErase</h4>
-                            <p>Seamlessly remove unwanted objects, power lines, and distractions while the AI fills in the background naturally.</p>
-                        </div>
-                    </div>
-                    <div class="seq-card">
-                        <div class="seq-visual">
-                            <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=600&q=80" alt="Expanded landscape" loading="lazy" onerror="handleFallback(this)" style="width: 100%; height: 100%; object-fit: cover;">
-                        </div>
-                        <div class="seq-content text-left">
-                            <h4>GenExpand</h4>
-                            <p>Extend the boundaries of your original photograph. Great for changing aspect ratios without cropping out important details.</p>
-                        </div>
-                    </div>
-                    <div class="seq-card">
-                        <div class="seq-visual">
-                            <img src="https://images.unsplash.com/photo-1472214103451-9374bd1c798e?auto=format&fit=crop&w=600&q=80" alt="Replaced element in photo" loading="lazy" onerror="handleFallback(this)" style="width: 100%; height: 100%; object-fit: cover;">
-                        </div>
-                        <div class="seq-content text-left">
-                            <h4>GenSwap</h4>
-                            <p>Replace selected elements with AI-generated visuals to alter the story or mood of the photograph entirely.</p>
-                        </div>
-                    </div>
+    <!-- Trust / Why Explore Section -->
+    <section>
+        <div class="container">
+            <div class="section-header">
+                <h2>Why Explore An AI Content Platform?</h2>
+                <p>Key advantages of adopting modern generative tools for your projects.</p>
+            </div>
+
+            <div class="problem-grid" style="max-width: 900px; margin: 0 auto;">
+                <div class="card">
+                    <h3>✓ Multiple Formats</h3>
+                    <p>Access video, image, and product-focused workflows in one environment.</p>
                 </div>
-                
-                <div class="mt-12">
-                    <button onclick="goToOffer()" class="btn btn-primary mt-8">Explore Generative Features</button>
+                <div class="card">
+                    <h3>✓ Creator-Friendly</h3>
+                    <p>Designed for users who want results without complex editing degrees.</p>
+                </div>
+                <div class="card">
+                    <h3>✓ Scalable Output</h3>
+                    <p>Produce content variations efficiently to support active marketing schedules.</p>
                 </div>
             </div>
-        </section>
 
-        <!-- Restoration -->
-        <section class="section reveal">
-            <div class="container text-center">
-                <div class="feature-row">
-                    <div class="feature-visual">
-                         <img src="https://images.unsplash.com/photo-1582213782179-e0d53f98f2ca?auto=format&fit=crop&w=1000&q=80" alt="Old photograph restoration concept" loading="lazy" onerror="handleFallback(this)">
-                    </div>
-                    <div class="feature-content text-left">
-                        <span class="eyebrow">Archival</span>
-                        <h2>Bring Old Memories Forward.</h2>
-                        <p>Current Luminar Neo offerings include capabilities to help restore aging, damaged, or scanned photographs. Reduce noise, improve clarity, and revitalize faded moments.</p>
-                    </div>
+            <p style="text-align: center; font-size: 0.85rem; color: var(--muted); margin-top: 30px;">Features, plans and availability may change. Check the platform for the latest details.</p>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section id="faq">
+        <div class="container">
+            <div class="section-header">
+                <h2>Frequently Asked Questions</h2>
+                <p>Clear answers about Pippit AI and this independent resource page.</p>
+            </div>
+
+            <div class="faq-container">
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFaq(this)">What is Pippit AI? <span>+</span></div>
+                    <div class="faq-answer">Pippit AI is an AI-powered creative platform designed to help creators, marketers and businesses produce different types of digital and marketing content.</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFaq(this)">Who is Pippit designed for? <span>+</span></div>
+                    <div class="faq-answer">Creators, marketers, businesses, e-commerce sellers, agencies and other users who want to simplify content production.</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFaq(this)">Can Pippit create videos? <span>+</span></div>
+                    <div class="faq-answer">Pippit offers AI-assisted video creation tools and workflows. Available capabilities may vary by tool and plan.</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFaq(this)">Can it create images? <span>+</span></div>
+                    <div class="faq-answer">Yes, Pippit provides AI image and design capabilities for creating different types of visual content.</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFaq(this)">Can I create product content? <span>+</span></div>
+                    <div class="faq-answer">Pippit includes product-focused creative tools and workflows designed for marketing and e-commerce use cases.</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFaq(this)">Does it offer AI avatars? <span>+</span></div>
+                    <div class="faq-answer">Pippit provides digital avatar and custom-avatar capabilities, subject to the tools and plans currently available.</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFaq(this)">Is Pippit free? <span>+</span></div>
+                    <div class="faq-answer">Pippit's plans, pricing and available features can change. Visitors should check the current Pippit website for the latest information.</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFaq(this)">Is this the official Pippit website? <span>+</span></div>
+                    <div class="faq-answer">No. This is an independent informational and promotional page.</div>
                 </div>
             </div>
-        </section>
+        </div>
+    </section>
 
-        <!-- Workflow / Beginner vs Advanced -->
-        <section class="section" id="workflow">
-            <div class="container reveal">
-                <div class="text-center mb-12">
-                    <span class="eyebrow">Flexible Architecture</span>
-                    <h2>Start simple. Go as deep as you want.</h2>
-                    <p style="color: var(--muted); max-width: 600px; margin: 24px auto;">Available as a standalone application or a plugin for your existing supported creative software on Windows and macOS.</p>
-                </div>
-                
-                <div class="workflow-compare">
-                    <div class="workflow-box">
-                        <h4>Streamlined Workflow</h4>
-                        <ul class="workflow-steps">
-                            <li>Open Photograph</li>
-                            <li>Analyze with AI Assistant</li>
-                            <li>Apply Global Enhancements</li>
-                            <li>Export Final Image</li>
-                        </ul>
-                    </div>
-                    <div class="workflow-box" style="border-color: var(--text);">
-                        <h4 style="color: var(--text);">Advanced Control</h4>
-                        <ul class="workflow-steps">
-                            <li>Process RAW File</li>
-                            <li>Utilize Local Masking</li>
-                            <li>Apply Selective AI Edits</li>
-                            <li>Manage Multiple Layers</li>
-                            <li>Refine Color & Export</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Use Cases -->
-        <section class="section reveal" style="padding-top: 0;">
-            <div class="container">
-                <span class="eyebrow">Who is it for?</span>
-                <h3>Designed for your focus.</h3>
-                
-                <div class="use-case-scroll">
-                    <div class="use-case-card">
-                        <h4>Landscape Photographers</h4>
-                        <p>Enhance atmosphere, recover shadows, and completely reshape lighting without complicated luminosity masks.</p>
-                    </div>
-                    <div class="use-case-card">
-                        <h4>Portrait Photographers</h4>
-                        <p>Accelerate your retouching workflow. Smooth skin and enhance eyes naturally across entire galleries in a fraction of the time.</p>
-                    </div>
-                    <div class="use-case-card">
-                        <h4>Content Creators</h4>
-                        <p>Clean up backgrounds, remove photobombers, and generate expanded canvas edges to fit social media aspect ratios.</p>
-                    </div>
-                    <div class="use-case-card">
-                        <h4>Real Estate</h4>
-                        <p>Fix blown-out windows, enhance interior lighting, and make properties look their absolute best quickly.</p>
-                    </div>
-                    <div class="use-case-card">
-                        <h4>Hobbyists</h4>
-                        <p>Get professional-looking results on weekend shoots without spending hours watching complex software tutorials.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Licensing -->
-        <section class="section" id="pricing" style="background: var(--surface-2);">
-            <div class="container reveal">
-                <div class="text-center mb-12">
-                    <span class="eyebrow">Licensing</span>
-                    <h2>Choose Your Path.</h2>
-                    <p style="color: var(--muted); max-width: 600px; margin: 24px auto;">Skylum currently offers both subscription and perpetual license options, meaning the software can be owned. Check official site for generative access limits.</p>
-                </div>
-                
-                <div class="pricing-grid">
-                    <div class="pricing-card">
-                        <h3>1 Month</h3>
-                        <p>Flexible access to all pro tools and generative technologies on a short-term basis.</p>
-                        <button onclick="goToOffer()" class="btn btn-secondary btn-full">Check Current Offer</button>
-                    </div>
-                    <div class="pricing-card popular">
-                        <span class="popular-badge">Most Popular</span>
-                        <h3>12 Months</h3>
-                        <p>Complete access to Luminar Neo desktop, extensions, and generative AI tools.</p>
-                        <button onclick="goToOffer()" class="btn btn-primary btn-full">Check Current Offer</button>
-                    </div>
-                    <div class="pricing-card">
-                        <h3>Lifetime</h3>
-                        <p>Own the base software forever. (Note: Major future upgrades or sustained generative AI use may require add-ons).</p>
-                        <button onclick="goToOffer()" class="btn btn-secondary btn-full">Check Current Offer</button>
-                    </div>
-                </div>
-                <p class="text-center mt-8 text-muted" style="font-size: 13px;">Plans, pricing, included services, and promotional offers change. Check the official site for accurate, up-to-date details.</p>
-            </div>
-        </section>
-
-        <!-- FAQ -->
-        <section class="section" id="faq">
-            <div class="container reveal">
-                <div class="text-center mb-12">
-                    <h2>Common Questions</h2>
-                </div>
-                
-                <div class="faq-container">
-                    <div class="faq-item">
-                        <button class="faq-question" aria-expanded="false">
-                            What is Luminar Neo?
-                            <span class="faq-icon"></span>
-                        </button>
-                        <div class="faq-answer">
-                            <div class="faq-answer-inner">
-                                Luminar Neo is an AI-driven creative image editor built by Skylum. It provides photographers with advanced, machine-learning-based tools to accomplish complex edits—like sky replacement, skin retouching, and object removal—quickly and intuitively.
-                            </div>
-                        </div>
-                    </div>
-                    <div class="faq-item">
-                        <button class="faq-question" aria-expanded="false">
-                            Does it work with Photoshop or Lightroom?
-                            <span class="faq-icon"></span>
-                        </button>
-                        <div class="faq-answer">
-                            <div class="faq-answer-inner">
-                                Yes. While Luminar Neo is a powerful standalone application, it can also be installed as a plugin for supported software like Adobe Photoshop and Lightroom Classic, seamlessly integrating into your existing workflow.
-                            </div>
-                        </div>
-                    </div>
-                    <div class="faq-item">
-                        <button class="faq-question" aria-expanded="false">
-                            Do I need a subscription?
-                            <span class="faq-icon"></span>
-                        </button>
-                        <div class="faq-answer">
-                            <div class="faq-answer-inner">
-                                No, a subscription is not strictly required. Skylum generally offers perpetual (lifetime) licenses for the core software. However, certain cloud-based features, like heavy generative AI tools, may require a subscription pass or limits based on current plans.
-                            </div>
-                        </div>
-                    </div>
-                    <div class="faq-item">
-                        <button class="faq-question" aria-expanded="false">
-                            Can it edit RAW photos?
-                            <span class="faq-icon"></span>
-                        </button>
-                        <div class="faq-answer">
-                            <div class="faq-answer-inner">
-                                Yes. Luminar Neo supports RAW files from most major camera manufacturers, providing high-fidelity adjustments, layer support, and non-destructive core editing capabilities.
-                            </div>
-                        </div>
-                    </div>
-                    <div class="faq-item">
-                        <button class="faq-question" aria-expanded="false">
-                            Is it beginner-friendly?
-                            <span class="faq-icon"></span>
-                        </button>
-                        <div class="faq-answer">
-                            <div class="faq-answer-inner">
-                                Absolutely. The interface is designed around the desired outcome rather than complex technical sliders. Beginners can achieve great results with one-click AI tools, while professionals can dive into layers, masks, and selective adjustments.
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Final CTA & Trust -->
-        <section class="section bottom-cta reveal">
-            <div class="container text-center">
-                <h2 style="margin-bottom: 24px;">Your photos contain the story.<br>Let AI help you bring it out.</h2>
-                <p style="color: var(--muted); margin-bottom: 40px; font-size: 18px;">Spend less time fighting the edit—and more time shaping the image.</p>
-                <button onclick="goToOffer()" class="btn btn-primary" style="font-size: 16px; padding: 18px 48px;">Explore Luminar Neo</button>
-                
-                <div class="trust-badges">
-                    <div class="trust-item">
-                        <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
-                        30-Day Money-Back Guarantee (Where Applicable)
-                    </div>
-                    <div class="trust-item">
-                        <svg viewBox="0 0 24 24"><path d="M21 16v-2l-8-5V3.5c0-.83-.67-1.5-1.5-1.5S10 2.67 10 3.5V9l-8 5v2l8-2.5V19l-2 1.5V22l3.5-1 3.5 1v-1.5L13 19v-5.5l8 2.5z"></path></svg>
-                        Mac & Windows Compatible
-                    </div>
-                    <div class="trust-item">
-                        <svg viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm-5 14H4v-4h11v4zm0-5H4V9h11v4zm5 5h-4V9h4v9z"></path></svg>
-                        Standalone or Plugin
-                    </div>
-                </div>
-            </div>
-        </section>
-    </main>
+    <!-- High-Conversion Final CTA Section -->
+    <section class="final-cta">
+        <div class="container">
+            <h2>Your Next Piece of Content Could Start With One Idea.</h2>
+            <p>Explore how AI-assisted creative tools can simplify the way you create videos, visuals and marketing content.</p>
+            <button class="btn" onclick="goToPippit('final_cta')">TRY PIPPIT AI →</button>
+            <div style="font-size: 0.85rem; color: #7A817C; margin-top: 16px;">Independent recommendation • Affiliate link</div>
+        </div>
+    </section>
 
     <!-- Footer -->
-    <footer class="footer">
+    <footer>
         <div class="container">
             <div class="footer-grid">
                 <div>
-                    <a href="#" class="logo footer-logo">Luminar Neo</a>
-                    <p class="footer-desc">A modern photo editor providing intelligent, AI-assisted tools that make complex edits simple, without sacrificing creative control.</p>
+                    <div class="footer-brand">AI Content Lab</div>
+                    <p>Independent information about AI-powered content creation.</p>
                 </div>
-                <div>
-                    <h5>Product</h5>
-                    <ul class="footer-links">
-                        <li><a href="#features">Features</a></li>
-                        <li><a href="#gen-ai">Generative AI</a></li>
-                        <li><a href="#pricing">Pricing & Plans</a></li>
-                        <li><a href="#workflow">Extensions</a></li>
-                    </ul>
-                </div>
-                <div>
-                    <h5>Support & Info</h5>
-                    <ul class="footer-links">
-                        <li><a href="#faq">FAQ</a></li>
-                        <li><a href="#workflow">Compatibility</a></li>
-                        <li><a href="#" onclick="goToOffer(event)">Official Website</a></li>
-                    </ul>
+                <div class="footer-links">
+                    <a href="#privacy">Privacy Policy</a>
+                    <a href="#terms">Terms</a>
+                    <a href="#disclosure">Affiliate Disclosure</a>
                 </div>
             </div>
             
-            <div class="footer-bottom">
-                <p class="affiliate-disclosure"><strong>Disclosure:</strong> This website is an independent affiliate resource and is not the official Skylum website. This page contains affiliate links. If you purchase through a link on this page, we may earn a commission at no additional cost to you. Luminar Neo is a trademark and product of Skylum.</p>
-                <p class="copyright">&copy; <span id="year"></span> Independent Affiliate Resource. All rights reserved.</p>
+            <div class="footer-disclosures">
+                <p>Affiliate Disclosure: This page contains affiliate links. We may earn a commission if you complete a qualifying action through our links, at no additional cost to you.</p>
+                <p>This is an independent informational and promotional page and is not the official Pippit website.</p>
             </div>
         </div>
     </footer>
 
-    <!-- JavaScript -->
+    <!-- Mobile Sticky CTA -->
+    <div class="mobile-sticky-cta">
+        <button class="btn" onclick="goToPippit('mobile_sticky')">TRY PIPPIT AI →</button>
+    </div>
+
+    <!-- JavaScript Implementation -->
     <script>
-        (function() {
-            'use strict';
+        const AFFILIATE_LINK = "https://afflat3c2.com/trk/lnk/3BF8B185-C400-46C9-BA86-8558C9994629/?o=32195&c=918277&a=800075&k=A52CA674E8A292465D658EC2B30B8927&l=37968";
 
-            // ----------------------------------------------------
-            // Affiliate Configuration
-            // ----------------------------------------------------
-            const AFFILIATE_URL = "https://afflat3c2.com/trk/lnk/3BF8B185-C400-46C9-BA86-8558C9994629/?o=23196&c=918277&a=800075&k=23322B57442026E897B1DFF7C98FD265&l=24162";
+        function trackCTA(name) {
+            console.log("CTA clicked:", name);
+        }
 
-            if (AFFILIATE_URL.includes("PASTE_AFFILIATE")) {
-                console.warn("Developer Note: AFFILIATE_URL is not set.");
-            }
+        function goToPippit(source) {
+            trackCTA(source);
+            console.log("Affiliate CTA:", source);
+            window.open(AFFILIATE_LINK, "_blank", "noopener");
+        }
 
-            window.goToOffer = function(e) {
-                if(e) e.preventDefault();
-                window.open(AFFILIATE_URL, "_blank", "noopener,noreferrer,sponsored");
-            };
+        function runDemo() {
+            const results = document.getElementById('demoResults');
+            results.classList.add('active');
+            trackCTA("interactive_demo");
+        }
 
-            // ----------------------------------------------------
-            // Image Fallback System
-            // ----------------------------------------------------
-            window.handleFallback = function(img) {
-                img.style.display = 'none';
-                const fallback = document.createElement('div');
-                fallback.className = 'img-fallback';
-                img.parentNode.insertBefore(fallback, img);
-            };
-
-            // ----------------------------------------------------
-            // Dynamic Year
-            // ----------------------------------------------------
-            document.getElementById('year').textContent = new Date().getFullYear();
-
-            // ----------------------------------------------------
-            // Sticky Navigation
-            // ----------------------------------------------------
-            const header = document.getElementById('header');
-            window.addEventListener('scroll', () => {
-                if (window.scrollY > 20) {
-                    header.classList.add('scrolled');
-                } else {
-                    header.classList.remove('scrolled');
-                }
-            }, { passive: true });
-
-            // ----------------------------------------------------
-            // Mobile Menu Toggle
-            // ----------------------------------------------------
-            const menuBtn = document.getElementById('mobile-menu-btn');
-            const mobileMenu = document.getElementById('mobile-menu');
-            const mobileLinks = mobileMenu.querySelectorAll('a');
-
-            function toggleMenu() {
-                mobileMenu.classList.toggle('active');
-                const isOpen = mobileMenu.classList.contains('active');
-                menuBtn.setAttribute('aria-expanded', isOpen);
-            }
-
-            menuBtn.addEventListener('click', toggleMenu);
-            mobileLinks.forEach(link => {
-                link.addEventListener('click', () => {
-                    mobileMenu.classList.remove('active');
-                    menuBtn.setAttribute('aria-expanded', 'false');
-                });
+        function toggleFaq(element) {
+            const item = element.parentElement;
+            const isOpen = item.classList.contains('open');
+            
+            // Close all items
+            document.querySelectorAll('.faq-item').forEach(faq => {
+                faq.classList.remove('open');
+                const span = faq.querySelector('.faq-question span');
+                if (span) span.textContent = '+';
             });
 
-            // ----------------------------------------------------
-            // Before/After Slider Logic
-            // ----------------------------------------------------
-            const sliderContainer = document.getElementById('slider-container');
-            const sliderBefore = document.getElementById('slider-before');
-            const sliderHandle = document.getElementById('slider-handle');
-            let isDragging = false;
-
-            if (sliderContainer && sliderBefore && sliderHandle) {
-                const moveSlider = (clientX) => {
-                    const rect = sliderContainer.getBoundingClientRect();
-                    let x = clientX - rect.left;
-                    
-                    // Constrain bounds
-                    if (x < 0) x = 0;
-                    if (x > rect.width) x = rect.width;
-                    
-                    const percent = (x / rect.width) * 100;
-                    
-                    sliderBefore.style.clipPath = `polygon(0 0, ${percent}% 0, ${percent}% 100%, 0 100%)`;
-                    sliderHandle.style.left = `${percent}%`;
-                };
-
-                const onPointerDown = (e) => {
-                    isDragging = true;
-                    moveSlider(e.clientX || e.touches[0].clientX);
-                    sliderContainer.style.cursor = 'ew-resize';
-                };
-
-                const onPointerMove = (e) => {
-                    if (!isDragging) return;
-                    e.preventDefault();
-                    moveSlider(e.clientX || e.touches[0].clientX);
-                };
-
-                const onPointerUp = () => {
-                    isDragging = false;
-                    sliderContainer.style.cursor = 'default';
-                };
-
-                // Mouse Events
-                sliderContainer.addEventListener('mousedown', onPointerDown);
-                window.addEventListener('mousemove', onPointerMove, {passive: false});
-                window.addEventListener('mouseup', onPointerUp);
-
-                // Touch Events
-                sliderContainer.addEventListener('touchstart', onPointerDown, {passive: true});
-                window.addEventListener('touchmove', onPointerMove, {passive: false});
-                window.addEventListener('touchend', onPointerUp);
-
-                // Keyboard support
-                sliderContainer.addEventListener('keydown', (e) => {
-                    const rect = sliderContainer.getBoundingClientRect();
-                    const currentPercent = parseFloat(sliderHandle.style.left || 50);
-                    let newPercent = currentPercent;
-
-                    if (e.key === 'ArrowLeft') newPercent = Math.max(0, currentPercent - 5);
-                    if (e.key === 'ArrowRight') newPercent = Math.min(100, currentPercent + 5);
-
-                    sliderBefore.style.clipPath = `polygon(0 0, ${newPercent}% 0, ${newPercent}% 100%, 0 100%)`;
-                    sliderHandle.style.left = `${newPercent}%`;
-                });
+            // Open clicked if it wasn't open
+            if (!isOpen) {
+                item.classList.add('open');
+                const span = element.querySelector('span');
+                if (span) span.textContent = '-';
             }
-
-            // ----------------------------------------------------
-            // FAQ Accordion
-            // ----------------------------------------------------
-            const faqQuestions = document.querySelectorAll('.faq-question');
-            faqQuestions.forEach(btn => {
-                btn.addEventListener('click', function() {
-                    const item = this.parentElement;
-                    const answer = item.querySelector('.faq-answer');
-                    const isExpanded = this.getAttribute('aria-expanded') === 'true';
-                    
-                    // Close all others
-                    document.querySelectorAll('.faq-item').forEach(otherItem => {
-                        if(otherItem !== item) {
-                            otherItem.classList.remove('active');
-                            otherItem.querySelector('.faq-question').setAttribute('aria-expanded', 'false');
-                            otherItem.querySelector('.faq-answer').style.maxHeight = null;
-                        }
-                    });
-
-                    // Toggle current
-                    if (isExpanded) {
-                        this.setAttribute('aria-expanded', 'false');
-                        item.classList.remove('active');
-                        answer.style.maxHeight = null;
-                    } else {
-                        this.setAttribute('aria-expanded', 'true');
-                        item.classList.add('active');
-                        answer.style.maxHeight = answer.scrollHeight + "px";
-                    }
-                });
-            });
-
-            // ----------------------------------------------------
-            // Scroll Reveal Observer
-            // ----------------------------------------------------
-            if ('IntersectionObserver' in window) {
-                const observerOptions = {
-                    root: null,
-                    rootMargin: '0px 0px -10% 0px',
-                    threshold: 0.1
-                };
-
-                const observer = new IntersectionObserver((entries, obs) => {
-                    entries.forEach(entry => {
-                        if (entry.isIntersecting) {
-                            entry.target.classList.add('visible');
-                            obs.unobserve(entry.target);
-                        }
-                    });
-                }, observerOptions);
-
-                document.querySelectorAll('.reveal').forEach(el => {
-                    observer.observe(el);
-                });
-            } else {
-                // Fallback
-                document.querySelectorAll('.reveal').forEach(el => el.classList.add('visible'));
-            }
-
-        })();
+        }
     </script>
 </body>
 </html>
