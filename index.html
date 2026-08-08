@@ -1,1280 +1,1357 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Direct Access Portal | Fast, Verified & Secure</title>
-  <meta name="description" content="Get instant, friction-free direct access to verified solutions. Fast, secure, and hassle-free redirection to top-tier providers.">
-  
-  <!-- Open Graph / Social -->
-  <meta property="og:type" content="website">
-  <meta property="og:title" content="Direct Access Portal | Fast, Verified & Secure">
-  <meta property="og:description" content="Get instant direct access to verified solutions with zero guesswork. Safe, fast, and completely free.">
-
-  <!-- Google Fonts: Plus Jakarta Sans -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-
-  <style>
-    /* ==========================================================================
-       DESIGN SYSTEM & CSS VARIABLES
-       ========================================================================== */
-    :root {
-      /* Palette */
-      --bg-main: #FAFAF8;
-      --bg-surface: #FFFFFF;
-      --bg-subtle: #F3F4F1;
-      
-      --text-primary: #0F172A;
-      --text-secondary: #475569;
-      --text-muted: #64748B;
-      
-      --primary: #059669;
-      --primary-hover: #047857;
-      --primary-light: #ECFDF5;
-      --primary-border: #A7F3D0;
-      
-      --accent-gold: #D97706;
-      --accent-gold-light: #FEF3C7;
-      
-      --border-light: #E2E8F0;
-      --border-subtle: #F1F5F9;
-
-      /* Shadows */
-      --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
-      --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.06), 0 2px 4px -2px rgba(0, 0, 0, 0.04);
-      --shadow-lg: 0 10px 25px -3px rgba(0, 0, 0, 0.08), 0 4px 6px -4px rgba(0, 0, 0, 0.03);
-      --shadow-glow: 0 12px 30px -5px rgba(5, 150, 105, 0.25);
-
-      /* Layout & Radius */
-      --radius-sm: 8px;
-      --radius-md: 12px;
-      --radius-lg: 20px;
-      --radius-full: 9999px;
-      --container-max: 1180px;
-
-      /* Transitions */
-      --transition-fast: 0.15s ease;
-      --transition-normal: 0.25s cubic-bezier(0.16, 1, 0.3, 1);
-    }
-
-    /* ==========================================================================
-       BASE STYLES & RESET
-       ========================================================================== */
-    *, *::before, *::after {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
-
-    html {
-      scroll-behavior: smooth;
-      font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-      background-color: var(--bg-main);
-      color: var(--text-primary);
-      line-height: 1.6;
-      -webkit-font-smoothing: antialiased;
-      -moz-osx-font-smoothing: grayscale;
-    }
-
-    body {
-      overflow-x: hidden;
-    }
-
-    img, svg {
-      display: block;
-      max-width: 100%;
-    }
-
-    a {
-      color: inherit;
-      text-decoration: none;
-    }
-
-    button {
-      font-family: inherit;
-      cursor: pointer;
-      border: none;
-      background: none;
-    }
-
-    /* ==========================================================================
-       TYPOGRAPHY
-       ========================================================================== */
-    h1, h2, h3, h4 {
-      color: var(--text-primary);
-      font-weight: 700;
-      line-height: 1.2;
-      letter-spacing: -0.02em;
-    }
-
-    h1 {
-      font-size: clamp(2.25rem, 5vw, 3.5rem);
-      font-weight: 800;
-    }
-
-    h2 {
-      font-size: clamp(1.75rem, 3.5vw, 2.5rem);
-    }
-
-    h3 {
-      font-size: 1.25rem;
-    }
-
-    p {
-      color: var(--text-secondary);
-      font-size: 1.05rem;
-    }
-
-    .sub-lead {
-      font-size: clamp(1.05rem, 2vw, 1.2rem);
-      color: var(--text-secondary);
-      max-width: 640px;
-    }
-
-    /* ==========================================================================
-       LAYOUT UTILITIES
-       ========================================================================== */
-    .container {
-      width: 100%;
-      max-width: var(--container-max);
-      margin-left: auto;
-      margin-right: auto;
-      padding-left: 1.5rem;
-      padding-right: 1.5rem;
-    }
-
-    .section {
-      padding: 5rem 0;
-    }
-
-    @media (max-width: 768px) {
-      .section {
-        padding: 3.5rem 0;
-      }
-    }
-
-    .text-center {
-      text-align: center;
-    }
-
-    .mx-auto {
-      margin-left: auto;
-      margin-right: auto;
-    }
-
-    /* ==========================================================================
-       COMPONENTS: BUTTONS & BADGES
-       ========================================================================== */
-    .badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.5rem;
-      padding: 0.35rem 0.85rem;
-      background-color: var(--primary-light);
-      border: 1px solid var(--primary-border);
-      border-radius: var(--radius-full);
-      color: var(--primary);
-      font-size: 0.85rem;
-      font-weight: 600;
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
-    }
-
-    .badge-dot {
-      width: 7px;
-      height: 7px;
-      background-color: var(--primary);
-      border-radius: 50%;
-      box-shadow: 0 0 0 3px rgba(5, 150, 105, 0.2);
-      animation: pulse 2s infinite;
-    }
-
-    @keyframes pulse {
-      0% { box-shadow: 0 0 0 0 rgba(5, 150, 105, 0.4); }
-      70% { box-shadow: 0 0 0 6px rgba(5, 150, 105, 0); }
-      100% { box-shadow: 0 0 0 0 rgba(5, 150, 105, 0); }
-    }
-
-    .btn-cta {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 0.75rem;
-      background-color: var(--primary);
-      color: #FFFFFF;
-      font-size: 1.125rem;
-      font-weight: 700;
-      padding: 1.1rem 2.25rem;
-      border-radius: var(--radius-md);
-      box-shadow: var(--shadow-glow);
-      transition: all var(--transition-normal);
-      position: relative;
-      overflow: hidden;
-      text-align: center;
-    }
-
-    .btn-cta:hover {
-      background-color: var(--primary-hover);
-      transform: translateY(-2px);
-      box-shadow: 0 16px 35px -5px rgba(5, 150, 105, 0.35);
-    }
-
-    .btn-cta:active {
-      transform: translateY(0);
-    }
-
-    .btn-cta:focus-visible {
-      outline: 3px solid var(--primary-border);
-      outline-offset: 3px;
-    }
-
-    .btn-cta .arrow-icon {
-      transition: transform var(--transition-fast);
-    }
-
-    .btn-cta:hover .arrow-icon {
-      transform: translateX(4px);
-    }
-
-    .microcopy {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 0.75rem;
-      font-size: 0.875rem;
-      color: var(--text-muted);
-      margin-top: 0.85rem;
-    }
-
-    .microcopy-item {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.35rem;
-    }
-
-    /* ==========================================================================
-       HEADER & NAVIGATION
-       ========================================================================== */
-    .site-header {
-      position: sticky;
-      top: 0;
-      z-index: 100;
-      background-color: rgba(250, 250, 248, 0.85);
-      backdrop-filter: blur(12px);
-      border-bottom: 1px solid var(--border-light);
-      transition: padding var(--transition-fast);
-    }
-
-    .header-inner {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      height: 72px;
-    }
-
-    .brand-logo {
-      display: flex;
-      align-items: center;
-      gap: 0.6rem;
-      font-weight: 800;
-      font-size: 1.25rem;
-      color: var(--text-primary);
-      letter-spacing: -0.03em;
-    }
-
-    .brand-icon {
-      width: 32px;
-      height: 32px;
-      background: linear-gradient(135deg, var(--primary), #10B981);
-      border-radius: 8px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: white;
-    }
-
-    .nav-links {
-      display: flex;
-      align-items: center;
-      gap: 2rem;
-      list-style: none;
-    }
-
-    .nav-links a {
-      font-size: 0.95rem;
-      font-weight: 600;
-      color: var(--text-secondary);
-      transition: color var(--transition-fast);
-    }
-
-    .nav-links a:hover {
-      color: var(--primary);
-    }
-
-    .header-cta {
-      padding: 0.65rem 1.25rem;
-      font-size: 0.95rem;
-      border-radius: var(--radius-sm);
-    }
-
-    @media (max-width: 768px) {
-      .nav-links {
-        display: none;
-      }
-    }
-
-    /* ==========================================================================
-       HERO SECTION
-       ========================================================================== */
-    .hero-section {
-      padding: 4rem 0 5rem 0;
-      position: relative;
-    }
-
-    .hero-grid {
-      display: grid;
-      grid-template-columns: 1.1fr 0.9fr;
-      gap: 3.5rem;
-      align-items: center;
-    }
-
-    @media (max-width: 992px) {
-      .hero-grid {
-        grid-template-columns: 1fr;
-        gap: 3rem;
-        text-align: center;
-      }
-
-      .hero-content {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-      }
-    }
-
-    .hero-content h1 {
-      margin-top: 1.25rem;
-      margin-bottom: 1.25rem;
-    }
-
-    .hero-content .sub-lead {
-      margin-bottom: 2.25rem;
-    }
-
-    /* Mockup Card in Hero */
-    .hero-visual {
-      position: relative;
-    }
-
-    .visual-card {
-      background: var(--bg-surface);
-      border: 1px solid var(--border-light);
-      border-radius: var(--radius-lg);
-      padding: 2rem;
-      box-shadow: var(--shadow-lg);
-      position: relative;
-    }
-
-    .visual-card-header {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      border-bottom: 1px solid var(--border-subtle);
-      padding-bottom: 1rem;
-      margin-bottom: 1.5rem;
-    }
-
-    .visual-dots {
-      display: flex;
-      gap: 6px;
-    }
-
-    .dot {
-      width: 10px;
-      height: 10px;
-      border-radius: 50%;
-      background-color: #E2E8F0;
-    }
-
-    .dot.red { background-color: #EF4444; }
-    .dot.yellow { background-color: #F59E0B; }
-    .dot.green { background-color: #10B981; }
-
-    .status-badge {
-      font-size: 0.75rem;
-      font-weight: 700;
-      color: var(--primary);
-      background-color: var(--primary-light);
-      padding: 0.25rem 0.6rem;
-      border-radius: 4px;
-    }
-
-    .visual-body {
-      display: flex;
-      flex-direction: column;
-      gap: 1rem;
-    }
-
-    .feature-item-row {
-      display: flex;
-      align-items: center;
-      gap: 1rem;
-      padding: 0.85rem 1rem;
-      background: var(--bg-subtle);
-      border-radius: var(--radius-md);
-      font-weight: 600;
-      font-size: 0.95rem;
-    }
-
-    .feature-icon-wrapper {
-      width: 36px;
-      height: 36px;
-      background-color: #FFFFFF;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: var(--primary);
-      box-shadow: var(--shadow-sm);
-      flex-shrink: 0;
-    }
-
-    /* Floating Trust Badge */
-    .floating-trust-tag {
-      position: absolute;
-      bottom: -1.25rem;
-      right: 1.5rem;
-      background: #FFFFFF;
-      border: 1px solid var(--border-light);
-      border-radius: var(--radius-full);
-      padding: 0.6rem 1.25rem;
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-      box-shadow: var(--shadow-md);
-      font-size: 0.85rem;
-      font-weight: 700;
-      color: var(--text-primary);
-    }
-
-    /* ==========================================================================
-       TRUST BAR
-       ========================================================================== */
-    .trust-bar {
-      border-top: 1px solid var(--border-light);
-      border-bottom: 1px solid var(--border-light);
-      background-color: var(--bg-surface);
-      padding: 2rem 0;
-    }
-
-    .trust-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: 2rem;
-      align-items: center;
-      text-align: center;
-    }
-
-    .trust-metric-title {
-      font-size: 1.1rem;
-      font-weight: 700;
-      color: var(--text-primary);
-    }
-
-    .trust-metric-desc {
-      font-size: 0.85rem;
-      color: var(--text-muted);
-    }
-
-    /* ==========================================================================
-       PROBLEM VS SOLUTION SECTION
-       ========================================================================== */
-    .comparison-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 2rem;
-      margin-top: 3rem;
-    }
-
-    @media (max-width: 768px) {
-      .comparison-grid {
-        grid-template-columns: 1fr;
-      }
-    }
-
-    .comp-card {
-      padding: 2.5rem;
-      border-radius: var(--radius-lg);
-      border: 1px solid var(--border-light);
-    }
-
-    .comp-card.problem {
-      background-color: #FFFFFF;
-    }
-
-    .comp-card.solution {
-      background-color: var(--primary-light);
-      border-color: var(--primary-border);
-      position: relative;
-    }
-
-    .comp-header {
-      font-size: 1.25rem;
-      font-weight: 800;
-      margin-bottom: 1.5rem;
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-    }
-
-    .comp-card.problem .comp-header { color: #DC2626; }
-    .comp-card.solution .comp-header { color: var(--primary); }
-
-    .comp-list {
-      list-style: none;
-      display: flex;
-      flex-direction: column;
-      gap: 1rem;
-    }
-
-    .comp-list li {
-      display: flex;
-      align-items: flex-start;
-      gap: 0.75rem;
-      font-size: 0.98rem;
-    }
-
-    .comp-list li svg {
-      flex-shrink: 0;
-      margin-top: 3px;
-    }
-
-    /* ==========================================================================
-       BENEFITS SECTION
-       ========================================================================== */
-    .section-header {
-      text-align: center;
-      max-width: 680px;
-      margin: 0 auto 3.5rem auto;
-    }
-
-    .section-header h2 {
-      margin-top: 0.75rem;
-      margin-bottom: 1rem;
-    }
-
-    .benefits-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 2rem;
-    }
-
-    .benefit-card {
-      background: var(--bg-surface);
-      border: 1px solid var(--border-light);
-      border-radius: var(--radius-md);
-      padding: 2rem;
-      transition: transform var(--transition-normal), box-shadow var(--transition-normal);
-      display: flex;
-      flex-direction: column;
-      align-items: flex-start;
-    }
-
-    .benefit-card:hover {
-      transform: translateY(-4px);
-      box-shadow: var(--shadow-md);
-      border-color: var(--primary-border);
-    }
-
-    .benefit-icon {
-      width: 48px;
-      height: 48px;
-      background-color: var(--primary-light);
-      border-radius: 10px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: var(--primary);
-      margin-bottom: 1.25rem;
-    }
-
-    .benefit-card h3 {
-      margin-bottom: 0.65rem;
-    }
-
-    .benefit-card p {
-      font-size: 0.95rem;
-      line-height: 1.5;
-    }
-
-    /* ==========================================================================
-       HOW IT WORKS
-       ========================================================================== */
-    .steps-wrapper {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-      gap: 2rem;
-      position: relative;
-    }
-
-    .step-card {
-      background-color: var(--bg-surface);
-      border: 1px solid var(--border-light);
-      padding: 2rem;
-      border-radius: var(--radius-md);
-      position: relative;
-    }
-
-    .step-number {
-      font-size: 2.5rem;
-      font-weight: 800;
-      color: var(--primary-border);
-      line-height: 1;
-      margin-bottom: 1rem;
-    }
-
-    .step-card h3 {
-      margin-bottom: 0.5rem;
-    }
-
-    /* ==========================================================================
-       FAQ SECTION (ACCORDION)
-       ========================================================================== */
-    .faq-wrapper {
-      max-width: 768px;
-      margin: 0 auto;
-      display: flex;
-      flex-direction: column;
-      gap: 1rem;
-    }
-
-    .faq-item {
-      background-color: var(--bg-surface);
-      border: 1px solid var(--border-light);
-      border-radius: var(--radius-md);
-      overflow: hidden;
-      transition: border-color var(--transition-fast);
-    }
-
-    .faq-item:hover {
-      border-color: var(--primary-border);
-    }
-
-    .faq-question {
-      width: 100%;
-      padding: 1.25rem 1.5rem;
-      text-align: left;
-      font-size: 1.05rem;
-      font-weight: 700;
-      color: var(--text-primary);
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 1rem;
-    }
-
-    .faq-icon {
-      transition: transform var(--transition-normal);
-      flex-shrink: 0;
-      color: var(--text-muted);
-    }
-
-    .faq-answer {
-      max-height: 0;
-      overflow: hidden;
-      transition: max-height var(--transition-normal), padding var(--transition-normal);
-      padding: 0 1.5rem;
-      color: var(--text-secondary);
-      font-size: 0.98rem;
-    }
-
-    .faq-item.active .faq-icon {
-      transform: rotate(180deg);
-      color: var(--primary);
-    }
-
-    .faq-item.active .faq-answer {
-      max-height: 250px;
-      padding: 0 1.5rem 1.25rem 1.5rem;
-    }
-
-    /* ==========================================================================
-       FINAL CTA BANNER
-       ========================================================================== */
-    .cta-banner {
-      background: linear-gradient(135deg, #0F172A 0%, #1E293B 100%);
-      border-radius: var(--radius-lg);
-      padding: 4rem 2rem;
-      color: #FFFFFF;
-      text-align: center;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .cta-banner h2 {
-      color: #FFFFFF;
-      margin-bottom: 1rem;
-    }
-
-    .cta-banner p {
-      color: #94A3B8;
-      max-width: 580px;
-      margin: 0 auto 2.25rem auto;
-    }
-
-    /* ==========================================================================
-       FOOTER & DISCLOSURE
-       ========================================================================== */
-    .site-footer {
-      background-color: #0B0F19;
-      color: #94A3B8;
-      padding: 4rem 0 2rem 0;
-      font-size: 0.875rem;
-    }
-
-    .footer-content {
-      display: flex;
-      flex-direction: column;
-      gap: 2rem;
-    }
-
-    .footer-top {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      flex-wrap: wrap;
-      gap: 1.5rem;
-      border-bottom: 1px solid #1E293B;
-      padding-bottom: 2rem;
-    }
-
-    .footer-logo {
-      color: #FFFFFF;
-      font-weight: 800;
-      font-size: 1.15rem;
-    }
-
-    .footer-links {
-      display: flex;
-      gap: 1.5rem;
-      list-style: none;
-    }
-
-    .footer-links a:hover {
-      color: #FFFFFF;
-    }
-
-    .affiliate-disclosure {
-      background-color: #111827;
-      border-radius: var(--radius-sm);
-      padding: 1.25rem;
-      border: 1px solid #1F2937;
-      line-height: 1.5;
-    }
-
-    .footer-bottom {
-      text-align: center;
-      color: #64748B;
-      font-size: 0.8rem;
-    }
-
-    /* ==========================================================================
-       STICKY MOBILE CTA
-       ========================================================================== */
-    .mobile-sticky-cta {
-      position: fixed;
-      bottom: 0;
-      left: 0;
-      right: 0;
-      background: rgba(255, 255, 255, 0.95);
-      backdrop-filter: blur(10px);
-      border-top: 1px solid var(--border-light);
-      padding: 0.75rem 1rem;
-      z-index: 99;
-      display: none;
-      box-shadow: 0 -4px 15px rgba(0, 0, 0, 0.08);
-    }
-
-    @media (max-width: 768px) {
-      .mobile-sticky-cta {
-        display: block;
-      }
-      .mobile-sticky-cta .btn-cta {
-        width: 100%;
-        padding: 0.85rem 1rem;
-        font-size: 1rem;
-      }
-      body {
-        padding-bottom: 70px;
-      }
-    }
-
-    /* Reduced Motion Accessibility */
-    @media (prefers-reduced-motion: reduce) {
-      *, *::before, *::after {
-        animation-duration: 0.01ms !important;
-        animation-iteration-count: 1 !important;
-        transition-duration: 0.01ms !important;
-        scroll-behavior: auto !important;
-      }
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Luminar Neo — AI Photo Editing for Creators & Photographers</title>
+    <meta name="description" content="Explore Luminar Neo, an AI-powered photo editor designed to help photographers and creators enhance, retouch, remove distractions and transform images with a faster creative workflow.">
+    
+    <!-- Open Graph -->
+    <meta property="og:title" content="Luminar Neo — Premium AI Photo Editing">
+    <meta property="og:description" content="Turn good photos into great ones. Spend less time fighting the edit and more time shaping the image with AI-assisted creative control.">
+    <meta property="og:type" content="website">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600&family=Playfair+Display:wght@400;500;600&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --bg: #0b0b0a;
+            --surface: #121211;
+            --surface-2: #1a1a18;
+            --text: #f4f0e8;
+            --muted: #aaa69d;
+            --accent: #d6b46a;
+            --accent-hover: #e8c67c;
+            --border: rgba(255, 255, 255, 0.10);
+            --radius: 12px;
+            --nav-height: 72px;
+            
+            --font-sans: 'DM Sans', system-ui, -apple-system, sans-serif;
+            --font-serif: 'Playfair Display', Georgia, serif;
+            
+            --transition: 0.3s cubic-bezier(0.25, 1, 0.5, 1);
+        }
+
+        /* Reset & Base */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            scroll-padding-top: calc(var(--nav-height) + 20px); 
+        }
+
+        body {
+            background-color: var(--bg);
+            color: var(--text);
+            font-family: var(--font-sans);
+            line-height: 1.6;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        button {
+            font-family: inherit;
+            border: none;
+            background: none;
+            cursor: pointer;
+        }
+
+        /* Typography */
+        h1, h2, h3, h4 {
+            font-family: var(--font-serif);
+            font-weight: 500;
+            line-height: 1.2;
+            color: var(--text);
+        }
+
+        h1 { font-size: clamp(36px, 6vw, 84px); letter-spacing: -0.02em; }
+        h2 { font-size: clamp(30px, 5vw, 64px); }
+        h3 { font-size: clamp(24px, 3vw, 40px); }
+        
+        .eyebrow {
+            font-family: var(--font-sans);
+            font-size: 13px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--accent);
+            font-weight: 600;
+            display: block;
+            margin-bottom: 1rem;
+        }
+
+        .text-muted { color: var(--muted); }
+        .text-center { text-align: center; }
+
+        /* Layout */
+        .container {
+            width: 100%;
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        .section {
+            padding: 120px 0;
+            position: relative;
+        }
+
+        @media (max-width: 768px) {
+            .section { padding: 80px 0; }
+        }
+
+        /* Buttons */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 16px 36px;
+            font-size: 15px;
+            font-weight: 500;
+            border-radius: 4px;
+            transition: var(--transition);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .btn-primary {
+            background-color: var(--accent);
+            color: #000;
+            border: 1px solid var(--accent);
+        }
+
+        .btn-primary:hover {
+            background-color: var(--accent-hover);
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(214, 180, 106, 0.15);
+        }
+
+        .btn-secondary {
+            background-color: transparent;
+            color: var(--text);
+            border: 1px solid var(--border);
+        }
+
+        .btn-secondary:hover {
+            background-color: rgba(255, 255, 255, 0.05);
+            border-color: var(--text);
+        }
+
+        .btn-full { width: 100%; }
+
+        /* Announcement Bar */
+        .utility-bar {
+            background-color: var(--surface-2);
+            text-align: center;
+            padding: 8px 24px;
+            font-size: 13px;
+            color: var(--muted);
+            border-bottom: 1px solid var(--border);
+        }
+
+        /* Navigation */
+        .header {
+            position: sticky;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 100;
+            background: rgba(11, 11, 10, 0.85);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border-bottom: 1px solid transparent;
+            transition: border-color 0.3s;
+        }
+
+        .header.scrolled {
+            border-bottom: 1px solid var(--border);
+        }
+
+        .nav-container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            height: var(--nav-height);
+        }
+
+        .logo {
+            font-family: var(--font-serif);
+            font-size: 22px;
+            font-weight: 600;
+            color: var(--text);
+            letter-spacing: -0.5px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 32px;
+            align-items: center;
+        }
+
+        .nav-link {
+            font-size: 14px;
+            color: var(--muted);
+            transition: color 0.3s;
+        }
+
+        .nav-link:hover { color: var(--text); }
+
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            background: transparent;
+            border: none;
+            cursor: pointer;
+            padding: 8px;
+            z-index: 101; 
+        }
+
+        .hamburger span {
+            display: block;
+            width: 24px;
+            height: 2px;
+            background-color: var(--text);
+            transition: var(--transition);
+        }
+
+        /* Mobile Menu */
+        .mobile-menu {
+            position: fixed;
+            top: var(--nav-height);
+            left: 0;
+            width: 100%;
+            height: calc(100vh - var(--nav-height));
+            background-color: var(--bg);
+            padding: 40px 24px;
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+            transform: translateX(100%);
+            transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            z-index: 99;
+            overflow-y: auto;
+        }
+
+        .mobile-menu.active { transform: translateX(0); }
+
+        @media (max-width: 992px) {
+            .nav-links { display: none; }
+            .hamburger { display: flex; }
+        }
+
+        /* Hero Section */
+        .hero {
+            position: relative;
+            min-height: 90vh;
+            display: flex;
+            align-items: center;
+            padding-top: 60px;
+            overflow: hidden;
+        }
+
+        .hero-bg {
+            position: absolute;
+            inset: 0;
+            z-index: -1;
+            background: radial-gradient(circle at 50% 0%, #2a261f 0%, var(--bg) 60%);
+        }
+
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .hero p {
+            font-size: clamp(16px, 2vw, 22px);
+            color: var(--muted);
+            margin: 24px auto 48px;
+            max-width: 640px;
+        }
+
+        .hero-actions {
+            display: flex;
+            gap: 16px;
+            justify-content: center;
+        }
+
+        @media (max-width: 600px) {
+            .hero-actions { flex-direction: column; }
+            .btn { width: 100%; }
+        }
+
+        /* Before/After Slider */
+        .slider-section {
+            padding: 0 24px;
+            margin-top: -60px;
+            position: relative;
+            z-index: 10;
+        }
+
+        .slider-wrapper {
+            max-width: 1100px;
+            margin: 0 auto;
+            position: relative;
+            border-radius: var(--radius);
+            overflow: hidden;
+            aspect-ratio: 16 / 9;
+            box-shadow: 0 30px 60px rgba(0,0,0,0.5);
+            border: 1px solid var(--border);
+            background: var(--surface);
+            touch-action: none; 
+        }
+
+        .slider-img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            background-color: var(--surface-2);
+        }
+
+        .slider-before {
+            clip-path: polygon(0 0, 50% 0, 50% 100%, 0 100%);
+            z-index: 2;
+        }
+
+        .slider-handle {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            width: 2px;
+            background-color: #fff;
+            z-index: 3;
+            transform: translateX(-50%);
+            cursor: ew-resize;
+        }
+
+        .slider-button {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 48px;
+            height: 48px;
+            background: #fff;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+            pointer-events: none;
+        }
+
+        .slider-button::before,
+        .slider-button::after {
+            content: '';
+            border: solid #000;
+            border-width: 0 2px 2px 0;
+            display: inline-block;
+            padding: 4px;
+        }
+
+        .slider-button::before { transform: rotate(135deg); margin-right: 4px; }
+        .slider-button::after { transform: rotate(-45deg); margin-left: 4px; }
+
+        .slider-label {
+            position: absolute;
+            bottom: 24px;
+            padding: 6px 12px;
+            background: rgba(0,0,0,0.6);
+            backdrop-filter: blur(4px);
+            color: #fff;
+            font-size: 12px;
+            font-weight: 600;
+            letter-spacing: 1px;
+            border-radius: 4px;
+            z-index: 4;
+            pointer-events: none;
+        }
+        
+        .label-before { left: 12px; }
+        .label-after { right: 12px; z-index: 1; }
+
+        @media (max-width: 768px) {
+            .slider-wrapper { aspect-ratio: 4 / 5; }
+            .slider-label { bottom: 16px; font-size: 10px; }
+        }
+
+        /* Features Grid */
+        .feature-grid {
+            display: grid;
+            gap: 120px;
+        }
+
+        .feature-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 64px;
+            align-items: center;
+        }
+
+        .feature-row.reverse {
+            grid-template-columns: 1fr 1fr;
+            direction: rtl;
+        }
+        
+        .feature-row.reverse > * { direction: ltr; }
+
+        .feature-content h3 { margin-bottom: 24px; }
+        .feature-content p { color: var(--muted); font-size: 18px; margin-bottom: 32px; }
+
+        .feature-visual {
+            position: relative;
+            border-radius: var(--radius);
+            overflow: hidden;
+            aspect-ratio: 4 / 3;
+            background: var(--surface);
+            border: 1px solid var(--border);
+        }
+
+        .feature-visual img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.7s ease;
+        }
+
+        .feature-visual:hover img {
+            transform: scale(1.03);
+        }
+
+        @media (max-width: 992px) {
+            .feature-grid { gap: 80px; }
+            .feature-row, .feature-row.reverse { grid-template-columns: 1fr; gap: 40px; }
+            .feature-content { text-align: center; }
+            .feature-visual { aspect-ratio: 16 / 9; }
+        }
+
+        /* Generative Section (Full Width) */
+        .gen-section {
+            background: var(--surface);
+            border-top: 1px solid var(--border);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .sequence-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+            margin-top: 64px;
+        }
+
+        .seq-card {
+            background: var(--bg);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            overflow: hidden;
+        }
+        
+        .seq-visual {
+            aspect-ratio: 1;
+            background: var(--surface-2);
+            position: relative;
+        }
+
+        .seq-content { padding: 32px; }
+        .seq-content h4 { font-family: var(--font-sans); font-size: 18px; margin-bottom: 12px; }
+        .seq-content p { color: var(--muted); font-size: 15px; }
+
+        @media (max-width: 992px) {
+            .sequence-grid { grid-template-columns: 1fr; }
+        }
+
+        /* Comparison Workflow (Beginner vs Advanced) */
+        .workflow-compare {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            margin-top: 64px;
+        }
+
+        .workflow-box {
+            background: var(--surface);
+            padding: 48px;
+            border-radius: var(--radius);
+            border: 1px solid var(--border);
+        }
+
+        .workflow-box h4 {
+            font-family: var(--font-sans);
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--accent);
+            margin-bottom: 32px;
+        }
+
+        .workflow-steps {
+            list-style: none;
+        }
+
+        .workflow-steps li {
+            padding: 16px 0;
+            border-bottom: 1px solid var(--border);
+            color: var(--muted);
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+        .workflow-steps li:last-child { border-bottom: none; }
+        .workflow-steps li::before {
+            content: '';
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: var(--text);
+            opacity: 0.3;
+        }
+
+        @media (max-width: 768px) {
+            .workflow-compare { grid-template-columns: 1fr; }
+            .workflow-box { padding: 32px; }
+        }
+
+        /* Use Cases */
+        .use-case-scroll {
+            display: flex;
+            gap: 24px;
+            overflow-x: auto;
+            padding-bottom: 24px;
+            scrollbar-width: none;
+            -ms-overflow-style: none;
+            margin-top: 48px;
+            -webkit-overflow-scrolling: touch; 
+        }
+        
+        .use-case-scroll::-webkit-scrollbar { display: none; }
+
+        .use-case-card {
+            flex: 0 0 300px;
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: 32px;
+        }
+
+        .use-case-card h4 { font-family: var(--font-sans); font-size: 20px; margin-bottom: 12px; }
+        .use-case-card p { color: var(--muted); font-size: 15px; }
+
+        /* Pricing/Licensing placeholders */
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+            margin-top: 64px;
+        }
+
+        .pricing-card {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: 40px;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .pricing-card.popular {
+            border-color: var(--accent);
+            position: relative;
+        }
+        
+        .popular-badge {
+            position: absolute;
+            top: -12px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--accent);
+            color: #000;
+            font-size: 11px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            padding: 4px 12px;
+            border-radius: 20px;
+        }
+
+        .pricing-card h3 { font-family: var(--font-sans); font-size: 24px; margin-bottom: 16px; }
+        .pricing-card p { color: var(--muted); margin-bottom: 32px; font-size: 15px; flex-grow: 1; }
+
+        @media (max-width: 992px) {
+            .pricing-grid { grid-template-columns: 1fr; max-width: 400px; margin-left: auto; margin-right: auto; }
+        }
+
+        /* FAQ */
+        .faq-container {
+            max-width: 800px;
+            margin: 64px auto 0;
+        }
+
+        .faq-item {
+            border-bottom: 1px solid var(--border);
+        }
+
+        .faq-question {
+            width: 100%;
+            text-align: left;
+            padding: 24px 0;
+            font-size: 18px;
+            font-weight: 500;
+            color: var(--text);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .faq-icon {
+            position: relative;
+            width: 20px;
+            height: 20px;
+        }
+
+        .faq-icon::before, .faq-icon::after {
+            content: '';
+            position: absolute;
+            background: var(--text);
+            transition: transform 0.3s;
+        }
+        
+        .faq-icon::before { top: 9px; left: 0; width: 20px; height: 2px; }
+        .faq-icon::after { top: 0; left: 9px; width: 2px; height: 20px; }
+
+        .faq-item.active .faq-icon::after { transform: rotate(90deg); opacity: 0; }
+        .faq-item.active .faq-icon::before { transform: rotate(180deg); }
+
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .faq-answer-inner {
+            padding-bottom: 24px;
+            color: var(--muted);
+        }
+
+        /* Trust/CTA Bottom */
+        .bottom-cta {
+            background: linear-gradient(to bottom, var(--bg), var(--surface));
+            text-align: center;
+            border-top: 1px solid var(--border);
+        }
+
+        .trust-badges {
+            display: flex;
+            justify-content: center;
+            gap: 32px;
+            margin-top: 48px;
+            flex-wrap: wrap;
+        }
+
+        .trust-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            color: var(--muted);
+            font-size: 14px;
+        }
+        
+        .trust-item svg { width: 20px; height: 20px; fill: var(--accent); }
+
+        /* Footer */
+        .footer {
+            border-top: 1px solid var(--border);
+            padding: 64px 0 32px;
+            background: var(--bg);
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr;
+            gap: 64px;
+            margin-bottom: 64px;
+        }
+
+        .footer-logo { margin-bottom: 16px; display: inline-block; }
+        .footer-desc { color: var(--muted); font-size: 14px; max-width: 320px; }
+        
+        .footer h5 { font-family: var(--font-sans); font-size: 16px; margin-bottom: 24px; }
+        .footer-links { list-style: none; }
+        .footer-links li { margin-bottom: 12px; }
+        .footer-links a { color: var(--muted); font-size: 14px; transition: color 0.3s; }
+        .footer-links a:hover { color: var(--text); }
+
+        .footer-bottom {
+            border-top: 1px solid var(--border);
+            padding-top: 32px;
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+            text-align: center;
+        }
+
+        .affiliate-disclosure {
+            font-size: 12px;
+            color: #666;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .copyright { font-size: 13px; color: var(--muted); }
+
+        @media (max-width: 768px) {
+            .footer-grid { grid-template-columns: 1fr; gap: 40px; }
+        }
+
+        /* Utilities */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+        
+        .reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Fallback Styles */
+        .img-fallback {
+            width: 100%;
+            height: 100%;
+            min-height: 400px;
+            background: linear-gradient(135deg, #121211, #1a1a18);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: inherit;
+        }
+        .img-fallback::after {
+            content: 'Editorial Visual';
+            color: var(--muted);
+            font-family: var(--font-sans);
+            font-size: 12px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+        
+        @media (prefers-reduced-motion: reduce) {
+            *, ::before, ::after {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+                scroll-behavior: auto !important;
+            }
+        }
+    </style>
 </head>
 <body>
 
-  <!-- ==========================================================================
-       HEADER
-       ========================================================================== -->
-  <header class="site-header">
-    <div class="container header-inner">
-      <a href="#" class="brand-logo" aria-label="Direct Portal Home">
-        <div class="brand-icon">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polyline></svg>
-        </div>
-        <span>Direct Access</span>
-      </a>
-
-      <nav aria-label="Primary Navigation">
-        <ul class="nav-links">
-          <li><a href="#benefits">Benefits</a></li>
-          <li><a href="#how-it-works">How It Works</a></li>
-          <li><a href="#faq">FAQ</a></li>
-        </ul>
-      </nav>
-
-      <a href="https://afflat3c2.com/trk/lnk/3BF8B185-C400-46C9-BA86-8558C9994629/?o=32195&c=918277&a=800075&k=A52CA674E8A292465D658EC2B30B8927&l=37968" 
-         target="_blank" 
-         rel="nofollow sponsored noopener" 
-         class="btn-cta header-cta">
-        Get Started
-      </a>
+    <div class="utility-bar">
+        Designed for creators. <a href="#" onclick="goToOffer(event)" style="color: var(--accent); text-decoration: underline;">Check current official offers</a>
     </div>
-  </header>
 
-  <main>
-    <!-- ==========================================================================
-         HERO SECTION
-         ========================================================================== -->
-    <section class="hero-section">
-      <div class="container">
-        <div class="hero-grid">
-          
-          <div class="hero-content">
-            <div class="badge">
-              <span class="badge-dot"></span>
-              Verified Access Portal • 2026
+    <header class="header" id="header">
+        <div class="container nav-container">
+            <a href="#" class="logo">Luminar Neo</a>
+            
+            <nav class="nav-links">
+                <a href="#features" class="nav-link">Features</a>
+                <a href="#gen-ai" class="nav-link">AI Tools</a>
+                <a href="#workflow" class="nav-link">Workflow</a>
+                <a href="#pricing" class="nav-link">Plans</a>
+                <a href="#faq" class="nav-link">FAQ</a>
+                <button onclick="goToOffer()" class="btn btn-primary" style="padding: 10px 24px; font-size: 13px;">Explore Neo</button>
+            </nav>
+
+            <button class="hamburger" id="mobile-menu-btn" aria-label="Toggle Menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </header>
+
+    <div class="mobile-menu" id="mobile-menu">
+        <a href="#features" class="nav-link">Features</a>
+        <a href="#gen-ai" class="nav-link">AI Tools</a>
+        <a href="#workflow" class="nav-link">Workflow</a>
+        <a href="#pricing" class="nav-link">Plans</a>
+        <a href="#faq" class="nav-link">FAQ</a>
+        <button onclick="goToOffer()" class="btn btn-primary btn-full mt-4">Explore Luminar Neo</button>
+    </div>
+
+    <main>
+        <!-- Hero -->
+        <section class="hero">
+            <div class="hero-bg"></div>
+            <div class="container hero-content reveal">
+                <span class="eyebrow">Professional Without The Complexity</span>
+                <h1>Turn Good Photos<br>Into Great Ones.</h1>
+                <p>AI-powered photo editing designed to help you enhance, transform and refine your images without turning every edit into a technical exercise.</p>
+                <div class="hero-actions">
+                    <button onclick="goToOffer()" class="btn btn-primary">Explore Luminar Neo</button>
+                    <a href="#demo" class="btn btn-secondary">See What It Can Do</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Interactive Before/After -->
+        <section class="slider-section reveal" id="demo">
+            <div class="slider-wrapper" id="slider-container" role="region" aria-label="Image comparison slider" tabindex="0">
+                <!-- After Image (Bottom Layer) -->
+                <img src="https://images.unsplash.com/photo-1469474968028-56623f02e42e?auto=format&fit=crop&w=1200&q=80" alt="Landscape enhanced with AI" class="slider-img" onerror="handleFallback(this)" loading="lazy">
+                <span class="slider-label label-after" style="right: 12px;">EDITED WITH AI</span>
+                
+                <!-- Before Image (Top Layer, Clipped) -->
+                <div class="slider-before" id="slider-before" style="position: absolute; inset: 0;">
+                    <img src="https://images.unsplash.com/photo-1469474968028-56623f02e42e?auto=format&fit=crop&w=1200&q=80" alt="Original landscape" class="slider-img" onerror="handleFallback(this)" loading="eager" style="filter: brightness(0.7) contrast(0.8) grayscale(0.4);">
+                </div>
+                <span class="slider-label label-before" style="left: 12px;">ORIGINAL</span>
+                
+                <!-- Draggable Handle -->
+                <div class="slider-handle" id="slider-handle">
+                    <div class="slider-button"></div>
+                </div>
             </div>
             
-            <h1>Get Direct Access to the Solution You Need.</h1>
+            <div class="container text-center mt-12" style="max-width: 800px; margin-top: 64px;">
+                <h3 style="font-family: var(--font-sans); font-size: 20px; font-weight: 400; color: var(--muted);">Luminar Neo is a modern photo editor built around AI-assisted tools, giving photographers and creators faster ways to enhance, retouch, remove distractions, transform compositions and refine images.</h3>
+            </div>
+        </section>
+
+        <!-- AI Capabilities Grid -->
+        <section class="section" id="features">
+            <div class="container">
+                <div class="text-center mb-16 reveal">
+                    <span class="eyebrow">Intelligent Editing</span>
+                    <h2>Change More Than Settings.</h2>
+                </div>
+                
+                <div class="feature-grid">
+                    <!-- Feature 1 -->
+                    <div class="feature-row reveal">
+                        <div class="feature-content">
+                            <span class="eyebrow">Landscape</span>
+                            <h3>Give the Scene the Light It Deserved.</h3>
+                            <p>Transform dull skies and balance exposure instantly. Enhance AI and Sky AI evaluate the depth of your image, applying natural-looking adjustments without complex masking.</p>
+                            <button onclick="goToOffer()" class="btn btn-secondary">Discover Landscape Tools</button>
+                        </div>
+                        <div class="feature-visual">
+                            <img src="https://images.unsplash.com/photo-1469474968028-56623f02e42e?auto=format&fit=crop&w=1000&q=80" alt="Enhanced landscape photography" loading="lazy" onerror="handleFallback(this)">
+                        </div>
+                    </div>
+
+                    <!-- Feature 2 -->
+                    <div class="feature-row reverse reveal">
+                        <div class="feature-content">
+                            <span class="eyebrow">Portrait</span>
+                            <h3>Retouch Without Losing the Person.</h3>
+                            <p>Refine skin, eyes, and lighting with precision. Face AI and Skin AI offer controlled adjustments that maintain texture and realism—avoiding the "plastic" look of cheap filters.</p>
+                            <button onclick="goToOffer()" class="btn btn-secondary">Explore Portrait Tools</button>
+                        </div>
+                        <div class="feature-visual">
+                            <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=1000&q=80" alt="Professional portrait retouching" loading="lazy" onerror="handleFallback(this)">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Generative AI -->
+        <section class="section gen-section reveal" id="gen-ai">
+            <div class="container text-center">
+                <span class="eyebrow">Generative Technology</span>
+                <h2>Reimagine the Composition.</h2>
+                <p style="color: var(--muted); max-width: 600px; margin: 24px auto;">Designed to help you experiment with new compositions. Remove distractions, expand the frame, or replace elements—guided by your prompt.</p>
+                
+                <div class="sequence-grid">
+                    <div class="seq-card">
+                        <div class="seq-visual">
+                            <img src="https://images.unsplash.com/photo-1449824913935-59a10b8d2000?auto=format&fit=crop&w=600&q=80" alt="Cityscape before erase" loading="lazy" onerror="handleFallback(this)" style="width: 100%; height: 100%; object-fit: cover;">
+                        </div>
+                        <div class="seq-content text-left">
+                            <h4>GenErase</h4>
+                            <p>Seamlessly remove unwanted objects, power lines, and distractions while the AI fills in the background naturally.</p>
+                        </div>
+                    </div>
+                    <div class="seq-card">
+                        <div class="seq-visual">
+                            <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=600&q=80" alt="Expanded landscape" loading="lazy" onerror="handleFallback(this)" style="width: 100%; height: 100%; object-fit: cover;">
+                        </div>
+                        <div class="seq-content text-left">
+                            <h4>GenExpand</h4>
+                            <p>Extend the boundaries of your original photograph. Great for changing aspect ratios without cropping out important details.</p>
+                        </div>
+                    </div>
+                    <div class="seq-card">
+                        <div class="seq-visual">
+                            <img src="https://images.unsplash.com/photo-1472214103451-9374bd1c798e?auto=format&fit=crop&w=600&q=80" alt="Replaced element in photo" loading="lazy" onerror="handleFallback(this)" style="width: 100%; height: 100%; object-fit: cover;">
+                        </div>
+                        <div class="seq-content text-left">
+                            <h4>GenSwap</h4>
+                            <p>Replace selected elements with AI-generated visuals to alter the story or mood of the photograph entirely.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="mt-12">
+                    <button onclick="goToOffer()" class="btn btn-primary mt-8">Explore Generative Features</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Restoration -->
+        <section class="section reveal">
+            <div class="container text-center">
+                <div class="feature-row">
+                    <div class="feature-visual">
+                         <img src="https://images.unsplash.com/photo-1582213782179-e0d53f98f2ca?auto=format&fit=crop&w=1000&q=80" alt="Old photograph restoration concept" loading="lazy" onerror="handleFallback(this)">
+                    </div>
+                    <div class="feature-content text-left">
+                        <span class="eyebrow">Archival</span>
+                        <h2>Bring Old Memories Forward.</h2>
+                        <p>Current Luminar Neo offerings include capabilities to help restore aging, damaged, or scanned photographs. Reduce noise, improve clarity, and revitalize faded moments.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Workflow / Beginner vs Advanced -->
+        <section class="section" id="workflow">
+            <div class="container reveal">
+                <div class="text-center mb-12">
+                    <span class="eyebrow">Flexible Architecture</span>
+                    <h2>Start simple. Go as deep as you want.</h2>
+                    <p style="color: var(--muted); max-width: 600px; margin: 24px auto;">Available as a standalone application or a plugin for your existing supported creative software on Windows and macOS.</p>
+                </div>
+                
+                <div class="workflow-compare">
+                    <div class="workflow-box">
+                        <h4>Streamlined Workflow</h4>
+                        <ul class="workflow-steps">
+                            <li>Open Photograph</li>
+                            <li>Analyze with AI Assistant</li>
+                            <li>Apply Global Enhancements</li>
+                            <li>Export Final Image</li>
+                        </ul>
+                    </div>
+                    <div class="workflow-box" style="border-color: var(--text);">
+                        <h4 style="color: var(--text);">Advanced Control</h4>
+                        <ul class="workflow-steps">
+                            <li>Process RAW File</li>
+                            <li>Utilize Local Masking</li>
+                            <li>Apply Selective AI Edits</li>
+                            <li>Manage Multiple Layers</li>
+                            <li>Refine Color & Export</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Use Cases -->
+        <section class="section reveal" style="padding-top: 0;">
+            <div class="container">
+                <span class="eyebrow">Who is it for?</span>
+                <h3>Designed for your focus.</h3>
+                
+                <div class="use-case-scroll">
+                    <div class="use-case-card">
+                        <h4>Landscape Photographers</h4>
+                        <p>Enhance atmosphere, recover shadows, and completely reshape lighting without complicated luminosity masks.</p>
+                    </div>
+                    <div class="use-case-card">
+                        <h4>Portrait Photographers</h4>
+                        <p>Accelerate your retouching workflow. Smooth skin and enhance eyes naturally across entire galleries in a fraction of the time.</p>
+                    </div>
+                    <div class="use-case-card">
+                        <h4>Content Creators</h4>
+                        <p>Clean up backgrounds, remove photobombers, and generate expanded canvas edges to fit social media aspect ratios.</p>
+                    </div>
+                    <div class="use-case-card">
+                        <h4>Real Estate</h4>
+                        <p>Fix blown-out windows, enhance interior lighting, and make properties look their absolute best quickly.</p>
+                    </div>
+                    <div class="use-case-card">
+                        <h4>Hobbyists</h4>
+                        <p>Get professional-looking results on weekend shoots without spending hours watching complex software tutorials.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Licensing -->
+        <section class="section" id="pricing" style="background: var(--surface-2);">
+            <div class="container reveal">
+                <div class="text-center mb-12">
+                    <span class="eyebrow">Licensing</span>
+                    <h2>Choose Your Path.</h2>
+                    <p style="color: var(--muted); max-width: 600px; margin: 24px auto;">Skylum currently offers both subscription and perpetual license options, meaning the software can be owned. Check official site for generative access limits.</p>
+                </div>
+                
+                <div class="pricing-grid">
+                    <div class="pricing-card">
+                        <h3>1 Month</h3>
+                        <p>Flexible access to all pro tools and generative technologies on a short-term basis.</p>
+                        <button onclick="goToOffer()" class="btn btn-secondary btn-full">Check Current Offer</button>
+                    </div>
+                    <div class="pricing-card popular">
+                        <span class="popular-badge">Most Popular</span>
+                        <h3>12 Months</h3>
+                        <p>Complete access to Luminar Neo desktop, extensions, and generative AI tools.</p>
+                        <button onclick="goToOffer()" class="btn btn-primary btn-full">Check Current Offer</button>
+                    </div>
+                    <div class="pricing-card">
+                        <h3>Lifetime</h3>
+                        <p>Own the base software forever. (Note: Major future upgrades or sustained generative AI use may require add-ons).</p>
+                        <button onclick="goToOffer()" class="btn btn-secondary btn-full">Check Current Offer</button>
+                    </div>
+                </div>
+                <p class="text-center mt-8 text-muted" style="font-size: 13px;">Plans, pricing, included services, and promotional offers change. Check the official site for accurate, up-to-date details.</p>
+            </div>
+        </section>
+
+        <!-- FAQ -->
+        <section class="section" id="faq">
+            <div class="container reveal">
+                <div class="text-center mb-12">
+                    <h2>Common Questions</h2>
+                </div>
+                
+                <div class="faq-container">
+                    <div class="faq-item">
+                        <button class="faq-question" aria-expanded="false">
+                            What is Luminar Neo?
+                            <span class="faq-icon"></span>
+                        </button>
+                        <div class="faq-answer">
+                            <div class="faq-answer-inner">
+                                Luminar Neo is an AI-driven creative image editor built by Skylum. It provides photographers with advanced, machine-learning-based tools to accomplish complex edits—like sky replacement, skin retouching, and object removal—quickly and intuitively.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <button class="faq-question" aria-expanded="false">
+                            Does it work with Photoshop or Lightroom?
+                            <span class="faq-icon"></span>
+                        </button>
+                        <div class="faq-answer">
+                            <div class="faq-answer-inner">
+                                Yes. While Luminar Neo is a powerful standalone application, it can also be installed as a plugin for supported software like Adobe Photoshop and Lightroom Classic, seamlessly integrating into your existing workflow.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <button class="faq-question" aria-expanded="false">
+                            Do I need a subscription?
+                            <span class="faq-icon"></span>
+                        </button>
+                        <div class="faq-answer">
+                            <div class="faq-answer-inner">
+                                No, a subscription is not strictly required. Skylum generally offers perpetual (lifetime) licenses for the core software. However, certain cloud-based features, like heavy generative AI tools, may require a subscription pass or limits based on current plans.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <button class="faq-question" aria-expanded="false">
+                            Can it edit RAW photos?
+                            <span class="faq-icon"></span>
+                        </button>
+                        <div class="faq-answer">
+                            <div class="faq-answer-inner">
+                                Yes. Luminar Neo supports RAW files from most major camera manufacturers, providing high-fidelity adjustments, layer support, and non-destructive core editing capabilities.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <button class="faq-question" aria-expanded="false">
+                            Is it beginner-friendly?
+                            <span class="faq-icon"></span>
+                        </button>
+                        <div class="faq-answer">
+                            <div class="faq-answer-inner">
+                                Absolutely. The interface is designed around the desired outcome rather than complex technical sliders. Beginners can achieve great results with one-click AI tools, while professionals can dive into layers, masks, and selective adjustments.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Final CTA & Trust -->
+        <section class="section bottom-cta reveal">
+            <div class="container text-center">
+                <h2 style="margin-bottom: 24px;">Your photos contain the story.<br>Let AI help you bring it out.</h2>
+                <p style="color: var(--muted); margin-bottom: 40px; font-size: 18px;">Spend less time fighting the edit—and more time shaping the image.</p>
+                <button onclick="goToOffer()" class="btn btn-primary" style="font-size: 16px; padding: 18px 48px;">Explore Luminar Neo</button>
+                
+                <div class="trust-badges">
+                    <div class="trust-item">
+                        <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+                        30-Day Money-Back Guarantee (Where Applicable)
+                    </div>
+                    <div class="trust-item">
+                        <svg viewBox="0 0 24 24"><path d="M21 16v-2l-8-5V3.5c0-.83-.67-1.5-1.5-1.5S10 2.67 10 3.5V9l-8 5v2l8-2.5V19l-2 1.5V22l3.5-1 3.5 1v-1.5L13 19v-5.5l8 2.5z"></path></svg>
+                        Mac & Windows Compatible
+                    </div>
+                    <div class="trust-item">
+                        <svg viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm-5 14H4v-4h11v4zm0-5H4V9h11v4zm5 5h-4V9h4v9z"></path></svg>
+                        Standalone or Plugin
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div>
+                    <a href="#" class="logo footer-logo">Luminar Neo</a>
+                    <p class="footer-desc">A modern photo editor providing intelligent, AI-assisted tools that make complex edits simple, without sacrificing creative control.</p>
+                </div>
+                <div>
+                    <h5>Product</h5>
+                    <ul class="footer-links">
+                        <li><a href="#features">Features</a></li>
+                        <li><a href="#gen-ai">Generative AI</a></li>
+                        <li><a href="#pricing">Pricing & Plans</a></li>
+                        <li><a href="#workflow">Extensions</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h5>Support & Info</h5>
+                    <ul class="footer-links">
+                        <li><a href="#faq">FAQ</a></li>
+                        <li><a href="#workflow">Compatibility</a></li>
+                        <li><a href="#" onclick="goToOffer(event)">Official Website</a></li>
+                    </ul>
+                </div>
+            </div>
             
-            <p class="sub-lead">
-              Skip the runaround, hidden paywalls, and endless searches. Connect directly with the verified provider in seconds—100% free and secure.
-            </p>
-
-            <div>
-              <a href="https://afflat3c2.com/trk/lnk/3BF8B185-C400-46C9-BA86-8558C9994629/?o=32195&c=918277&a=800075&k=A52CA674E8A292465D658EC2B30B8927&l=37968" 
-                 target="_blank" 
-                 rel="nofollow sponsored noopener" 
-                 class="btn-cta">
-                <span>Access Official Offer Now</span>
-                <svg class="arrow-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
-              </a>
-
-              <div class="microcopy">
-                <span class="microcopy-item">
-                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#059669" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
-                  Instant Redirection
-                </span>
-                <span>•</span>
-                <span class="microcopy-item">
-                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#059669" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
-                  No Credit Card Required
-                </span>
-              </div>
+            <div class="footer-bottom">
+                <p class="affiliate-disclosure"><strong>Disclosure:</strong> This website is an independent affiliate resource and is not the official Skylum website. This page contains affiliate links. If you purchase through a link on this page, we may earn a commission at no additional cost to you. Luminar Neo is a trademark and product of Skylum.</p>
+                <p class="copyright">&copy; <span id="year"></span> Independent Affiliate Resource. All rights reserved.</p>
             </div>
-          </div>
-
-          <!-- Hero UI Card Graphic -->
-          <div class="hero-visual">
-            <div class="visual-card">
-              <div class="visual-card-header">
-                <div class="visual-dots">
-                  <div class="dot red"></div>
-                  <div class="dot yellow"></div>
-                  <div class="dot green"></div>
-                </div>
-                <span class="status-badge">System Status: Active</span>
-              </div>
-
-              <div class="visual-body">
-                <div class="feature-item-row">
-                  <div class="feature-icon-wrapper">
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
-                  </div>
-                  <div>
-                    <div style="font-size: 0.85rem; color: var(--text-muted);">Security Check</div>
-                    <div style="color: var(--text-primary);">256-Bit SSL Encrypted Access</div>
-                  </div>
-                </div>
-
-                <div class="feature-item-row">
-                  <div class="feature-icon-wrapper">
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polyline></svg>
-                  </div>
-                  <div>
-                    <div style="font-size: 0.85rem; color: var(--text-muted);">Speed</div>
-                    <div style="color: var(--text-primary);">Ultra-Fast Direct Link</div>
-                  </div>
-                </div>
-
-                <div class="feature-item-row">
-                  <div class="feature-icon-wrapper">
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
-                  </div>
-                  <div>
-                    <div style="font-size: 0.85rem; color: var(--text-muted);">Verification</div>
-                    <div style="color: var(--text-primary);">Official Partner Verified</div>
-                  </div>
-                </div>
-              </div>
-
-              <div class="floating-trust-tag">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="#059669" stroke="none"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-                <span>Direct Access Confirmed</span>
-              </div>
-            </div>
-          </div>
-
         </div>
-      </div>
-    </section>
+    </footer>
 
-    <!-- ==========================================================================
-         TRUST BAR
-         ========================================================================== -->
-    <section class="trust-bar">
-      <div class="container">
-        <div class="trust-grid">
-          <div>
-            <div class="trust-metric-title">100% Free</div>
-            <div class="trust-metric-desc">No hidden charges to use this portal</div>
-          </div>
-          <div>
-            <div class="trust-metric-title">Verified Destinations</div>
-            <div class="trust-metric-desc">Links continuously checked for safety</div>
-          </div>
-          <div>
-            <div class="trust-metric-title">Zero Friction</div>
-            <div class="trust-metric-desc">Instant access without mandatory signup</div>
-          </div>
-          <div>
-            <div class="trust-metric-title">Privacy First</div>
-            <div class="trust-metric-desc">We do not store your personal data</div>
-          </div>
-        </div>
-      </div>
-    </section>
+    <!-- JavaScript -->
+    <script>
+        (function() {
+            'use strict';
 
-    <!-- ==========================================================================
-         PROBLEM VS SOLUTION
-         ========================================================================== -->
-    <section class="section">
-      <div class="container">
-        <div class="section-header">
-          <div class="badge">The Smart Choice</div>
-          <h2>Why Use A Direct Access Link?</h2>
-          <p>Navigating the internet to find authentic services can be frustrating. Here is how we make it simple.</p>
-        </div>
+            // ----------------------------------------------------
+            // Affiliate Configuration
+            // ----------------------------------------------------
+            const AFFILIATE_URL = "https://afflat3c2.com/trk/lnk/3BF8B185-C400-46C9-BA86-8558C9994629/?o=23196&c=918277&a=800075&k=23322B57442026E897B1DFF7C98FD265&l=24162";
 
-        <div class="comparison-grid">
-          <!-- Problem Card -->
-          <div class="comp-card problem">
-            <div class="comp-header">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"></circle><line x1="15" y1="9" x2="9" y2="15"></line><line x1="9" y1="9" x2="15" y2="15"></line></svg>
-              The Standard Search Route
-            </div>
-            <ul class="comp-list">
-              <li>
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#DC2626" stroke-width="2.5"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
-                Sifting through misleading ad results and outdated articles.
-              </li>
-              <li>
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#DC2626" stroke-width="2.5"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
-                Risking landing on unverified third-party websites.
-              </li>
-              <li>
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#DC2626" stroke-width="2.5"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
-                Wasting time dealing with broken or expired promotion links.
-              </li>
-              <li>
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#DC2626" stroke-width="2.5"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
-                Complicated multi-step forms before seeing the actual offer.
-              </li>
-            </ul>
-          </div>
+            if (AFFILIATE_URL.includes("PASTE_AFFILIATE")) {
+                console.warn("Developer Note: AFFILIATE_URL is not set.");
+            }
 
-          <!-- Solution Card -->
-          <div class="comp-card solution">
-            <div class="comp-header">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
-              Our Verified Direct Portal
-            </div>
-            <ul class="comp-list">
-              <li>
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#059669" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
-                Direct connection straight to the primary provider page.
-              </li>
-              <li>
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#059669" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
-                Guaranteed secure SSL destination parameters.
-              </li>
-              <li>
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#059669" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
-                Continuously monitored link integrity and active status.
-              </li>
-              <li>
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#059669" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
-                One simple click with zero unnecessary redirects.
-              </li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </section>
+            window.goToOffer = function(e) {
+                if(e) e.preventDefault();
+                window.open(AFFILIATE_URL, "_blank", "noopener,noreferrer,sponsored");
+            };
 
-    <!-- ==========================================================================
-         BENEFITS SECTION
-         ========================================================================== -->
-    <section id="benefits" class="section">
-      <div class="container">
-        <div class="section-header">
-          <div class="badge">Designed For You</div>
-          <h2>Key Platform Advantages</h2>
-          <p>Everything you need for a fast, straightforward access experience.</p>
-        </div>
+            // ----------------------------------------------------
+            // Image Fallback System
+            // ----------------------------------------------------
+            window.handleFallback = function(img) {
+                img.style.display = 'none';
+                const fallback = document.createElement('div');
+                fallback.className = 'img-fallback';
+                img.parentNode.insertBefore(fallback, img);
+            };
 
-        <div class="benefits-grid">
-          <!-- Card 1 -->
-          <div class="benefit-card">
-            <div class="benefit-icon">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
-            </div>
-            <h3>Save Valuable Time</h3>
-            <p>Bypass redundant search results and arrive instantly at the exact destination designed to serve your request.</p>
-          </div>
+            // ----------------------------------------------------
+            // Dynamic Year
+            // ----------------------------------------------------
+            document.getElementById('year').textContent = new Date().getFullYear();
 
-          <!-- Card 2 -->
-          <div class="benefit-card">
-            <div class="benefit-icon">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
-            </div>
-            <h3>Verified Safe Links</h3>
-            <p>Each destination is vetted to ensure you interact only with genuine, trusted service providers.</p>
-          </div>
+            // ----------------------------------------------------
+            // Sticky Navigation
+            // ----------------------------------------------------
+            const header = document.getElementById('header');
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > 20) {
+                    header.classList.add('scrolled');
+                } else {
+                    header.classList.remove('scrolled');
+                }
+            }, { passive: true });
 
-          <!-- Card 3 -->
-          <div class="benefit-card">
-            <div class="benefit-icon">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
-            </div>
-            <h3>Transparent & Free</h3>
-            <p>There are no fees, hidden memberships, or obligations required to use our direct routing link.</p>
-          </div>
-        </div>
-      </div>
-    </section>
+            // ----------------------------------------------------
+            // Mobile Menu Toggle
+            // ----------------------------------------------------
+            const menuBtn = document.getElementById('mobile-menu-btn');
+            const mobileMenu = document.getElementById('mobile-menu');
+            const mobileLinks = mobileMenu.querySelectorAll('a');
 
-    <!-- ==========================================================================
-         HOW IT WORKS
-         ========================================================================== -->
-    <section id="how-it-works" class="section" style="background-color: var(--bg-surface); border-top: 1px solid var(--border-light); border-bottom: 1px solid var(--border-light);">
-      <div class="container">
-        <div class="section-header">
-          <div class="badge">Simple Process</div>
-          <h2>How To Get Started</h2>
-          <p>Three effortless steps to reach your destination.</p>
-        </div>
+            function toggleMenu() {
+                mobileMenu.classList.toggle('active');
+                const isOpen = mobileMenu.classList.contains('active');
+                menuBtn.setAttribute('aria-expanded', isOpen);
+            }
 
-        <div class="steps-wrapper">
-          <div class="step-card">
-            <div class="step-number">01</div>
-            <h3>Click CTA Button</h3>
-            <p>Click any of the green direct action buttons on this page to initiate secure transfer.</p>
-          </div>
+            menuBtn.addEventListener('click', toggleMenu);
+            mobileLinks.forEach(link => {
+                link.addEventListener('click', () => {
+                    mobileMenu.classList.remove('active');
+                    menuBtn.setAttribute('aria-expanded', 'false');
+                });
+            });
 
-          <div class="step-card">
-            <div class="step-number">02</div>
-            <h3>Instant Redirect</h3>
-            <p>Our portal routes you safely to the official offer or provider landing page.</p>
-          </div>
+            // ----------------------------------------------------
+            // Before/After Slider Logic
+            // ----------------------------------------------------
+            const sliderContainer = document.getElementById('slider-container');
+            const sliderBefore = document.getElementById('slider-before');
+            const sliderHandle = document.getElementById('slider-handle');
+            let isDragging = false;
 
-          <div class="step-card">
-            <div class="step-number">03</div>
-            <h3>Explore Solution</h3>
-            <p>Review the details directly on the provider's official page and proceed with confidence.</p>
-          </div>
-        </div>
+            if (sliderContainer && sliderBefore && sliderHandle) {
+                const moveSlider = (clientX) => {
+                    const rect = sliderContainer.getBoundingClientRect();
+                    let x = clientX - rect.left;
+                    
+                    // Constrain bounds
+                    if (x < 0) x = 0;
+                    if (x > rect.width) x = rect.width;
+                    
+                    const percent = (x / rect.width) * 100;
+                    
+                    sliderBefore.style.clipPath = `polygon(0 0, ${percent}% 0, ${percent}% 100%, 0 100%)`;
+                    sliderHandle.style.left = `${percent}%`;
+                };
 
-        <div class="text-center" style="margin-top: 3.5rem;">
-          <a href="https://afflat3c2.com/trk/lnk/3BF8B185-C400-46C9-BA86-8558C9994629/?o=32195&c=918277&a=800075&k=A52CA674E8A292465D658EC2B30B8927&l=37968" 
-             target="_blank" 
-             rel="nofollow sponsored noopener" 
-             class="btn-cta">
-            <span>Proceed to Provider Now</span>
-            <svg class="arrow-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
-          </a>
-        </div>
-      </div>
-    </section>
+                const onPointerDown = (e) => {
+                    isDragging = true;
+                    moveSlider(e.clientX || e.touches[0].clientX);
+                    sliderContainer.style.cursor = 'ew-resize';
+                };
 
-    <!-- ==========================================================================
-         FAQ SECTION
-         ========================================================================== -->
-    <section id="faq" class="section">
-      <div class="container">
-        <div class="section-header">
-          <div class="badge">Got Questions?</div>
-          <h2>Frequently Asked Questions</h2>
-          <p>Clear, direct answers to common queries.</p>
-        </div>
+                const onPointerMove = (e) => {
+                    if (!isDragging) return;
+                    e.preventDefault();
+                    moveSlider(e.clientX || e.touches[0].clientX);
+                };
 
-        <div class="faq-wrapper">
-          <div class="faq-item">
-            <button class="faq-question" aria-expanded="false">
-              <span>What is this page?</span>
-              <svg class="faq-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
-            </button>
-            <div class="faq-answer">
-              <p>This is a direct access portal designed to route users straight to verified third-party solutions and official provider pages without unnecessary intermediary steps.</p>
-            </div>
-          </div>
+                const onPointerUp = () => {
+                    isDragging = false;
+                    sliderContainer.style.cursor = 'default';
+                };
 
-          <div class="faq-item">
-            <button class="faq-question" aria-expanded="false">
-              <span>Is there any cost to use this website?</span>
-              <svg class="faq-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
-            </button>
-            <div class="faq-answer">
-              <p>No. Using our website and access links is completely free for all users. You will never be asked to pay us any fees.</p>
-            </div>
-          </div>
+                // Mouse Events
+                sliderContainer.addEventListener('mousedown', onPointerDown);
+                window.addEventListener('mousemove', onPointerMove, {passive: false});
+                window.addEventListener('mouseup', onPointerUp);
 
-          <div class="faq-item">
-            <button class="faq-question" aria-expanded="false">
-              <span>Where will the button take me?</span>
-              <svg class="faq-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
-            </button>
-            <div class="faq-answer">
-              <p>Clicking the button securely opens the destination provider's page in a new window where you can directly view their products, services, or offers.</p>
-            </div>
-          </div>
+                // Touch Events
+                sliderContainer.addEventListener('touchstart', onPointerDown, {passive: true});
+                window.addEventListener('touchmove', onPointerMove, {passive: false});
+                window.addEventListener('touchend', onPointerUp);
 
-          <div class="faq-item">
-            <button class="faq-question" aria-expanded="false">
-              <span>Is my privacy protected?</span>
-              <svg class="faq-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
-            </button>
-            <div class="faq-answer">
-              <p>Yes. We do not collect, store, or sell any personal data on this landing page. Your browse session is safe and private.</p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
+                // Keyboard support
+                sliderContainer.addEventListener('keydown', (e) => {
+                    const rect = sliderContainer.getBoundingClientRect();
+                    const currentPercent = parseFloat(sliderHandle.style.left || 50);
+                    let newPercent = currentPercent;
 
-    <!-- ==========================================================================
-         FINAL CTA BANNER
-         ========================================================================== -->
-    <section class="section">
-      <div class="container">
-        <div class="cta-banner">
-          <h2>Ready To Take The Next Step?</h2>
-          <p>Join thousands of users who streamline their search with direct, verified access.</p>
-          
-          <a href="https://afflat3c2.com/trk/lnk/3BF8B185-C400-46C9-BA86-8558C9994629/?o=32195&c=918277&a=800075&k=A52CA674E8A292465D658EC2B30B8927&l=37968" 
-             target="_blank" 
-             rel="nofollow sponsored noopener" 
-             class="btn-cta">
-            <span>Get Started Now</span>
-            <svg class="arrow-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
-          </a>
+                    if (e.key === 'ArrowLeft') newPercent = Math.max(0, currentPercent - 5);
+                    if (e.key === 'ArrowRight') newPercent = Math.min(100, currentPercent + 5);
 
-          <div class="microcopy" style="color: #94A3B8; margin-top: 1.25rem;">
-            <span>Secure SSL Encrypted Connection</span>
-          </div>
-        </div>
-      </div>
-    </section>
-  </main>
+                    sliderBefore.style.clipPath = `polygon(0 0, ${newPercent}% 0, ${newPercent}% 100%, 0 100%)`;
+                    sliderHandle.style.left = `${newPercent}%`;
+                });
+            }
 
-  <!-- ==========================================================================
-       FOOTER
-       ========================================================================== -->
-  <footer class="site-footer">
-    <div class="container footer-content">
-      <div class="footer-top">
-        <div class="footer-logo">Direct Access Portal</div>
-        <ul class="footer-links">
-          <li><a href="#benefits">Benefits</a></li>
-          <li><a href="#how-it-works">How It Works</a></li>
-          <li><a href="#faq">FAQ</a></li>
-        </ul>
-      </div>
+            // ----------------------------------------------------
+            // FAQ Accordion
+            // ----------------------------------------------------
+            const faqQuestions = document.querySelectorAll('.faq-question');
+            faqQuestions.forEach(btn => {
+                btn.addEventListener('click', function() {
+                    const item = this.parentElement;
+                    const answer = item.querySelector('.faq-answer');
+                    const isExpanded = this.getAttribute('aria-expanded') === 'true';
+                    
+                    // Close all others
+                    document.querySelectorAll('.faq-item').forEach(otherItem => {
+                        if(otherItem !== item) {
+                            otherItem.classList.remove('active');
+                            otherItem.querySelector('.faq-question').setAttribute('aria-expanded', 'false');
+                            otherItem.querySelector('.faq-answer').style.maxHeight = null;
+                        }
+                    });
 
-      <!-- Affiliate Disclosure -->
-      <div class="affiliate-disclosure">
-        <strong>Affiliate Disclosure:</strong> This website is an independent informational access portal. Links on this page may be referral or affiliate links. If you click through to a third-party site and choose to interact with their offer, we may receive financial compensation or commission at no extra cost to you. We only link to verified destinations.
-      </div>
+                    // Toggle current
+                    if (isExpanded) {
+                        this.setAttribute('aria-expanded', 'false');
+                        item.classList.remove('active');
+                        answer.style.maxHeight = null;
+                    } else {
+                        this.setAttribute('aria-expanded', 'true');
+                        item.classList.add('active');
+                        answer.style.maxHeight = answer.scrollHeight + "px";
+                    }
+                });
+            });
 
-      <div class="footer-bottom">
-        <p>&copy; 2026 Direct Access Portal. All rights reserved.</p>
-      </div>
-    </div>
-  </footer>
+            // ----------------------------------------------------
+            // Scroll Reveal Observer
+            // ----------------------------------------------------
+            if ('IntersectionObserver' in window) {
+                const observerOptions = {
+                    root: null,
+                    rootMargin: '0px 0px -10% 0px',
+                    threshold: 0.1
+                };
 
-  <!-- ==========================================================================
-       STICKY MOBILE CTA BAR
-       ========================================================================== -->
-  <div class="mobile-sticky-cta">
-    <a href="https://afflat3c2.com/trk/lnk/3BF8B185-C400-46C9-BA86-8558C9994629/?o=32195&c=918277&a=800075&k=A52CA674E8A292465D658EC2B30B8927&l=37968" 
-       target="_blank" 
-       rel="nofollow sponsored noopener" 
-       class="btn-cta">
-      <span>Get Direct Access</span>
-      <svg class="arrow-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
-    </a>
-  </div>
+                const observer = new IntersectionObserver((entries, obs) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            entry.target.classList.add('visible');
+                            obs.unobserve(entry.target);
+                        }
+                    });
+                }, observerOptions);
 
-  <!-- ==========================================================================
-       MINIMAL INTERACTIVE JAVASCRIPT
-       ========================================================================== -->
-  <script>
-    document.addEventListener('DOMContentLoaded', function () {
-      // FAQ Accordion Toggle
-      const faqItems = document.querySelectorAll('.faq-item');
+                document.querySelectorAll('.reveal').forEach(el => {
+                    observer.observe(el);
+                });
+            } else {
+                // Fallback
+                document.querySelectorAll('.reveal').forEach(el => el.classList.add('visible'));
+            }
 
-      faqItems.forEach(item => {
-        const questionBtn = item.querySelector('.faq-question');
-
-        questionBtn.addEventListener('click', () => {
-          const isOpen = item.classList.contains('active');
-
-          // Close all open items
-          faqItems.forEach(otherItem => {
-            otherItem.classList.remove('active');
-            otherItem.querySelector('.faq-question').setAttribute('aria-expanded', 'false');
-          });
-
-          // Toggle current item
-          if (!isOpen) {
-            item.classList.add('active');
-            questionBtn.setAttribute('aria-expanded', 'true');
-          }
-        });
-      });
-    });
-  </script>
+        })();
+    </script>
 </body>
 </html>
