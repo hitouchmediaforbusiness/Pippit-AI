@@ -1,468 +1,1153 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>Pippit AI — Create Scroll-Stopping Content Faster</title>
-
-<meta name="description"
-content="Turn products, ideas and campaigns into polished AI videos, images and marketing content with Pippit AI.">
-
-<style>
-:root{
-  --bg:#070707;
-  --panel:#101010;
-  --panel2:#151515;
-  --text:#f5f3ee;
-  --muted:#a7a39b;
-  --line:rgba(255,255,255,.10);
-  --lime:#d9ff45;
-  --orange:#ff7657;
-  --purple:#9a7cff;
-  --max:1180px;
-}
-
-*{
-  box-sizing:border-box;
-}
-
-html{
-  scroll-behavior:smooth;
-}
-
-body{
-  margin:0;
-  background:var(--bg);
-  color:var(--text);
-  font-family:Inter,ui-sans-serif,system-ui,-apple-system,
-  BlinkMacSystemFont,"Segoe UI",sans-serif;
-  line-height:1.5;
-}
-
-a{
-  text-decoration:none;
-  color:inherit;
-}
-
-img{
-  display:block;
-  max-width:100%;
-}
-
-.container{
-  width:min(var(--max),calc(100% - 40px));
-  margin:auto;
-}
-
-/* NAV */
-
-.nav{
-  height:76px;
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  border-bottom:1px solid var(--line);
-}
-
-.logo{
-  font-weight:900;
-  letter-spacing:-.05em;
-  font-size:22px;
-}
-
-.logo span{
-  color:var(--lime);
-}
-
-.navlinks{
-  display:flex;
-  gap:28px;
-  color:#bbb;
-  font-size:14px;
-}
-
-.navcta,
-.btn{
-  display:inline-flex;
-  align-items:center;
-  justify-content:center;
-  border-radius:999px;
-  font-weight:800;
-  transition:.2s;
-}
-
-.navcta{
-  padding:11px 18px;
-  background:#fff;
-  color:#090909;
-  font-size:13px;
-}
-
-.navcta:hover,
-.btn:hover{
-  transform:translateY(-2px);
-}
-
-/* BUTTONS */
-
-.btn{
-  padding:16px 23px;
-  background:var(--lime);
-  color:#090909;
-  box-shadow:0 10px 40px rgba(217,255,69,.12);
-}
-
-.btn.dark{
-  background:#171717;
-  color:#fff;
-  border:1px solid var(--line);
-  box-shadow:none;
-}
-
-/* HERO */
-
-.hero{
-  padding:78px 0 70px;
-  display:grid;
-  grid-template-columns:1fr 1.03fr;
-  gap:55px;
-  align-items:center;
-}
-
-.kicker{
-  color:var(--lime);
-  font-size:12px;
-  font-weight:900;
-  letter-spacing:.16em;
-  text-transform:uppercase;
-}
-
-h1{
-  font-size:clamp(48px,6.3vw,86px);
-  line-height:.94;
-  letter-spacing:-.065em;
-  margin:18px 0 25px;
-  max-width:700px;
-}
-
-h1 em{
-  font-style:normal;
-  color:var(--lime);
-}
-
-.hero p{
-  font-size:18px;
-  color:#b9b5ad;
-  max-width:570px;
-}
-
-.actions{
-  display:flex;
-  gap:12px;
-  flex-wrap:wrap;
-  margin-top:30px;
-}
-
-.micro{
-  font-size:12px;
-  color:#777;
-  margin-top:14px;
-}
-
-/* HERO VISUAL */
-
-.heroVisual{
-  position:relative;
-}
-
-.browser{
-  background:#111;
-  border:1px solid #2b2b2b;
-  border-radius:24px;
-  overflow:hidden;
-  box-shadow:0 30px 100px rgba(0,0,0,.6);
-  transform:rotate(1deg);
-}
-
-.browserbar{
-  height:42px;
-  border-bottom:1px solid #272727;
-  display:flex;
-  align-items:center;
-  gap:7px;
-  padding:0 15px;
-}
-
-.dot{
-  width:8px;
-  height:8px;
-  border-radius:50%;
-  background:#555;
-}
-
-.mock{
-  padding:17px;
-  background:#0b0b0b;
-}
-
-.mocktop{
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  margin-bottom:14px;
-}
-
-.mocktitle{
-  font-weight:800;
-  font-size:14px;
-}
-
-.pill{
-  background:#1e2510;
-  color:var(--lime);
-  border:1px solid #3b4b18;
-  padding:5px 9px;
-  border-radius:20px;
-  font-size:10px;
-}
-
-.mockgrid{
-  display:grid;
-  grid-template-columns:1.15fr .85fr;
-  gap:12px;
-}
-
-.videoCard{
-  height:330px;
-  border-radius:15px;
-  overflow:hidden;
-  position:relative;
-  background:linear-gradient(145deg,#222,#090909);
-}
-
-.videoCard img{
-  width:100%;
-  height:100%;
-  object-fit:cover;
-  opacity:.78;
-}
-
-.videoOverlay{
-  position:absolute;
-  inset:0;
-  background:linear-gradient(
-    180deg,
-    transparent 35%,
-    rgba(0,0,0,.85)
-  );
-}
-
-.videoText{
-  position:absolute;
-  left:18px;
-  bottom:17px;
-  font-weight:900;
-  font-size:25px;
-  letter-spacing:-.04em;
-}
-
-.side{
-  display:grid;
-  gap:12px;
-}
-
-.sideCard{
-  border:1px solid #292929;
-  border-radius:15px;
-  padding:14px;
-  background:#131313;
-}
-
-.sideImg{
-  height:105px;
-  border-radius:10px;
-  overflow:hidden;
-  margin-bottom:10px;
-}
-
-.sideImg img{
-  width:100%;
-  height:100%;
-  object-fit:cover;
-}
-
-.side small{
-  color:#888;
-}
-
-.side b{
-  font-size:12px;
-}
-
-.float{
-  position:absolute;
-  background:#fff;
-  color:#111;
-  border-radius:15px;
-  padding:13px 15px;
-  box-shadow:0 20px 50px #000;
-  right:-20px;
-  bottom:-20px;
-  font-size:12px;
-  font-weight:800;
-}
-
-.float span{
-  display:block;
-  color:#4f6500;
-  font-size:10px;
-  margin-top:3px;
-}
-
-/* TRUST */
-
-.trust{
-  border-top:1px solid var(--line);
-  border-bottom:1px solid var(--line);
-  padding:25px 0;
-  color:#888;
-  font-size:12px;
-}
-
-.trustrow{
-  display:flex;
-  justify-content:space-between;
-  gap:15px;
-  flex-wrap:wrap;
-}
-
-.trust b{
-  color:#ddd;
-}
-
-/* SECTION */
-
-.section{
-  padding:105px 0;
-}
-
-.sectionHead{
-  display:flex;
-  justify-content:space-between;
-  gap:30px;
-  align-items:end;
-  margin-bottom:42px;
-}
-
-.sectionHead h2{
-  font-size:clamp(38px,5vw,64px);
-  line-height:.95;
-  letter-spacing:-.06em;
-  margin:12px 0 0;
-  max-width:650px;
-}
-
-.sectionHead p{
-  color:var(--muted);
-  max-width:390px;
-}
-
-/* STEPS */
-
-.steps{
-  display:grid;
-  grid-template-columns:repeat(3,1fr);
-  gap:15px;
-}
-
-.step{
-  background:var(--panel);
-  border:1px solid var(--line);
-  border-radius:22px;
-  overflow:hidden;
-}
-
-.stepImg{
-  height:220px;
-  position:relative;
-  overflow:hidden;
-}
-
-.stepImg img{
-  width:100%;
-  height:100%;
-  object-fit:cover;
-  filter:saturate(.9);
-}
-
-.stepNum{
-  position:absolute;
-  left:15px;
-  top:15px;
-  background:#fff;
-  color:#111;
-  border-radius:50%;
-  width:34px;
-  height:34px;
-  display:grid;
-  place-items:center;
-  font-weight:900;
-}
-
-.stepBody{
-  padding:22px;
-}
-
-.stepBody h3{
-  margin:0 0 8px;
-  font-size:22px;
-}
-
-.stepBody p{
-  margin:0;
-  color:#96928b;
-  font-size:14px;
-}
-
-/* DEMO */
-
-.demo{
-  display:grid;
-  grid-template-columns:.8fr 1.2fr;
-  gap:18px;
-}
-
-.demoText{
-  background:var(--lime);
-  color:#0b0b0b;
-  border-radius:24px;
-  padding:38px;
-  display:flex;
-  flex-direction:column;
-  justify-content:space-between;
-}
-
-.demoText h2{
-  font-size:clamp(38px,4.8vw,65px);
-  line-height:.94;
-  letter-spacing:-.06em;
-  margin:15px 0;
-}
-
-.demoText p{
-  color:#38400f;
-}
-
-.demoVisual{
-  border-radius:24px;
-  overflow:hidden;
-  border:1px solid var(--line);
-  min-height:480px;
-  position:relative;
-  background:#171717;
-}
-
-.demoVisual img{
-  width:100%;
-  height
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pippit AI — Create More Content With AI</title>
+    <meta name="description" content="Explore Pippit AI for AI-assisted video, image, product and marketing content creation. Discover tools designed to simplify modern content workflows.">
+    <link rel="canonical" href="https://example.com/">
+    
+    <!-- Open Graph Metadata -->
+    <meta property="og:title" content="Pippit AI — Create More Content With AI">
+    <meta property="og:description" content="Explore Pippit AI for AI-assisted video, image, product and marketing content creation. Discover tools designed to simplify modern content workflows.">
+    <meta property="og:type" content="website">
+    
+    <!-- Twitter Card Metadata -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Pippit AI — Create More Content With AI">
+    <meta name="twitter:description" content="Explore Pippit AI for AI-assisted video, image, product and marketing content creation. Discover tools designed to simplify modern content workflows.">
+
+    <style>
+        :root {
+            --bg: #F7F7F2;
+            --primary: #111512;
+            --accent: #16865A;
+            --accent-hover: #126d48;
+            --secondary-accent: #C6A15B;
+            --surface: #FFFFFF;
+            --muted: #68706A;
+            --border: #E2E2D8;
+            --shadow: 0 10px 30px -10px rgba(17, 21, 18, 0.08);
+            --radius: 12px;
+            --transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            background-color: var(--bg);
+            color: var(--primary);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+            overflow-x: hidden;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* Navigation */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: rgba(247, 247, 242, 0.85);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--border);
+            z-index: 1000;
+            transition: var(--transition);
+        }
+
+        .nav-container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            height: 72px;
+        }
+
+        .logo {
+            font-weight: 700;
+            font-size: 1.25rem;
+            letter-spacing: -0.5px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .logo span {
+            color: var(--accent);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 32px;
+            align-items: center;
+        }
+
+        .nav-links a {
+            color: var(--muted);
+            font-size: 0.95rem;
+            font-weight: 500;
+            transition: var(--transition);
+        }
+
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            background-color: var(--accent);
+            color: #FFFFFF;
+            font-weight: 600;
+            padding: 12px 24px;
+            border-radius: var(--radius);
+            border: none;
+            cursor: pointer;
+            transition: var(--transition);
+            font-size: 0.95rem;
+            box-shadow: 0 4px 14px rgba(22, 134, 90, 0.2);
+        }
+
+        .btn:hover {
+            background-color: var(--accent-hover);
+            transform: translateY(-1px);
+            box-shadow: 0 6px 20px rgba(22, 134, 90, 0.3);
+        }
+
+        .btn-outline {
+            background-color: transparent;
+            color: var(--primary);
+            border: 1px solid var(--border);
+            box-shadow: none;
+        }
+
+        .btn-outline:hover {
+            background-color: var(--surface);
+            border-color: var(--primary);
+            box-shadow: none;
+            transform: translateY(-1px);
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 160px 0 100px;
+            text-align: center;
+            position: relative;
+        }
+
+        .eyebrow {
+            display: inline-block;
+            font-size: 0.75rem;
+            font-weight: 700;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            color: var(--accent);
+            background: rgba(22, 134, 90, 0.08);
+            padding: 6px 12px;
+            border-radius: 20px;
+            margin-bottom: 24px;
+        }
+
+        h1 {
+            font-size: clamp(2.5rem, 5vw, 4.5rem);
+            font-weight: 800;
+            letter-spacing: -1.5px;
+            line-height: 1.1;
+            max-width: 800px;
+            margin: 0 auto 24px;
+        }
+
+        .hero p {
+            font-size: clamp(1.1rem, 2vw, 1.25rem);
+            color: var(--muted);
+            max-width: 600px;
+            margin: 0 auto 40px;
+        }
+
+        .hero-cta-group {
+            display: flex;
+            gap: 16px;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 16px;
+            flex-wrap: wrap;
+        }
+
+        .hero-disclaimer {
+            font-size: 0.85rem;
+            color: var(--muted);
+            margin-bottom: 60px;
+        }
+
+        /* Hero Visual / Mockup */
+        .hero-mockup {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: calc(var(--radius) * 1.5);
+            padding: 24px;
+            box-shadow: var(--shadow);
+            max-width: 900px;
+            margin: 0 auto;
+            text-align: left;
+        }
+
+        .mockup-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            border-bottom: 1px solid var(--border);
+            padding-bottom: 16px;
+            margin-bottom: 20px;
+        }
+
+        .mockup-dots {
+            display: flex;
+            gap: 6px;
+        }
+
+        .mockup-dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: var(--border);
+        }
+
+        .mockup-title {
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--muted);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .mockup-grid {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 20px;
+        }
+
+        @media (max-width: 768px) {
+            .mockup-grid {
+                grid-template-columns: 1fr;
+            }
+            .nav-links {
+                display: none;
+            }
+        }
+
+        .mockup-sidebar, .mockup-main {
+            background: var(--bg);
+            border-radius: var(--radius);
+            padding: 16px;
+        }
+
+        .mockup-input-box {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 12px;
+            font-size: 0.9rem;
+            color: var(--muted);
+            margin-bottom: 12px;
+        }
+
+        .mockup-preview-card {
+            background: var(--surface);
+            border-radius: 8px;
+            height: 140px;
+            border: 1px solid var(--border);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .mockup-preview-card::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(45deg, rgba(22, 134, 90, 0.05), rgba(198, 161, 91, 0.05));
+        }
+
+        /* Sections General */
+        section {
+            padding: 100px 0;
+            border-top: 1px solid var(--border);
+        }
+
+        .section-header {
+            text-align: center;
+            max-width: 700px;
+            margin: 0 auto 60px;
+        }
+
+        .section-header h2 {
+            font-size: clamp(2rem, 3vw, 2.75rem);
+            font-weight: 800;
+            letter-spacing: -1px;
+            margin-bottom: 16px;
+        }
+
+        .section-header p {
+            color: var(--muted);
+            font-size: 1.1rem;
+        }
+
+        /* Problem Section */
+        .problem-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 24px;
+            margin-bottom: 48px;
+        }
+
+        .card {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: 32px 24px;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+
+        .card:hover {
+            transform: translateY(-4px);
+            border-color: rgba(0,0,0,0.15);
+        }
+
+        .card h3 {
+            font-size: 1.2rem;
+            font-weight: 700;
+            margin-bottom: 12px;
+        }
+
+        .card p {
+            color: var(--muted);
+            font-size: 0.95rem;
+        }
+
+        .problem-transition {
+            text-align: center;
+            font-weight: 600;
+            font-size: 1.2rem;
+            margin-bottom: 24px;
+        }
+
+        .center-cta {
+            text-align: center;
+        }
+
+        /* Solution / Workflow Section */
+        .workflow-steps {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 24px;
+            position: relative;
+            margin-bottom: 48px;
+        }
+
+        .workflow-step {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: 32px 24px;
+            position: relative;
+        }
+
+        .step-number {
+            font-size: 0.8rem;
+            font-weight: 800;
+            color: var(--accent);
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            margin-bottom: 12px;
+            display: block;
+        }
+
+        .workflow-step h3 {
+            font-size: 1.15rem;
+            margin-bottom: 8px;
+        }
+
+        .workflow-step p {
+            color: var(--muted);
+            font-size: 0.9rem;
+        }
+
+        /* Feature Showcase Grid */
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 24px;
+        }
+
+        @media (max-width: 768px) {
+            .feature-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* One Idea Many Assets */
+        .transformation-box {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: calc(var(--radius) * 1.5);
+            padding: 48px 24px;
+            text-align: center;
+            box-shadow: var(--shadow);
+        }
+
+        .transformation-flow {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 16px;
+            flex-wrap: wrap;
+            margin-top: 32px;
+        }
+
+        .transformation-node {
+            background: var(--bg);
+            border: 1px solid var(--border);
+            padding: 16px 24px;
+            border-radius: var(--radius);
+            font-weight: 600;
+            font-size: 0.95rem;
+        }
+
+        .transformation-node.highlight {
+            background: var(--accent);
+            color: #FFFFFF;
+            border-color: var(--accent);
+        }
+
+        .arrow {
+            color: var(--muted);
+            font-weight: bold;
+        }
+
+        /* Before vs After */
+        .comparison-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 32px;
+        }
+
+        @media (max-width: 768px) {
+            .comparison-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .comparison-col {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: 32px;
+        }
+
+        .comparison-col.highlight-col {
+            border-color: var(--accent);
+            box-shadow: var(--shadow);
+        }
+
+        .comparison-col h3 {
+            font-size: 1.25rem;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .comparison-list {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .comparison-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            color: var(--muted);
+            font-size: 0.95rem;
+        }
+
+        .comparison-col.highlight-col .comparison-item {
+            color: var(--primary);
+            font-weight: 500;
+        }
+
+        /* Interactive Demo */
+        .demo-box {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: calc(var(--radius) * 1.5);
+            padding: 40px;
+            max-width: 800px;
+            margin: 0 auto;
+            box-shadow: var(--shadow);
+        }
+
+        .demo-input-group {
+            display: flex;
+            gap: 12px;
+            margin-bottom: 24px;
+        }
+
+        .demo-input {
+            flex: 1;
+            background: var(--bg);
+            border: 1px solid var(--border);
+            padding: 14px 18px;
+            border-radius: var(--radius);
+            font-size: 1rem;
+            color: var(--primary);
+            outline: none;
+        }
+
+        .demo-results {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 16px;
+            opacity: 0.4;
+            transition: var(--transition);
+        }
+
+        .demo-results.active {
+            opacity: 1;
+        }
+
+        .demo-result-card {
+            background: var(--bg);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 20px;
+            text-align: center;
+            font-size: 0.85rem;
+            font-weight: 600;
+        }
+
+        @media (max-width: 600px) {
+            .demo-results {
+                grid-template-columns: 1fr;
+            }
+            .demo-input-group {
+                flex-direction: column;
+            }
+        }
+
+        /* FAQ Accordion */
+        .faq-container {
+            max-width: 800px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        .faq-item {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            overflow: hidden;
+        }
+
+        .faq-question {
+            padding: 20px 24px;
+            font-weight: 600;
+            font-size: 1.05rem;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .faq-answer {
+            padding: 0 24px 20px;
+            color: var(--muted);
+            font-size: 0.95rem;
+            display: none;
+        }
+
+        .faq-item.open .faq-answer {
+            display: block;
+        }
+
+        /* Final CTA Section */
+        .final-cta {
+            background: var(--primary);
+            color: #FFFFFF;
+            text-align: center;
+            padding: 120px 0;
+            border-top: none;
+        }
+
+        .final-cta h2 {
+            font-size: clamp(2.5rem, 4vw, 3.5rem);
+            font-weight: 800;
+            letter-spacing: -1px;
+            margin-bottom: 20px;
+        }
+
+        .final-cta p {
+            color: #A3A8A3;
+            font-size: 1.15rem;
+            max-width: 600px;
+            margin: 0 auto 40px;
+        }
+
+        .final-cta .btn {
+            background: var(--accent);
+        }
+
+        .final-cta .btn:hover {
+            background: #189865;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--primary);
+            color: #A3A8A3;
+            padding: 60px 0 100px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            font-size: 0.85rem;
+        }
+
+        .footer-grid {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 40px;
+            flex-wrap: wrap;
+            gap: 24px;
+        }
+
+        .footer-brand {
+            color: #FFFFFF;
+            font-weight: 700;
+            font-size: 1.1rem;
+            margin-bottom: 8px;
+        }
+
+        .footer-links {
+            display: flex;
+            gap: 24px;
+        }
+
+        .footer-links a {
+            color: #A3A8A3;
+            transition: var(--transition);
+        }
+
+        .footer-links a:hover {
+            color: #FFFFFF;
+        }
+
+        .footer-disclosures {
+            border-top: 1px solid rgba(255,255,255,0.1);
+            padding-top: 30px;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            color: #7A817C;
+            line-height: 1.5;
+        }
+
+        /* Mobile Sticky CTA */
+        .mobile-sticky-cta {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: var(--surface);
+            border-top: 1px solid var(--border);
+            padding: 12px 24px;
+            display: none;
+            z-index: 999;
+            box-shadow: 0 -4px 20px rgba(0,0,0,0.05);
+        }
+
+        .mobile-sticky-cta .btn {
+            width: 100%;
+        }
+
+        @media (max-width: 768px) {
+            .mobile-sticky-cta {
+                display: block;
+            }
+            body {
+                padding-bottom: 70px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navigation -->
+    <header>
+        <div class="container nav-container">
+            <a href="#" class="logo">Pippit<span>AI</span> Info</a>
+            <nav class="nav-links">
+                <a href="#problem">Problems</a>
+                <a href="#workflow">Workflow</a>
+                <a href="#features">Features</a>
+                <a href="#ecommerce">E-Commerce</a>
+                <a href="#faq">FAQ</a>
+            </nav>
+            <button class="btn" onclick="goToPippit('navigation')">Try Pippit AI →</button>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <span class="eyebrow">AI-POWERED CONTENT CREATION</span>
+            <h1>Create More Content.<br>Spend Less Time Creating It.</h1>
+            <p>Turn ideas, products, images and prompts into professional marketing content with AI-powered creative tools.</p>
+            
+            <div class="hero-cta-group">
+                <button class="btn" onclick="goToPippit('hero_primary')">TRY PIPPIT AI →</button>
+                <button class="btn btn-outline" onclick="document.getElementById('workflow').scrollIntoView({behavior: 'smooth'})">EXPLORE HOW IT WORKS</button>
+            </div>
+            
+            <div class="hero-disclaimer">Independent recommendation • Affiliate link</div>
+
+            <!-- Hero Visual / Mockup -->
+            <div class="hero-mockup">
+                <div class="mockup-header">
+                    <div class="mockup-dots">
+                        <div class="mockup-dot"></div>
+                        <div class="mockup-dot"></div>
+                        <div class="mockup-dot"></div>
+                    </div>
+                    <div class="mockup-title">AI CONTENT WORKFLOW</div>
+                </div>
+                <div class="mockup-grid">
+                    <div class="mockup-sidebar">
+                        <div class="mockup-input-box">Prompt: Create social content for summer product line...</div>
+                        <div class="mockup-input-box">Input: Product Image / Asset</div>
+                    </div>
+                    <div class="mockup-main">
+                        <div class="mockup-preview-card">
+                            <span style="font-weight:600; color:var(--muted)">AI Generation Workspace</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Problem Section -->
+    <section id="problem">
+        <div class="container">
+            <div class="section-header">
+                <h2>Content Creation Has Become a Full-Time Job</h2>
+                <p>The modern digital landscape demands constant output, stretching creative teams and solo operators thin.</p>
+            </div>
+
+            <div class="problem-grid">
+                <div class="card">
+                    <h3>Too Much Time</h3>
+                    <p>Planning, designing, editing and adapting content can consume hours of valuable weekly production time.</p>
+                </div>
+                <div class="card">
+                    <h3>Too Many Tools</h3>
+                    <p>Creators often jump between multiple disjointed software suites just to complete a single marketing campaign.</p>
+                </div>
+                <div class="card">
+                    <h3>Constant Content Demand</h3>
+                    <p>Social media and digital channels require fresh, engaging creative ideas continuously to maintain attention.</p>
+                </div>
+                <div class="card">
+                    <h3>Editing Complexity</h3>
+                    <p>Not everyone has months to spend mastering professional, intricate video and design editing software.</p>
+                </div>
+            </div>
+
+            <div class="problem-transition">What if more of that workflow could be assisted by AI?</div>
+            <div class="center-cta">
+                <button class="btn btn-outline" onclick="goToPippit('problem_cta')">SEE WHAT PIPPIT CAN DO →</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Solution / Workflow Section -->
+    <section id="workflow">
+        <div class="container">
+            <div class="section-header">
+                <h2>Meet Your AI-Powered Creative Workflow</h2>
+                <p>Streamline how your ideas transition into fully formed digital assets.</p>
+            </div>
+
+            <div class="workflow-steps">
+                <div class="workflow-step">
+                    <span class="step-number">Step 01</span>
+                    <h3>Start With an Idea</h3>
+                    <p>Use a text prompt, image, media file, product asset, or other supported input to begin your project.</p>
+                </div>
+                <div class="workflow-step">
+                    <span class="step-number">Step 02</span>
+                    <h3>Generate</h3>
+                    <p>Leverage AI-assisted tools to build video, image, and marketing content drafts quickly.</p>
+                </div>
+                <div class="workflow-step">
+                    <span class="step-number">Step 03</span>
+                    <h3>Refine</h3>
+                    <p>Adjust your creative direction, make edits, and customize the resulting output to fit your brand.</p>
+                </div>
+                <div class="workflow-step">
+                    <span class="step-number">Step 04</span>
+                    <h3>Publish</h3>
+                    <p>Prepare your finished creative assets for deployment across your chosen marketing or social channels.</p>
+                </div>
+            </div>
+
+            <div class="center-cta">
+                <button class="btn" onclick="goToPippit('workflow_cta')">EXPLORE PIPPIT AI →</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Feature Showcase -->
+    <section id="features">
+        <div class="container">
+            <div class="section-header">
+                <h2>Built For Modern Content Workflows</h2>
+                <p>Explore the primary creative capabilities designed to assist modern marketers and creators.</p>
+            </div>
+
+            <div class="feature-grid">
+                <div class="card">
+                    <h3>AI Video Creation</h3>
+                    <p>Create marketing and social video concepts using advanced AI-assisted workflows. (Depending on available tools and plan.)</p>
+                </div>
+                <div class="card">
+                    <h3>AI Image Creation</h3>
+                    <p>Generate visual marketing assets and creative designs tailored to your campaign requirements.</p>
+                </div>
+                <div class="card">
+                    <h3>Product Showcase</h3>
+                    <p>Create product-focused visual content designed specifically for e-commerce and digital storefront promotions.</p>
+                </div>
+                <div class="card">
+                    <h3>AI Avatars</h3>
+                    <p>Create presenter-style content using digital avatar capabilities, subject to tool availability.</p>
+                </div>
+                <div class="card">
+                    <h3>Video Translation</h3>
+                    <p>Adapt video content effectively for different global languages and broader audiences.</p>
+                </div>
+                <div class="card">
+                    <h3>Social Content</h3>
+                    <p>Produce visual content structured for rapid social-media publishing workflows across major networks.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- One Idea Many Assets -->
+    <section>
+        <div class="container">
+            <div class="transformation-box">
+                <h2>Start With One Idea. Explore Multiple Creative Directions.</h2>
+                <p style="color: var(--muted); margin-top: 12px; max-width: 600px; margin-left: auto; margin-right: auto;">See how a single input transforms into an array of marketing content formats.</p>
+                
+                <div class="transformation-flow">
+                    <div class="transformation-node highlight">ONE PRODUCT IMAGE</div>
+                    <span class="arrow">↓</span>
+                    <div class="transformation-node">AI CREATIVE WORKFLOW</div>
+                    <span class="arrow">↓</span>
+                    <div class="transformation-node">VIDEO • IMAGE • CREATIVE • SOCIAL • AVATAR</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- E-Commerce Section -->
+    <section id="ecommerce">
+        <div class="container">
+            <div class="section-header">
+                <h2>Turn Product Assets Into Marketing Content</h2>
+                <p>Designed to help e-commerce sellers turn simple product photos into diverse promotional media.</p>
+            </div>
+
+            <div class="transformation-box" style="text-align: left; max-width: 800px; margin: 0 auto;">
+                <h3 style="margin-bottom: 12px;">Example Workflow: Premium Skincare Bottle</h3>
+                <p style="color: var(--muted); margin-bottom: 24px;">Instead of starting every creative element from scratch, use an AI-assisted workflow to transition your core product asset into multiple marketing formats.</p>
+                <div style="display: flex; gap: 12px; flex-wrap: wrap; margin-bottom: 24px;">
+                    <span style="background: var(--bg); padding: 8px 14px; border-radius: 6px; font-size: 0.9rem; border: 1px solid var(--border);">Product Image</span>
+                    <span style="background: var(--bg); padding: 8px 14px; border-radius: 6px; font-size: 0.9rem; border: 1px solid var(--border);">AI Creative Engine</span>
+                    <span style="background: var(--bg); padding: 8px 14px; border-radius: 6px; font-size: 0.9rem; border: 1px solid var(--border);">Product Video</span>
+                    <span style="background: var(--bg); padding: 8px 14px; border-radius: 6px; font-size: 0.9rem; border: 1px solid var(--border);">Social Ad</span>
+                </div>
+                <button class="btn" onclick="goToPippit('ecommerce_cta')">CREATE WITH AI →</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Creator Section -->
+    <section>
+        <div class="container">
+            <div class="section-header">
+                <h2>Built For The Content Economy</h2>
+                <p>Tailored for creators, marketers, agencies, and businesses looking for efficiency.</p>
+            </div>
+
+            <div class="problem-grid">
+                <div class="card">
+                    <h3>Content Creators</h3>
+                    <p>Turn raw ideas into structured social-media content concepts with minimal friction.</p>
+                </div>
+                <div class="card">
+                    <h3>Affiliate Marketers</h3>
+                    <p>Create visual promotional content around specific products and marketing campaigns.</p>
+                </div>
+                <div class="card">
+                    <h3>Social Media Managers</h3>
+                    <p>Produce creative variations for multiple channels without burning out your design team.</p>
+                </div>
+                <div class="card">
+                    <h3>Agencies & Businesses</h3>
+                    <p>Streamline repetitive production tasks to scale content output for multiple clients or brands.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Before vs After -->
+    <section>
+        <div class="container">
+            <div class="section-header">
+                <h2>A Smarter Way to Produce Content</h2>
+                <p>Compare traditional workflows with an AI-assisted creative approach.</p>
+            </div>
+
+            <div class="comparison-grid">
+                <div class="comparison-col">
+                    <h3>Traditional Workflow</h3>
+                    <ul class="comparison-list">
+                        <li class="comparison-item"><span>✕</span> Idea conceptualization</li>
+                        <li class="comparison-item"><span>✕</span> Endless asset searching</li>
+                        <li class="comparison-item"><span>✕</span> Complex manual design</li>
+                        <li class="comparison-item"><span>✕</span> Lengthy recording sessions</li>
+                        <li class="comparison-item"><span>✕</span> Manual timeline editing</li>
+                        <li class="comparison-item"><span>✕</span> Tedious resizing per channel</li>
+                    </ul>
+                </div>
+                <div class="comparison-col highlight-col">
+                    <h3>AI-Assisted Workflow</h3>
+                    <ul class="comparison-list">
+                        <li class="comparison-item"><span>✓</span> Idea or product input</li>
+                        <li class="comparison-item"><span>✓</span> AI creation assistance</li>
+                        <li class="comparison-item"><span>✓</span> Quick customization</li>
+                        <li class="comparison-item"><span>✓</span> Streamlined export & publish</li>
+                    </ul>
+                    <p style="font-size: 0.85rem; color: var(--muted); margin-top: 20px;">Note: AI helps reduce repetitive parts of the production workflow, saving time.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Interactive Demo -->
+    <section>
+        <div class="container">
+            <div class="section-header">
+                <h2>Interactive Concept Preview</h2>
+                <p>Test out a simulated workflow interaction below.</p>
+            </div>
+
+            <div class="demo-box">
+                <div class="demo-input-group">
+                    <input type="text" class="demo-input" id="demoInput" value="Create a premium social-media video for my new product." readonly>
+                    <button class="btn" onclick="runDemo()">GENERATE</button>
+                </div>
+                
+                <div class="demo-results" id="demoResults">
+                    <div class="demo-result-card">🎬 Video Concept Draft</div>
+                    <div class="demo-result-card">🖼️ Product Image Asset</div>
+                    <div class="demo-result-card">📱 Social Creative Variation</div>
+                </div>
+
+                <p style="text-align: center; font-size: 0.85rem; color: var(--muted); margin-top: 20px;">This interactive preview demonstrates the concept of an AI-assisted creative workflow.</p>
+                <div style="text-align: center; margin-top: 20px;">
+                    <button class="btn btn-outline" onclick="goToPippit('demo_cta')">TRY THE REAL PLATFORM →</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Trust / Why Explore Section -->
+    <section>
+        <div class="container">
+            <div class="section-header">
+                <h2>Why Explore An AI Content Platform?</h2>
+                <p>Key advantages of adopting modern generative tools for your projects.</p>
+            </div>
+
+            <div class="problem-grid" style="max-width: 900px; margin: 0 auto;">
+                <div class="card">
+                    <h3>✓ Multiple Formats</h3>
+                    <p>Access video, image, and product-focused workflows in one environment.</p>
+                </div>
+                <div class="card">
+                    <h3>✓ Creator-Friendly</h3>
+                    <p>Designed for users who want results without complex editing degrees.</p>
+                </div>
+                <div class="card">
+                    <h3>✓ Scalable Output</h3>
+                    <p>Produce content variations efficiently to support active marketing schedules.</p>
+                </div>
+            </div>
+
+            <p style="text-align: center; font-size: 0.85rem; color: var(--muted); margin-top: 30px;">Features, plans and availability may change. Check the platform for the latest details.</p>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section id="faq">
+        <div class="container">
+            <div class="section-header">
+                <h2>Frequently Asked Questions</h2>
+                <p>Clear answers about Pippit AI and this independent resource page.</p>
+            </div>
+
+            <div class="faq-container">
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFaq(this)">What is Pippit AI? <span>+</span></div>
+                    <div class="faq-answer">Pippit AI is an AI-powered creative platform designed to help creators, marketers and businesses produce different types of digital and marketing content.</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFaq(this)">Who is Pippit designed for? <span>+</span></div>
+                    <div class="faq-answer">Creators, marketers, businesses, e-commerce sellers, agencies and other users who want to simplify content production.</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFaq(this)">Can Pippit create videos? <span>+</span></div>
+                    <div class="faq-answer">Pippit offers AI-assisted video creation tools and workflows. Available capabilities may vary by tool and plan.</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFaq(this)">Can it create images? <span>+</span></div>
+                    <div class="faq-answer">Yes, Pippit provides AI image and design capabilities for creating different types of visual content.</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFaq(this)">Can I create product content? <span>+</span></div>
+                    <div class="faq-answer">Pippit includes product-focused creative tools and workflows designed for marketing and e-commerce use cases.</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFaq(this)">Does it offer AI avatars? <span>+</span></div>
+                    <div class="faq-answer">Pippit provides digital avatar and custom-avatar capabilities, subject to the tools and plans currently available.</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFaq(this)">Is Pippit free? <span>+</span></div>
+                    <div class="faq-answer">Pippit's plans, pricing and available features can change. Visitors should check the current Pippit website for the latest information.</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFaq(this)">Is this the official Pippit website? <span>+</span></div>
+                    <div class="faq-answer">No. This is an independent informational and promotional page.</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- High-Conversion Final CTA Section -->
+    <section class="final-cta">
+        <div class="container">
+            <h2>Your Next Piece of Content Could Start With One Idea.</h2>
+            <p>Explore how AI-assisted creative tools can simplify the way you create videos, visuals and marketing content.</p>
+            <button class="btn" onclick="goToPippit('final_cta')">TRY PIPPIT AI →</button>
+            <div style="font-size: 0.85rem; color: #7A817C; margin-top: 16px;">Independent recommendation • Affiliate link</div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div>
+                    <div class="footer-brand">AI Content Lab</div>
+                    <p>Independent information about AI-powered content creation.</p>
+                </div>
+                <div class="footer-links">
+                    <a href="#privacy">Privacy Policy</a>
+                    <a href="#terms">Terms</a>
+                    <a href="#disclosure">Affiliate Disclosure</a>
+                </div>
+            </div>
+            
+            <div class="footer-disclosures">
+                <p>Affiliate Disclosure: This page contains affiliate links. We may earn a commission if you complete a qualifying action through our links, at no additional cost to you.</p>
+                <p>This is an independent informational and promotional page and is not the official Pippit website.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Mobile Sticky CTA -->
+    <div class="mobile-sticky-cta">
+        <button class="btn" onclick="goToPippit('mobile_sticky')">TRY PIPPIT AI →</button>
+    </div>
+
+    <!-- JavaScript Implementation -->
+    <script>
+        const AFFILIATE_LINK = "https://afflat3c2.com/trk/lnk/3BF8B185-C400-46C9-BA86-8558C9994629/?o=32195&c=918277&a=800075&k=A52CA674E8A292465D658EC2B30B8927&l=37968";
+
+        function trackCTA(name) {
+            console.log("CTA clicked:", name);
+        }
+
+        function goToPippit(source) {
+            trackCTA(source);
+            console.log("Affiliate CTA:", source);
+            window.open(AFFILIATE_LINK, "_blank", "noopener");
+        }
+
+        function runDemo() {
+            const results = document.getElementById('demoResults');
+            results.classList.add('active');
+            trackCTA("interactive_demo");
+        }
+
+        function toggleFaq(element) {
+            const item = element.parentElement;
+            const isOpen = item.classList.contains('open');
+            
+            // Close all items
+            document.querySelectorAll('.faq-item').forEach(faq => {
+                faq.classList.remove('open');
+                const span = faq.querySelector('.faq-question span');
+                if (span) span.textContent = '+';
+            });
+
+            // Open clicked if it wasn't open
+            if (!isOpen) {
+                item.classList.add('open');
+                const span = element.querySelector('span');
+                if (span) span.textContent = '-';
+            }
+        }
+    </script>
+</body>
+</html>
