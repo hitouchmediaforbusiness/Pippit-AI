@@ -1,1 +1,1844 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+<title>Creative AI — One Idea. A Whole Content Engine.</title>
+
+<meta name="description" content="Turn products and ideas into engaging visual marketing content with AI-powered creative workflows.">
+
+<meta name="theme-color" content="#080908">
+
+<style>
+:root{
+  --bg:#080908;
+  --surface:#111311;
+  --surface2:#171a17;
+  --text:#f5f0e7;
+  --muted:#9b9d98;
+  --gold:#d4b27a;
+  --green:#6ed6ad;
+  --line:rgba(255,255,255,.09);
+  --ease:cubic-bezier(.2,.75,.25,1);
+}
+
+*{
+  box-sizing:border-box;
+  margin:0;
+  padding:0;
+}
+
+html{
+  scroll-behavior:smooth;
+  background:var(--bg);
+}
+
+body{
+  font-family:Inter,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+  background:
+  radial-gradient(circle at 80% 8%,rgba(76,148,117,.12),transparent 30rem),
+  radial-gradient(circle at 10% 45%,rgba(212,178,122,.06),transparent 28rem),
+  var(--bg);
+  color:var(--text);
+  line-height:1.6;
+  overflow-x:hidden;
+}
+
+a{
+  color:inherit;
+  text-decoration:none;
+}
+
+.container{
+  width:min(1200px,90vw);
+  margin:auto;
+}
+
+.nav{
+  height:76px;
+  position:fixed;
+  top:0;
+  left:0;
+  right:0;
+  z-index:1000;
+  background:rgba(8,9,8,.72);
+  backdrop-filter:blur(18px);
+  border-bottom:1px solid var(--line);
+}
+
+.navin{
+  height:100%;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+}
+
+.logo{
+  font-family:Georgia,serif;
+  font-size:1.2rem;
+  letter-spacing:.16em;
+}
+
+.links{
+  display:flex;
+  gap:2rem;
+  color:var(--muted);
+  font-size:.85rem;
+}
+
+.links a:hover{
+  color:var(--text);
+}
+
+.cta{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  gap:.6rem;
+  background:linear-gradient(135deg,#ead09f,#c29c61);
+  color:#10100e;
+  padding:14px 22px;
+  font-weight:750;
+  font-size:.78rem;
+  letter-spacing:.12em;
+  text-transform:uppercase;
+  border-radius:2px;
+  transition:.35s var(--ease);
+  box-shadow:0 12px 35px rgba(194,156,97,.12);
+}
+
+.cta:hover{
+  transform:translateY(-3px);
+  box-shadow:0 18px 45px rgba(194,156,97,.22);
+}
+
+.menu{
+  display:none;
+  background:none;
+  border:0;
+  color:var(--text);
+  font-size:1.6rem;
+}
+
+section{
+  padding:120px 0;
+}
+
+.hero{
+  min-height:100vh;
+  padding-top:150px;
+  display:grid;
+  grid-template-columns:.9fr 1.1fr;
+  gap:60px;
+  align-items:center;
+}
+
+.kicker{
+  color:var(--gold);
+  font-size:.72rem;
+  letter-spacing:.25em;
+  text-transform:uppercase;
+  margin-bottom:20px;
+}
+
+h1,h2,h3{
+  font-family:Georgia,"Times New Roman",serif;
+  font-weight:400;
+  line-height:1.02;
+}
+
+h1{
+  font-size:clamp(3.5rem,7vw,7.5rem);
+  letter-spacing:-.045em;
+}
+
+h1 em{
+  color:var(--gold);
+  font-style:italic;
+}
+
+.lead{
+  color:var(--muted);
+  font-size:1.1rem;
+  max-width:550px;
+  margin:26px 0 32px;
+}
+
+.micro{
+  display:block;
+  color:#777a75;
+  font-size:.72rem;
+  letter-spacing:.13em;
+  margin-top:15px;
+  text-transform:uppercase;
+}
+
+/* HERO */
+
+.hero-stage{
+  height:590px;
+  border:1px solid var(--line);
+  border-radius:24px;
+  position:relative;
+  overflow:hidden;
+
+  background:
+  radial-gradient(circle at 50% 45%,rgba(110,214,173,.13),transparent 25%),
+  linear-gradient(145deg,#171b18,#090a09 65%);
+
+  box-shadow:
+  inset 0 0 100px rgba(0,0,0,.7),
+  0 30px 80px rgba(0,0,0,.35);
+}
+
+.orb{
+  position:absolute;
+  width:300px;
+  height:300px;
+  border-radius:50%;
+  left:50%;
+  top:45%;
+  transform:translate(-50%,-50%);
+
+  background:
+  radial-gradient(circle at 35% 30%,#f0d7a4,#7e6240 24%,#19251f 55%,#090b0a 72%);
+
+  box-shadow:
+  0 0 80px rgba(110,214,173,.15),
+  inset -25px -30px 50px rgba(0,0,0,.55);
+
+  animation:float 6s ease-in-out infinite;
+}
+
+.orb:after{
+  content:"AI";
+  position:absolute;
+  inset:0;
+  display:grid;
+  place-items:center;
+  font:italic 4rem Georgia;
+  color:rgba(255,255,255,.9);
+  text-shadow:0 5px 25px #000;
+}
+
+.ring{
+  position:absolute;
+  border:1px solid rgba(212,178,122,.25);
+  border-radius:50%;
+  left:50%;
+  top:45%;
+  transform:translate(-50%,-50%) rotateX(65deg);
+  animation:spin 14s linear infinite;
+}
+
+.r1{
+  width:430px;
+  height:430px;
+}
+
+.r2{
+  width:560px;
+  height:560px;
+  animation-duration:20s;
+  animation-direction:reverse;
+}
+
+.asset{
+  position:absolute;
+  padding:13px 15px;
+  background:rgba(18,20,18,.78);
+  border:1px solid var(--line);
+  backdrop-filter:blur(12px);
+  font-size:.7rem;
+  letter-spacing:.1em;
+  text-transform:uppercase;
+  border-radius:8px;
+  box-shadow:0 18px 35px rgba(0,0,0,.35);
+  animation:drift 5s ease-in-out infinite;
+}
+
+.a1{
+  left:8%;
+  top:16%;
+}
+
+.a2{
+  right:8%;
+  top:24%;
+  animation-delay:-1s;
+}
+
+.a3{
+  left:10%;
+  bottom:19%;
+  animation-delay:-2s;
+}
+
+.a4{
+  right:8%;
+  bottom:14%;
+  animation-delay:-3s;
+}
+
+.scan{
+  position:absolute;
+  left:8%;
+  right:8%;
+  height:1px;
+  background:linear-gradient(90deg,transparent,var(--green),transparent);
+  top:50%;
+  opacity:.35;
+  animation:scan 4s ease-in-out infinite;
+}
+
+/* HEADINGS */
+
+.section-head{
+  max-width:720px;
+  margin-bottom:55px;
+}
+
+.section-head h2{
+  font-size:clamp(2.8rem,5vw,5.2rem);
+}
+
+.section-head p{
+  color:var(--muted);
+  margin-top:20px;
+  max-width:650px;
+}
+
+/* TRANSFORMATION */
+
+.transform{
+  display:grid;
+  grid-template-columns:1fr 110px 1.2fr;
+  gap:24px;
+  align-items:center;
+}
+
+.box{
+  min-height:360px;
+  border:1px solid var(--line);
+  background:linear-gradient(145deg,#141714,#0d0f0d);
+  border-radius:18px;
+  padding:30px;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+  position:relative;
+  overflow:hidden;
+}
+
+.label{
+  font-size:.68rem;
+  letter-spacing:.22em;
+  color:var(--muted);
+  text-transform:uppercase;
+  margin-bottom:22px;
+}
+
+.product{
+  width:130px;
+  height:170px;
+  border-radius:14px;
+
+  background:
+  linear-gradient(145deg,#e6d4ad,#755c3d 35%,#141814 72%);
+
+  box-shadow:0 30px 50px rgba(0,0,0,.45);
+  position:relative;
+}
+
+.product:after{
+  content:"PRODUCT";
+  position:absolute;
+  bottom:16px;
+  left:0;
+  right:0;
+  text-align:center;
+  font-size:.6rem;
+  letter-spacing:.18em;
+  color:#fff;
+}
+
+.flow{
+  display:flex;
+  flex-direction:column;
+  gap:12px;
+}
+
+.step{
+  border:1px solid var(--line);
+  border-radius:30px;
+  padding:9px 13px;
+  text-align:center;
+  font-size:.63rem;
+  letter-spacing:.12em;
+  color:var(--muted);
+  text-transform:uppercase;
+}
+
+.step.active{
+  color:var(--gold);
+  border-color:rgba(212,178,122,.45);
+}
+
+.outputs{
+  display:flex;
+  gap:12px;
+  align-items:end;
+}
+
+.output{
+  width:75px;
+  height:115px;
+  border-radius:8px;
+  background:
+  linear-gradient(160deg,#d5c2a0,#26372f 55%,#101211);
+  box-shadow:0 18px 30px rgba(0,0,0,.35);
+  position:relative;
+}
+
+.output:nth-child(2){
+  height:150px;
+}
+
+.output:nth-child(3){
+  height:105px;
+}
+
+.output:after{
+  content:"";
+  position:absolute;
+  left:10px;
+  right:10px;
+  bottom:12px;
+  height:3px;
+  background:rgba(255,255,255,.35);
+}
+
+/* ONE TO MANY */
+
+.formula{
+  border:1px solid var(--line);
+  background:linear-gradient(145deg,#121512,#0b0c0b);
+  border-radius:24px;
+  padding:70px 30px;
+  text-align:center;
+  overflow:hidden;
+}
+
+.formula-row{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:45px;
+  margin:30px 0 15px;
+}
+
+.huge{
+  font:clamp(5rem,12vw,10rem) Georgia;
+  color:var(--gold);
+  line-height:.8;
+}
+
+.arrow{
+  font-size:3rem;
+  color:var(--muted);
+}
+
+.many{
+  font:clamp(4rem,9vw,8rem) Georgia;
+  color:var(--text);
+}
+
+.pills{
+  display:flex;
+  justify-content:center;
+  flex-wrap:wrap;
+  gap:10px;
+  margin-top:30px;
+}
+
+.pill{
+  padding:9px 16px;
+  border:1px solid var(--line);
+  border-radius:30px;
+  color:#d8d5cc;
+  font-size:.68rem;
+  letter-spacing:.12em;
+}
+
+/* VIDEO */
+
+.video-section{
+  display:grid;
+  grid-template-columns:.8fr 1.2fr;
+  gap:55px;
+  align-items:center;
+}
+
+.video-copy h2{
+  font-size:clamp(2.8rem,5vw,5rem);
+}
+
+.video-copy p{
+  color:var(--muted);
+  margin:22px 0 30px;
+  max-width:500px;
+}
+
+.video-frame{
+  aspect-ratio:16/10;
+  border-radius:22px;
+  border:1px solid var(--line);
+  overflow:hidden;
+  background:#101310;
+  position:relative;
+  box-shadow:0 35px 90px rgba(0,0,0,.4);
+}
+
+.video-scene{
+  position:absolute;
+  inset:0;
+
+  background:
+  radial-gradient(circle at 70% 35%,rgba(212,178,122,.45),transparent 18%),
+  linear-gradient(130deg,#101510,#223b30 48%,#0b0d0c);
+
+  overflow:hidden;
+}
+
+.video-product{
+  position:absolute;
+  width:190px;
+  height:250px;
+  left:50%;
+  top:50%;
+  transform:translate(-50%,-50%) rotate(-5deg);
+
+  border-radius:20px;
+
+  background:
+  linear-gradient(145deg,#f0dfbd,#a47b4c 35%,#1c2923 72%);
+
+  box-shadow:0 35px 70px #000;
+
+  animation:float 4s ease-in-out infinite;
+}
+
+.video-light{
+  position:absolute;
+  width:500px;
+  height:100px;
+  background:rgba(255,255,255,.13);
+  filter:blur(30px);
+  transform:rotate(-35deg);
+  top:30%;
+  left:-10%;
+  animation:light 5s ease-in-out infinite;
+}
+
+.video-ui{
+  position:absolute;
+  left:20px;
+  right:20px;
+  bottom:18px;
+  display:flex;
+  align-items:center;
+  gap:12px;
+}
+
+.timeline{
+  height:4px;
+  background:rgba(255,255,255,.15);
+  flex:1;
+  overflow:hidden;
+}
+
+.timeline i{
+  display:block;
+  width:35%;
+  height:100%;
+  background:var(--gold);
+  animation:timeline 5s linear infinite;
+}
+
+.play{
+  width:38px;
+  height:38px;
+  border:1px solid rgba(255,255,255,.3);
+  border-radius:50%;
+  display:grid;
+  place-items:center;
+  font-size:.7rem;
+}
+
+/* CARDS */
+
+.cards{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:14px;
+}
+
+.card{
+  min-height:280px;
+  border:1px solid var(--line);
+  border-radius:18px;
+  padding:28px;
+  display:flex;
+  flex-direction:column;
+  justify-content:end;
+
+  background:linear-gradient(145deg,#151815,#0e100e);
+
+  position:relative;
+  overflow:hidden;
+
+  transition:.4s var(--ease);
+}
+
+.card:hover{
+  transform:translateY(-8px);
+  border-color:rgba(212,178,122,.35);
+}
+
+.card:before{
+  content:"";
+  position:absolute;
+  width:180px;
+  height:180px;
+  border-radius:50%;
+
+  background:
+  radial-gradient(circle,rgba(110,214,173,.22),transparent 70%);
+
+  top:-70px;
+  right:-60px;
+}
+
+.card h3{
+  font-size:2rem;
+}
+
+.card p{
+  color:var(--muted);
+  font-size:.88rem;
+  margin-top:12px;
+}
+
+/* GALLERY */
+
+.gallery{
+  display:grid;
+  grid-template-columns:1.3fr .7fr .9fr;
+  grid-template-rows:260px 260px;
+  gap:14px;
+}
+
+.tile{
+  border-radius:18px;
+  border:1px solid var(--line);
+  overflow:hidden;
+  position:relative;
+  background:#141714;
+}
+
+.tile.big{
+  grid-row:span 2;
+}
+
+.visual{
+  position:absolute;
+  inset:0;
+}
+
+.fashion{
+  background:
+  radial-gradient(circle at 55% 35%,#d5c29f,transparent 16%),
+  linear-gradient(135deg,#26352f,#11120f 55%,#55452e);
+}
+
+.beauty{
+  background:
+  radial-gradient(circle at 50% 42%,#e6c2a4,transparent 14%),
+  linear-gradient(150deg,#3b2d29,#161313);
+}
+
+.tech{
+  background:
+  radial-gradient(circle at 50% 35%,#a5d8c1,transparent 12%),
+  linear-gradient(140deg,#17271f,#090b0a);
+}
+
+.food{
+  background:
+  radial-gradient(circle at 50% 40%,#d7b66f,transparent 13%),
+  linear-gradient(145deg,#302319,#0e0c09);
+}
+
+.tile span{
+  position:absolute;
+  left:22px;
+  bottom:20px;
+  font-size:.65rem;
+  letter-spacing:.18em;
+  text-transform:uppercase;
+  color:#eee;
+  background:rgba(0,0,0,.35);
+  padding:7px 10px;
+  border-radius:5px;
+  backdrop-filter:blur(8px);
+}
+
+/* BLANK */
+
+.blank{
+  text-align:center;
+  min-height:650px;
+  display:grid;
+  place-items:center;
+}
+
+.blank-box{
+  width:min(850px,100%);
+  height:380px;
+  border:1px dashed rgba(255,255,255,.16);
+  border-radius:22px;
+  position:relative;
+  display:grid;
+  place-items:center;
+
+  background:
+  radial-gradient(circle,rgba(110,214,173,.05),transparent 60%);
+
+  overflow:hidden;
+}
+
+.cursor{
+  width:10px;
+  height:10px;
+  border-radius:50%;
+  background:var(--green);
+  box-shadow:0 0 25px var(--green);
+  position:absolute;
+  animation:cursor 6s linear infinite;
+}
+
+/* AUDIENCE */
+
+.audience{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:0;
+  border-top:1px solid var(--line);
+}
+
+.aud{
+  padding:40px 25px;
+  border-bottom:1px solid var(--line);
+  transition:.35s;
+}
+
+.aud:hover{
+  background:rgba(255,255,255,.025);
+  padding-left:35px;
+}
+
+.aud h3{
+  font-size:2.2rem;
+  color:var(--gold);
+}
+
+.aud p{
+  color:var(--muted);
+  max-width:500px;
+  margin-top:10px;
+}
+
+/* FINAL */
+
+.final{
+  text-align:center;
+  padding:180px 0;
+
+  background:
+  radial-gradient(circle at center,rgba(212,178,122,.1),transparent 35%),
+  radial-gradient(circle at center,rgba(110,214,173,.08),transparent 55%);
+}
+
+.final h2{
+  font-size:clamp(3.2rem,7vw,7rem);
+}
+
+.final p{
+  color:var(--muted);
+  margin:25px auto 35px;
+  max-width:550px;
+}
+
+.disclosure{
+  color:#6e716c;
+  font-size:.68rem;
+  max-width:550px;
+  margin:45px auto 0;
+}
+
+footer{
+  border-top:1px solid var(--line);
+  padding:30px 0;
+  color:#676a65;
+  font-size:.7rem;
+}
+
+/* REVEAL */
+
+.reveal{
+  opacity:0;
+  transform:translateY(35px);
+  transition:
+  opacity .8s var(--ease),
+  transform .8s var(--ease);
+}
+
+.reveal.show{
+  opacity:1;
+  transform:none;
+}
+
+/* ANIMATIONS */
+
+@keyframes float{
+  0%,100%{
+    transform:translate(-50%,-50%) translateY(0);
+  }
+  50%{
+    transform:translate(-50%,-50%) translateY(-13px);
+  }
+}
+
+@keyframes drift{
+  0%,100%{
+    transform:translateY(0) rotate(0);
+  }
+  50%{
+    transform:translateY(-8px) rotate(1deg);
+  }
+}
+
+@keyframes spin{
+  to{
+    transform:translate(-50%,-50%) rotateX(65deg) rotate(360deg);
+  }
+}
+
+@keyframes scan{
+  0%,100%{
+    transform:translateY(-180px);
+    opacity:0;
+  }
+
+  45%,55%{
+    opacity:.45;
+  }
+
+  50%{
+    transform:translateY(180px);
+  }
+}
+
+@keyframes light{
+  0%,100%{
+    transform:translateX(-80px) rotate(-35deg);
+  }
+
+  50%{
+    transform:translateX(300px) rotate(-35deg);
+  }
+}
+
+@keyframes timeline{
+  0%{
+    width:0;
+  }
+
+  100%{
+    width:100%;
+  }
+}
+
+@keyframes cursor{
+  0%{
+    left:15%;
+    top:20%;
+  }
+
+  25%{
+    left:70%;
+    top:25%;
+  }
+
+  50%{
+    left:80%;
+    top:70%;
+  }
+
+  75%{
+    left:25%;
+    top:75%;
+  }
+
+  100%{
+    left:15%;
+    top:20%;
+  }
+}
+
+/* TABLET */
+
+@media(max-width:900px){
+
+  .links{
+    display:none;
+  }
+
+  .menu{
+    display:block;
+  }
+
+  .hero,
+  .video-section{
+    grid-template-columns:1fr;
+  }
+
+  .hero-stage{
+    height:470px;
+  }
+
+  .transform{
+    grid-template-columns:1fr;
+  }
+
+  .flow{
+    flex-direction:row;
+    justify-content:center;
+    flex-wrap:wrap;
+  }
+
+  .cards{
+    grid-template-columns:1fr 1fr;
+  }
+
+  .gallery{
+    grid-template-columns:1fr 1fr;
+    grid-template-rows:260px 260px;
+  }
+
+  .tile.big{
+    grid-row:span 2;
+  }
+
+  .audience{
+    grid-template-columns:1fr;
+  }
+}
+
+/* MOBILE */
+
+@media(max-width:560px){
+
+  section{
+    padding:85px 0;
+  }
+
+  .hero{
+    padding-top:120px;
+  }
+
+  h1{
+    font-size:3.7rem;
+  }
+
+  .hero-stage{
+    height:390px;
+  }
+
+  .orb{
+    width:190px;
+    height:230px;
+  }
+
+  .r1{
+    width:300px;
+    height:300px;
+  }
+
+  .r2{
+    width:390px;
+    height:390px;
+  }
+
+  .asset{
+    font-size:.55rem;
+    padding:9px;
+  }
+
+  .a1{
+    left:4%;
+    top:10%;
+  }
+
+  .a2{
+    right:4%;
+    top:15%;
+  }
+
+  .a3{
+    left:4%;
+    bottom:12%;
+  }
+
+  .a4{
+    right:4%;
+    bottom:10%;
+  }
+
+  .cards,
+  .gallery{
+    grid-template-columns:1fr;
+  }
+
+  .gallery{
+    grid-template-rows:220px 220px 220px 220px;
+  }
+
+  .tile.big{
+    grid-row:auto;
+  }
+
+  .formula-row{
+    gap:15px;
+  }
+
+  .arrow{
+    font-size:2rem;
+  }
+
+  .huge{
+    font-size:5rem;
+  }
+
+  .many{
+    font-size:4rem;
+  }
+
+  .video-product{
+    width:120px;
+    height:170px;
+  }
+
+  .blank-box{
+    height:280px;
+  }
+
+  .cta{
+    padding:13px 16px;
+    font-size:.68rem;
+  }
+
+  .nav .cta{
+    display:none;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<!-- NAVIGATION -->
+
+<header class="nav">
+
+<div class="container navin">
+
+<a class="logo" href="#">
+CREATIVE AI
+</a>
+
+<nav class="links">
+
+<a href="#transform">
+How It Works
+</a>
+
+<a href="#video">
+Video
+</a>
+
+<a href="#missions">
+Create
+</a>
+
+<a href="#audience">
+For Business
+</a>
+
+</nav>
+
+<a
+class="cta navcta"
+href="https://afflat3c1.com/trk/lnk/3BF8B185-C400-46C9-BA86-8558C9994629/?o=32195&c=918277&a=800075&k=A52CA674E8A292465D658EC2B30B8927&l=37968"
+target="_blank"
+rel="nofollow sponsored noopener"
+>
+Start Creating →
+</a>
+
+<button
+class="menu"
+aria-label="Open menu"
+onclick="document.querySelector('.links').classList.toggle('open')"
+>
+☰
+</button>
+
+</div>
+
+</header>
+
+
+<main>
+
+
+<!-- HERO -->
+
+<section class="hero container">
+
+<div class="reveal">
+
+<div class="kicker">
+AI-POWERED CREATIVE WORKFLOW
+</div>
+
+<h1>
+ONE IDEA.<br>
+<em>A WHOLE</em><br>
+CONTENT ENGINE.
+</h1>
+
+<p class="lead">
+Turn products, concepts and campaign ideas into engaging visual content with an AI-powered creative workflow.
+</p>
+
+<a
+class="cta"
+href="https://afflat3c1.com/trk/lnk/3BF8B185-C400-46C9-BA86-8558C9994629/?o=32195&c=918277&a=800075&k=A52CA674E8A292465D658EC2B30B8927&l=37968"
+target="_blank"
+rel="nofollow sponsored noopener"
+>
+Explore AI Creation →
+</a>
+
+<span class="micro">
+CREATE • TRANSFORM • PROMOTE
+</span>
+
+</div>
+
+
+<div class="hero-stage reveal">
+
+<div class="ring r1"></div>
+<div class="ring r2"></div>
+
+<div class="scan"></div>
+
+<div class="orb"></div>
+
+<div class="asset a1">
+Vertical Video
+</div>
+
+<div class="asset a2">
+Social Creative
+</div>
+
+<div class="asset a3">
+Product Ad
+</div>
+
+<div class="asset a4">
+Campaign Asset
+</div>
+
+</div>
+
+</section>
+
+
+
+<!-- TRANSFORMATION -->
+
+<section id="transform" class="container">
+
+<div class="section-head reveal">
+
+<div class="kicker">
+THE TRANSFORMATION
+</div>
+
+<h2>
+FROM RAW IDEA<br>
+TO CAMPAIGN READY.
+</h2>
+
+<p>
+See the creative journey as one starting point becomes a collection of polished marketing possibilities.
+</p>
+
+</div>
+
+
+<div class="transform reveal">
+
+<div class="box">
+
+<div class="label">
+THE INPUT
+</div>
+
+<div class="product"></div>
+
+</div>
+
+
+<div class="flow">
+
+<div class="step active">
+Understand
+</div>
+
+<div class="step">
+Create
+</div>
+
+<div class="step">
+Refine
+</div>
+
+<div class="step">
+Ready
+</div>
+
+</div>
+
+
+<div class="box">
+
+<div class="label">
+THE OUTPUT
+</div>
+
+<div class="outputs">
+
+<div class="output"></div>
+<div class="output"></div>
+<div class="output"></div>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+
+
+<!-- ONE TO MANY -->
+
+<section class="container">
+
+<div class="formula reveal">
+
+<div class="kicker">
+THE SCALE EFFECT
+</div>
+
+<div class="formula-row">
+
+<div>
+
+<div class="huge">
+1
+</div>
+
+<small>
+PRODUCT / IDEA
+</small>
+
+</div>
+
+
+<div class="arrow">
+→
+</div>
+
+
+<div>
+
+<div class="many">
+MANY
+</div>
+
+<small>
+CREATIVE ASSETS
+</small>
+
+</div>
+
+</div>
+
+
+<p
+style="
+color:var(--muted);
+max-width:600px;
+margin:0 auto
+"
+>
+One starting point. Multiple ways to tell the story.
+</p>
+
+
+<div class="pills">
+
+<span class="pill">
+VIDEO
+</span>
+
+<span class="pill">
+SOCIAL
+</span>
+
+<span class="pill">
+ADS
+</span>
+
+<span class="pill">
+PRODUCT CONTENT
+</span>
+
+<span class="pill">
+PROMOTIONAL VISUALS
+</span>
+
+</div>
+
+</div>
+
+</section>
+
+
+
+<!-- VIDEO -->
+
+<section id="video" class="container">
+
+<div class="video-section">
+
+
+<div class="video-copy reveal">
+
+<div class="kicker">
+VISUAL CREATION
+</div>
+
+<h2>
+TURN PRODUCTS INTO<br>
+CONTENT THAT MOVES.
+</h2>
+
+<p>
+Bring static product ideas into a cinematic visual workflow designed for modern marketing content.
+</p>
+
+<a
+class="cta"
+href="https://afflat3c1.com/trk/lnk/3BF8B185-C400-46C9-BA86-8558C9994629/?o=32195&c=918277&a=800075&k=A52CA674E8A292465D658EC2B30B8927&l=37968"
+target="_blank"
+rel="nofollow sponsored noopener"
+>
+Create Visual Content →
+</a>
+
+</div>
+
+
+<div class="video-frame reveal">
+
+<div class="video-scene">
+
+<div class="video-light"></div>
+
+<div class="video-product"></div>
+
+</div>
+
+
+<div class="video-ui">
+
+<div class="play">
+▶
+</div>
+
+<div class="timeline">
+<i></i>
+</div>
+
+<span
+style="
+font-size:.65rem;
+color:#aaa
+"
+>
+00:08
+</span>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+
+
+<!-- MISSIONS -->
+
+<section id="missions" class="container">
+
+<div class="section-head reveal">
+
+<div class="kicker">
+CHOOSE YOUR MISSION
+</div>
+
+<h2>
+CREATE WITH A<br>
+REASON.
+</h2>
+
+<p>
+Different goals. One creative workflow.
+</p>
+
+</div>
+
+
+<div class="cards reveal">
+
+
+<div class="card">
+
+<h3>
+SELL
+</h3>
+
+<p>
+Turn products into compelling promotional content.
+</p>
+
+</div>
+
+
+<div class="card">
+
+<h3>
+GROW
+</h3>
+
+<p>
+Create engaging visual content for social channels.
+</p>
+
+</div>
+
+
+<div class="card">
+
+<h3>
+LAUNCH
+</h3>
+
+<p>
+Build creative assets around new ideas and campaigns.
+</p>
+
+</div>
+
+
+<div class="card">
+
+<h3>
+CREATE
+</h3>
+
+<p>
+Transform concepts into polished visual content.
+</p>
+
+</div>
+
+
+</div>
+
+</section>
+
+
+
+<!-- CREATIVE WALL -->
+
+<section class="container">
+
+<div class="section-head reveal">
+
+<div class="kicker">
+CREATIVE WALL
+</div>
+
+<h2>
+CONTENT THAT<br>
+DOESN'T LOOK ORDINARY.
+</h2>
+
+<p>
+A cinematic showcase of visual directions for modern brands and products.
+</p>
+
+</div>
+
+
+<div class="gallery reveal">
+
+
+<div class="tile big">
+
+<div class="visual fashion"></div>
+
+<span>
+Fashion Campaign
+</span>
+
+</div>
+
+
+<div class="tile">
+
+<div class="visual beauty"></div>
+
+<span>
+Beauty Product
+</span>
+
+</div>
+
+
+<div class="tile">
+
+<div class="visual tech"></div>
+
+<span>
+Technology
+</span>
+
+</div>
+
+
+<div class="tile">
+
+<div class="visual food"></div>
+
+<span>
+Product Story
+</span>
+
+</div>
+
+
+<div class="tile">
+
+<div class="visual fashion"></div>
+
+<span>
+Social Creative
+</span>
+
+</div>
+
+
+</div>
+
+</section>
+
+
+
+<!-- BLANK CANVAS -->
+
+<section class="container blank">
+
+<div style="width:100%">
+
+<div class="kicker reveal">
+THE STARTING POINT
+</div>
+
+<h2
+class="reveal"
+style="
+font-size:clamp(3rem,6vw,6rem)
+"
+>
+WHAT ARE YOU<br>
+GOING TO CREATE?
+</h2>
+
+
+<div class="blank-box reveal">
+
+<div class="cursor"></div>
+
+<div>
+
+<div
+style="
+font:italic 2rem Georgia
+"
+>
+Start with an idea.
+</div>
+
+<div
+style="
+color:var(--muted);
+font-size:.8rem;
+margin-top:10px
+"
+>
+The rest is creative possibility.
+</div>
+
+</div>
+
+</div>
+
+
+<a
+class="cta reveal"
+href="https://afflat3c1.com/trk/lnk/3BF8B185-C400-46C9-BA86-8558C9994629/?o=32195&c=918277&a=800075&k=A52CA674E8A292465D658EC2B30B8927&l=37968"
+target="_blank"
+rel="nofollow sponsored noopener"
+>
+Create Something →
+</a>
+
+</div>
+
+</section>
+
+
+
+<!-- AUDIENCE -->
+
+<section id="audience" class="container">
+
+<div class="section-head reveal">
+
+<div class="kicker">
+BUILT FOR CREATORS
+</div>
+
+<h2>
+WHO IS IT<br>
+FOR?
+</h2>
+
+</div>
+
+
+<div class="audience reveal">
+
+
+<div class="aud">
+
+<h3>
+CREATORS
+</h3>
+
+<p>
+Produce more visual content without starting from zero every time.
+</p>
+
+</div>
+
+
+<div class="aud">
+
+<h3>
+E-COMMERCE
+</h3>
+
+<p>
+Turn product ideas into marketing-ready creative directions.
+</p>
+
+</div>
+
+
+<div class="aud">
+
+<h3>
+SMALL BUSINESS
+</h3>
+
+<p>
+Create professional-looking content without a massive production setup.
+</p>
+
+</div>
+
+
+<div class="aud">
+
+<h3>
+MARKETERS
+</h3>
+
+<p>
+Move from concept to campaign creative with a faster workflow.
+</p>
+
+</div>
+
+
+</div>
+
+</section>
+
+
+
+<!-- FINAL CTA -->
+
+<section class="final">
+
+<div class="container reveal">
+
+<div class="kicker">
+YOUR NEXT CREATIVE MOVE
+</div>
+
+<h2>
+YOUR NEXT CAMPAIGN<br>
+STARTS WITH ONE IDEA.
+</h2>
+
+<p>
+Turn that idea into something people want to see.
+</p>
+
+<a
+class="cta"
+href="https://afflat3c1.com/trk/lnk/3BF8B185-C400-46C9-BA86-8558C9994629/?o=32195&c=918277&a=800075&k=A52CA674E8A292465D658EC2B30B8927&l=37968"
+target="_blank"
+rel="nofollow sponsored noopener"
+>
+Enter the Creative Studio →
+</a>
+
+<div class="disclosure">
+
+Disclosure: This page may contain affiliate links.
+We may receive a commission if you make a purchase through a link on this page.
+
+</div>
+
+</div>
+
+</section>
+
+</main>
+
+
+
+<footer>
+
+<div class="container">
+
+© 2026 Creative AI · Independent promotional page
+
+</div>
+
+</footer>
+
+
+
+<script>
+
+const observer = new IntersectionObserver(
+
+entries => {
+
+entries.forEach(entry => {
+
+if(entry.isIntersecting){
+
+entry.target.classList.add("show");
+
+}
+
+});
+
+},
+
+{
+threshold:.12
+}
+
+);
+
+
+document
+.querySelectorAll(".reveal")
+.forEach(el => observer.observe(el));
+
+
+
+const steps =
+document.querySelectorAll(".step");
+
+let current = 0;
+
+
+setInterval(() => {
+
+steps.forEach(step =>
+step.classList.remove("active")
+);
+
+steps[current].classList.add("active");
+
+current =
+(current + 1) %
+steps.length;
+
+},1200);
+
+</script>
+
+</body>
+</html>
