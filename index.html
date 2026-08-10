@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -12,10 +12,14 @@
     <meta property="og:description" content="Transform your product into a full marketing campaign instantly using cinematic AI.">
     <meta property="og:image" content="https://images.unsplash.com/photo-1677756119517-756a188d2d94?q=80&w=1200">
 
-    <!-- Fonts -->
+    <!-- Fonts & Icons -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Enable JS check class for animations -->
+    <script>document.documentElement.classList.add('js');</script>
 
     <style>
         :root {
@@ -27,16 +31,18 @@
             --highlight-gold: #C5A065;
             --grey-subtle: #9A958E;
             --border-glass: rgba(255, 255, 255, 0.08);
-            
             --font-heading: 'Playfair Display', serif;
             --font-body: 'Inter', sans-serif;
-            
             --ease-smooth: cubic-bezier(0.25, 0.46, 0.45, 0.94);
             --nav-height: 80px;
         }
 
-        * { box-sizing: border-box; margin: 0; padding: 0; }
-        
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
         html {
             font-size: 16px;
             scroll-behavior: smooth;
@@ -64,32 +70,25 @@
         }
 
         /* Typography & Scroll Reveal Base */
-        h2 {
-            font-family: var(--font-heading);
-            font-size: clamp(2.5rem, 4vw, 4.5rem);
-            line-height: 1.1;
-            font-weight: 400;
-            margin-bottom: 1.5rem;
+        .js h2, .js p, .js h1 {
             opacity: 0;
             transform: translateY(30px);
             transition: opacity 0.8s var(--ease-smooth), transform 0.8s var(--ease-smooth);
         }
-
-        p {
-            font-weight: 300;
-            color: var(--grey-subtle);
-            max-width: 600px;
-            font-size: 1.1rem;
-            margin-bottom: 2rem;
-            opacity: 0;
-            transform: translateY(30px);
-            transition: opacity 0.8s var(--ease-smooth), transform 0.8s var(--ease-smooth);
+        .js p {
             transition-delay: 0.1s;
         }
 
-        section.is-revealing h2,
-        section.is-revealing p,
+        section.is-revealing h2, 
+        section.is-revealing p, 
+        section.is-revealing h1,
         section.is-revealing .reveal-item {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        section.hero.is-revealing h1,
+        section.hero.is-revealing p {
             opacity: 1;
             transform: translateY(0);
         }
@@ -124,7 +123,9 @@
         /* Navigation */
         .header {
             position: fixed;
-            top: 0; left: 0; width: 100%;
+            top: 0;
+            left: 0;
+            width: 100%;
             height: var(--nav-height);
             background: rgba(10, 10, 10, 0.85);
             backdrop-filter: blur(12px);
@@ -211,7 +212,7 @@
             display: block;
         }
 
-        /* Clean Hero Chamber (Mobile Friendly Layout) */
+        /* Hero Visual Chamber - Rich UI */
         .hero-visual-chamber {
             position: relative;
             width: 100%;
@@ -228,12 +229,12 @@
         }
 
         .central-product-pod {
-            width: 140px;
-            height: 180px;
-            background: linear-gradient(145deg, #2a2a2a, #151515);
-            border: 1px solid rgba(197, 160, 101, 0.3);
-            border-radius: 8px;
-            box-shadow: 0 15px 35px rgba(0,0,0,0.6), 0 0 20px rgba(197, 160, 101, 0.15);
+            width: 150px;
+            height: 200px;
+            background: linear-gradient(145deg, #252525, #111111);
+            border: 1px solid rgba(197, 160, 101, 0.4);
+            border-radius: 10px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.7), 0 0 25px rgba(197, 160, 101, 0.2);
             z-index: 5;
             display: flex;
             flex-direction: column;
@@ -250,16 +251,18 @@
 
         .floating-asset-panel {
             position: absolute;
-            background: rgba(24, 24, 24, 0.9);
+            background: rgba(24, 24, 24, 0.95);
             backdrop-filter: blur(8px);
             border: 1px solid var(--border-glass);
-            padding: 10px 14px;
-            border-radius: 6px;
+            padding: 12px 16px;
+            border-radius: 8px;
             font-size: 0.75rem;
             color: var(--text-ivory);
-            box-shadow: 0 10px 25px rgba(0,0,0,0.4);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.5);
             z-index: 4;
-            opacity: 0.95;
+            display: flex;
+            align-items: center;
+            gap: 8px;
         }
 
         .panel-1 { top: 12%; left: 8%; transform: rotate(-4deg); }
@@ -395,9 +398,11 @@
             border-radius: 8px;
             height: 100%;
             display: flex;
+            flex-direction: column;
             align-items: center;
             justify-content: center;
             position: relative;
+            gap: 1rem;
         }
 
         .workspace-tag {
@@ -410,6 +415,7 @@
             text-transform: uppercase;
             border-radius: 4px;
         }
+
         .tag-1 { top: 20px; left: 20px; }
         .tag-2 { bottom: 20px; right: 20px; }
 
@@ -445,7 +451,7 @@
             font-weight: 400;
         }
 
-        /* --- SECTION 6: CONTENT WALL (WITH REAL IMAGES) --- */
+        /* --- SECTION 6: CONTENT WALL --- */
         .content-wall-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
@@ -477,7 +483,9 @@
 
         .wall-card-content {
             position: absolute;
-            bottom: 0; left: 0; width: 100%;
+            bottom: 0;
+            left: 0;
+            width: 100%;
             padding: 2.5rem;
             background: linear-gradient(to top, rgba(10,10,10,0.95), transparent);
         }
@@ -510,15 +518,21 @@
         .blank-canvas-box {
             width: 100%;
             max-width: 900px;
-            height: 400px;
-            border: 1px dashed rgba(255,255,255,0.15);
+            height: 350px;
+            border: 2px dashed rgba(197, 160, 101, 0.3);
             border-radius: 12px;
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
             margin: 3rem 0;
-            background: rgba(255,255,255,0.01);
+            background: rgba(197, 160, 101, 0.02);
+            gap: 15px;
+            transition: border-color 0.3s;
+        }
+
+        .blank-canvas-box:hover {
+            border-color: var(--highlight-gold);
         }
 
         /* --- SECTION 8: AUDIENCE --- */
@@ -566,42 +580,27 @@
             margin-right: auto;
         }
 
-        /* --- BULLETPROOF MOBILE RESPONSIVE FIXES (NO OVERLAP) --- */
+        /* --- MOBILE RESPONSIVE FIXES --- */
         @media(max-width: 900px) {
             .hero-inner { grid-template-columns: 1fr; gap: 3rem; }
-            .hero-visual-chamber { 
-                min-height: 420px;
-                flex-direction: column;
-                padding: 1.5rem;
-            }
+            .hero-visual-chamber { min-height: 420px; flex-direction: column; padding: 1.5rem; }
             
-            /* Disable absolute overlapping on small screens and format safely */
             .floating-asset-panel {
                 position: relative;
-                top: auto !important;
-                left: auto !important;
-                right: auto !important;
-                bottom: auto !important;
+                top: auto !important; left: auto !important; right: auto !important; bottom: auto !important;
                 transform: none !important;
                 margin: 0.4rem 0;
                 width: 80%;
-                text-align: center;
+                justify-content: center;
             }
 
             .transform-grid { grid-template-columns: 1fr; gap: 1.5rem; }
-            .transform-center-flow {
-                flex-direction: row;
-                flex-wrap: wrap;
-                justify-content: center;
-                gap: 0.5rem;
-            }
-
+            .transform-center-flow { flex-direction: row; flex-wrap: wrap; justify-content: center; gap: 0.5rem; }
             .missions-grid { grid-template-columns: 1fr; }
             .content-wall-grid { grid-template-columns: 1fr; }
             .workspace-simulator { display: none; }
             .audience-row { grid-template-columns: 1fr; gap: 1rem; }
             .nav-links { display: none; }
-            
             h2 { font-size: 2.2rem; }
         }
     </style>
@@ -617,8 +616,7 @@
                 <li><a href="#create">Create</a></li>
                 <li><a href="#business">For Business</a></li>
             </ul>
-            <a href="https://afflat3c1.com/trk/lnk/3BF8B185-C400-46C9-BA86-8558C9994629/?o=32195&c=918277&a=800075&k=A52CA674E8A292465D658EC2B30B8927&l=37968" 
-               target="_blank" rel="nofollow sponsored noopener" class="cta-button" style="padding: 0.8rem 1.8rem; font-size: 0.8rem;">Start Creating →</a>
+            <a href="https://afflat3c1.com/trk/lnk/3BF8B185-C400-46C9-BA86-8558C9994629/?o=32195&c=918277&a=800075&k=A52CA674E8A292465D658EC2B30B8927&l=37968" target="_blank" rel="nofollow sponsored noopener" class="cta-button" style="padding: 0.8rem 1.8rem; font-size: 0.8rem;">Start Creating →</a>
         </div>
     </header>
 
@@ -628,19 +626,21 @@
             <div>
                 <h1>ONE IDEA.<br>A WHOLE CAMPAIGN.</h1>
                 <p>Turn your ideas and products into engaging visual content with the power of AI.</p>
-                <a href="https://afflat3c1.com/trk/lnk/3BF8B185-C400-46C9-BA86-8558C9994629/?o=32195&c=918277&a=800075&k=A52CA674E8A292465D658EC2B30B8927&l=37968" 
-                   target="_blank" rel="nofollow sponsored noopener" class="cta-button">START CREATING →</a>
+                <a href="https://afflat3c1.com/trk/lnk/3BF8B185-C400-46C9-BA86-8558C9994629/?o=32195&c=918277&a=800075&k=A52CA674E8A292465D658EC2B30B8927&l=37968" target="_blank" rel="nofollow sponsored noopener" class="cta-button">START CREATING →</a>
                 <span class="hero-subtext">Explore AI-powered content creation</span>
             </div>
+            
+            <!-- POPULATED HERO VISUAL CHAMBER -->
             <div class="hero-visual-chamber">
-                <div class="floating-asset-panel panel-1">Vertical Video Frame</div>
+                <div class="floating-asset-panel panel-1"><i class="fa-solid fa-video text-brand-400" style="color:var(--highlight-gold);"></i> Vertical Video Frame</div>
                 <div class="central-product-pod">
-                    <span style="font-size:0.7rem; color:var(--highlight-gold); letter-spacing: 1px;">INPUT</span>
-                    <strong style="font-family:var(--font-heading); font-size:1.1rem; margin-top:5px;">AURA POD</strong>
+                    <i class="fa-solid fa-wand-magic-sparkles text-xl mb-2" style="color:var(--highlight-gold);"></i>
+                    <span style="font-size:0.65rem; color:var(--grey-subtle); letter-spacing: 1px;">AI INPUT</span>
+                    <strong style="font-family:var(--font-heading); font-size:1rem; margin-top:2px;">AURA POD</strong>
                 </div>
-                <div class="floating-asset-panel panel-2">Social Creative</div>
-                <div class="floating-asset-panel panel-3">Ecommerce Ad</div>
-                <div class="floating-asset-panel panel-4">Promo Visual</div>
+                <div class="floating-asset-panel panel-2"><i class="fa-solid fa-image" style="color:var(--highlight-gold);"></i> Social Creative</div>
+                <div class="floating-asset-panel panel-3"><i class="fa-solid fa-rectangle-ad" style="color:var(--highlight-gold);"></i> Ecommerce Ad</div>
+                <div class="floating-asset-panel panel-4"><i class="fa-solid fa-film" style="color:var(--highlight-gold);"></i> Promo Visual</div>
             </div>
         </div>
     </section>
@@ -654,7 +654,10 @@
         <div class="transform-grid">
             <div class="transform-box">
                 <span style="font-size: 0.75rem; letter-spacing: 2px; color: var(--grey-subtle); margin-bottom: 1rem;">THE INPUT</span>
-                <div style="width: 100px; height: 120px; background: #222; border: 1px solid var(--border-glass); border-radius: 6px; display:flex; align-items:center; justify-content:center; font-size:0.8rem; color:var(--grey-subtle);">Raw Photo</div>
+                <div style="width: 120px; height: 140px; background: linear-gradient(135deg, #1c1c1c, #111); border: 1px solid rgba(197, 160, 101, 0.3); border-radius: 8px; display:flex; flex-direction:column; align-items:center; justify-content:center; gap: 8px; box-shadow: 0 10px 20px rgba(0,0,0,0.5);">
+                    <i class="fa-solid fa-camera text-2xl" style="color: var(--highlight-gold);"></i>
+                    <span style="font-size:0.75rem; color:var(--text-ivory);">Raw Photo</span>
+                </div>
             </div>
             <div class="transform-center-flow">
                 <div class="flow-step active">UNDERSTAND</div>
@@ -664,16 +667,15 @@
             </div>
             <div class="transform-box">
                 <span style="font-size: 0.75rem; letter-spacing: 2px; color: var(--highlight-gold); margin-bottom: 1rem;">THE OUTPUT</span>
-                <div style="display: flex; gap: 10px;">
-                    <div style="width: 60px; height: 80px; background: #222; border-radius: 4px;"></div>
-                    <div style="width: 60px; height: 80px; background: #2a2a2a; border-radius: 4px;"></div>
-                    <div style="width: 60px; height: 80px; background: #1a1a1a; border-radius: 4px;"></div>
+                <div style="display: flex; gap: 12px;">
+                    <div style="width: 65px; height: 95px; background: linear-gradient(145deg, #252525, #151515); border: 1px solid var(--border-glass); border-radius: 6px; display: flex; align-items: center; justify-content: center;"><i class="fa-solid fa-play text-xs" style="color:var(--highlight-gold);"></i></div>
+                    <div style="width: 65px; height: 95px; background: linear-gradient(145deg, #2a2a2a, #181818); border: 1px solid var(--border-glass); border-radius: 6px; display: flex; align-items: center; justify-content: center;"><i class="fa-solid fa-image text-xs" style="color:var(--highlight-gold);"></i></div>
+                    <div style="width: 65px; height: 95px; background: linear-gradient(145deg, #222, #101010); border: 1px solid var(--border-glass); border-radius: 6px; display: flex; align-items: center; justify-content: center;"><i class="fa-solid fa-bolt text-xs" style="color:var(--highlight-gold);"></i></div>
                 </div>
             </div>
         </div>
         <div style="text-align: center; margin-top: 3rem;">
-            <a href="https://afflat3c1.com/trk/lnk/3BF8B185-C400-46C9-BA86-8558C9994629/?o=32195&c=918277&a=800075&k=A52CA674E8A292465D658EC2B30B8927&l=37968" 
-               target="_blank" rel="nofollow sponsored noopener" class="cta-button" style="padding: 1rem 2rem; font-size: 0.85rem;">SEE WHAT YOU CAN CREATE →</a>
+            <a href="https://afflat3c1.com/trk/lnk/3BF8B185-C400-46C9-BA86-8558C9994629/?o=32195&c=918277&a=800075&k=A52CA674E8A292465D658EC2B30B8927&l=37968" target="_blank" rel="nofollow sponsored noopener" class="cta-button" style="padding: 1rem 2rem; font-size: 0.85rem;">SEE WHAT YOU CAN CREATE →</a>
         </div>
     </section>
 
@@ -694,11 +696,11 @@
             </div>
             <h2 style="font-size: 2.5rem; margin-top: 1rem;">One starting point.<br>Multiple ways to tell the story.</h2>
             <div class="asset-pills">
-                <div class="asset-pill">VIDEO</div>
-                <div class="asset-pill">SOCIAL</div>
-                <div class="asset-pill">ADS</div>
-                <div class="asset-pill">PRODUCT CONTENT</div>
-                <div class="asset-pill">PROMOTIONAL VISUALS</div>
+                <div class="asset-pill"><i class="fa-solid fa-video mr-1" style="color:var(--highlight-gold);"></i> VIDEO</div>
+                <div class="asset-pill"><i class="fa-solid fa-share-nodes mr-1" style="color:var(--highlight-gold);"></i> SOCIAL</div>
+                <div class="asset-pill"><i class="fa-solid fa-bullhorn mr-1" style="color:var(--highlight-gold);"></i> ADS</div>
+                <div class="asset-pill"><i class="fa-solid fa-box-open mr-1" style="color:var(--highlight-gold);"></i> PRODUCT CONTENT</div>
+                <div class="asset-pill"><i class="fa-solid fa-palette mr-1" style="color:var(--highlight-gold);"></i> PROMOTIONAL VISUALS</div>
             </div>
         </div>
     </section>
@@ -712,24 +714,29 @@
         <div class="workspace-simulator">
             <div class="workspace-sidebar">
                 <span style="font-size: 0.75rem; text-transform: uppercase; letter-spacing: 1px; color: var(--highlight-gold);">Studio Core</span>
-                <div style="font-size: 0.90rem; color: var(--text-ivory); margin-top: 1rem;">Visual Canvas</div>
-                <div style="font-size: 0.90rem; color: var(--grey-subtle);">Video Engine</div>
-                <div style="font-size: 0.90rem; color: var(--grey-subtle);">Asset Library</div>
-                <div style="font-size: 0.90rem; color: var(--grey-subtle);">Campaign Builder</div>
+                <div style="font-size: 0.90rem; color: var(--text-ivory); margin-top: 1rem;"><i class="fa-solid fa-desktop mr-2 text-xs text-gold" style="color:var(--highlight-gold);"></i>Visual Canvas</div>
+                <div style="font-size: 0.90rem; color: var(--grey-subtle);"><i class="fa-solid fa-film mr-2 text-xs"></i>Video Engine</div>
+                <div style="font-size: 0.90rem; color: var(--grey-subtle);"><i class="fa-solid fa-folder-open mr-2 text-xs"></i>Asset Library</div>
+                <div style="font-size: 0.90rem; color: var(--grey-subtle);"><i class="fa-solid fa-layer-group mr-2 text-xs"></i>Campaign Builder</div>
             </div>
             <div class="workspace-main">
+                <!-- POPULATED WORKSPACE CANVAS CARD -->
                 <div class="workspace-canvas-card">
                     <span class="workspace-tag tag-1">CREATE</span>
                     <span class="workspace-tag tag-2">TRANSFORM</span>
-                    <span style="font-size: 0.8rem; color: var(--grey-subtle); letter-spacing: 2px;">LIVE SIMULATED WORKSPACE</span>
+                    <div style="width: 50px; height: 50px; border-radius: 50%; background: rgba(197, 160, 101, 0.1); border: 1px solid rgba(197, 160, 101, 0.3); display: flex; align-items: center; justify-content: center;">
+                        <i class="fa-solid fa-wand-magic-sparkles text-lg" style="color: var(--highlight-gold);"></i>
+                    </div>
+                    <span style="font-size: 0.85rem; color: var(--text-ivory); letter-spacing: 1px; font-weight: 500;">AI STUDIO ENGINE READY</span>
+                    <span style="font-size: 0.7rem; color: var(--grey-subtle); letter-spacing: 2px;">LIVE SIMULATED WORKSPACE</span>
                 </div>
                 <div style="display: flex; flex-direction: column; gap: 1rem;">
                     <div style="flex: 1; background: var(--bg-card); border: 1px solid var(--border-glass); border-radius: 8px; padding: 1.5rem; display:flex; flex-direction:column; justify-content:center;">
-                        <span style="font-size:0.75rem; color:var(--highlight-gold); text-transform:uppercase; letter-spacing:1px; margin-bottom:0.5rem;">PROMOTE</span>
+                        <span style="font-size:0.75rem; color:var(--highlight-gold); text-transform:uppercase; letter-spacing:1px; margin-bottom:0.5rem;"><i class="fa-solid fa-rocket mr-1"></i> PROMOTE</span>
                         <p style="font-size: 0.9rem; margin-bottom:0;">Instant deployment across distribution channels.</p>
                     </div>
                     <div style="flex: 1; background: var(--bg-card); border: 1px solid var(--border-glass); border-radius: 8px; padding: 1.5rem; display:flex; flex-direction:column; justify-content:center;">
-                        <span style="font-size:0.75rem; color:var(--highlight-gold); text-transform:uppercase; letter-spacing:1px; margin-bottom:0.5rem;">PUBLISH</span>
+                        <span style="font-size:0.75rem; color:var(--highlight-gold); text-transform:uppercase; letter-spacing:1px; margin-bottom:0.5rem;"><i class="fa-solid fa-circle-check mr-1"></i> PUBLISH</span>
                         <p style="font-size: 0.9rem; margin-bottom:0;">Automated asset formatting for high engagement.</p>
                     </div>
                 </div>
@@ -745,25 +752,29 @@
         </div>
         <div class="missions-grid">
             <div class="mission-card">
+                <i class="fa-solid fa-bag-shopping text-3xl mb-4" style="color:var(--highlight-gold);"></i>
                 <h3>SELL</h3>
                 <p>Turn products into compelling promotional content.</p>
             </div>
             <div class="mission-card">
+                <i class="fa-solid fa-chart-line text-3xl mb-4" style="color:var(--highlight-gold);"></i>
                 <h3>GROW</h3>
                 <p>Create content designed for social channels.</p>
             </div>
             <div class="mission-card">
+                <i class="fa-solid fa-bolt text-3xl mb-4" style="color:var(--highlight-gold);"></i>
                 <h3>LAUNCH</h3>
                 <p>Build creative assets around new ideas and campaigns.</p>
             </div>
             <div class="mission-card">
+                <i class="fa-solid fa-palette text-3xl mb-4" style="color:var(--highlight-gold);"></i>
                 <h3>CREATE</h3>
                 <p>Transform concepts into polished visual content.</p>
             </div>
         </div>
     </section>
 
-    <!-- SECTION 6: CONTENT WALL (WITH HIGH-END IMAGES) -->
+    <!-- SECTION 6: CONTENT WALL -->
     <section class="container">
         <div style="max-width: 700px;">
             <h2>CONTENT THAT DOESN'T LOOK ORDINARY.</h2>
@@ -794,16 +805,19 @@
         </div>
     </section>
 
-    <!-- SECTION 7: BLANK CANVAS -->
+    <!-- SECTION 7: BLANK CANVAS (POPULATED) -->
     <section class="container blank-canvas-section">
         <span style="font-size: 0.75rem; text-transform: uppercase; letter-spacing: 3px; color: var(--grey-subtle);">The Starting Point</span>
         <h2 style="font-size: 3rem; margin-top: 1rem;">WHAT ARE YOU GOING TO CREATE?</h2>
+        
         <div class="blank-canvas-box">
-            <p style="margin-bottom: 0; font-size: 1rem; color: var(--highlight-gold);">Infinite Creative Potential Unlocks Here</p>
+            <i class="fa-solid fa-cloud-arrow-up text-3xl" style="color: var(--highlight-gold);"></i>
+            <p style="margin-bottom: 0; font-size: 1rem; color: var(--text-ivory); font-weight: 500;">Drop your product image, video link, or raw idea here</p>
+            <span style="font-size: 0.75rem; color: var(--grey-subtle);">Supports JPG, PNG, MP4, or Text Prompts</span>
         </div>
+
         <h2 style="font-size: 2.5rem; margin-top: 2rem;">THE BLANK CANVAS<br>DOESN'T HAVE TO STAY BLANK.</h2>
-        <a href="https://afflat3c1.com/trk/lnk/3BF8B185-C400-46C9-BA86-8558C9994629/?o=32195&c=918277&a=800075&k=A52CA674E8A292465D658EC2B30B8927&l=37968" 
-           target="_blank" rel="nofollow sponsored noopener" class="cta-button" style="margin-top: 1.5rem;">CREATE SOMETHING →</a>
+        <a href="https://afflat3c1.com/trk/lnk/3BF8B185-C400-46C9-BA86-8558C9994629/?o=32195&c=918277&a=800075&k=A52CA674E8A292465D658EC2B30B8927&l=37968" target="_blank" rel="nofollow sponsored noopener" class="cta-button" style="margin-top: 1.5rem;">CREATE SOMETHING →</a>
     </section>
 
     <!-- SECTION 8: AUDIENCE -->
@@ -837,8 +851,7 @@
         <div class="container">
             <h2>YOUR NEXT<br>CAMPAIGN STARTS<br>WITH ONE IDEA.</h2>
             <p style="margin: 0 auto 3rem auto;">Turn that idea into something people want to see.</p>
-            <a href="https://afflat3c1.com/trk/lnk/3BF8B185-C400-46C9-BA86-8558C9994629/?o=32195&c=918277&a=800075&k=A52CA674E8A292465D658EC2B30B8927&l=37968" 
-               target="_blank" rel="nofollow sponsored noopener" class="cta-button">ENTER THE CREATIVE STUDIO →</a>
+            <a href="https://afflat3c1.com/trk/lnk/3BF8B185-C400-46C9-BA86-8558C9994629/?o=32195&c=918277&a=800075&k=A52CA674E8A292465D658EC2B30B8927&l=37968" target="_blank" rel="nofollow sponsored noopener" class="cta-button">ENTER THE CREATIVE STUDIO →</a>
             <div class="disclosure-text">
                 Disclosure: This page may contain affiliate links. We may receive a commission if you make a purchase through a link on this page.
             </div>
@@ -847,11 +860,7 @@
 
     <!-- JavaScript -->
     <script>
-        const observerOptions = {
-            threshold: 0.15,
-            rootMargin: "0px 0px -50px 0px"
-        };
-
+        const observerOptions = { threshold: 0.15, rootMargin: "0px 0px -50px 0px" };
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
@@ -863,6 +872,9 @@
         document.querySelectorAll('section').forEach(section => {
             observer.observe(section);
         });
+
+        // Force reveal hero on load immediately
+        document.querySelector('.hero').classList.add('is-revealing');
     </script>
 </body>
 </html>
